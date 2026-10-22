@@ -853,18 +853,134 @@ button.addEventListener('click', () => {
 <article class="timeline-item reveal"><div class="timeline-marker"></div><div class="timeline-date">JUN 2022 — JUN 2023</div><div class="timeline-card"><div class="timeline-top"><div><h3>Front-end Developer</h3><p class="company">Pratian Technology</p></div><span class="pill">Development</span></div><ul><li>Worked on responsive user interfaces using frontend technologies.</li><li>Built and refined UI components with a focus on usability and layout.</li><li>Used version control workflows to manage and collaborate on code.</li></ul></div></article>
 </div></section>
 <section class="section-wrap cta-panel reveal"><div><p class="eyebrow">NEXT CHAPTER</p><h2>Good work starts with<br/><span class="gradient-text">a conversation.</span></h2></div><a class="btn btn-primary" href="contact.html">Contact me <span>↗</span></a></section></section>
-<section aria-hidden="true" class="app-page" data-page="skills" id="page-skills"><section class="page-hero section-wrap reveal"><p class="eyebrow">MY TOOLKIT</p><h1>Tools for turning<br/><span class="gradient-text">ideas into outcomes.</span></h1><p class="page-lead">A mix of development, infrastructure, and operations skills that I continue to grow through hands-on practice.</p></section>
+<section aria-hidden="true" class="app-page" data-page="skills" id="page-skills">
+<section class="page-hero section-wrap reveal"><p class="eyebrow">MY TECHNICAL TOOLKIT</p><h1>Skills built through<br/><span class="gradient-text">practice and curiosity.</span></h1><p class="page-lead">Explore my experience across systems, cloud infrastructure, networking, web development, and operational reporting. Open each card to see practical examples and related work.</p></section>
+
 <section class="section-wrap section-block skills-overview reveal" aria-labelledby="skills-overview-title">
-<div class="section-heading"><div><p class="eyebrow">TECHNICAL SKILLS</p><h2 id="skills-overview-title">One toolkit. <span class="gradient-text">Four core areas.</span></h2><p class="muted">A quick overview of the tools and technologies I use across systems, cloud, development, and reporting.</p></div></div>
-<div class="skill-grid skill-category-grid" id="skill-grid" aria-label="Technical skill categories">
-<article class="skill-card reveal" data-category="operations" data-search="system administration linux windows troubleshooting"><div class="skill-card-head"><span class="skill-symbol green">⌁</span><span class="skill-category">SYSTEM ADMINISTRATION</span></div><h3>System Administration</h3><p>Operating system support, basic administration, and practical issue investigation.</p><div class="tag-list"><span>Linux</span><span>Windows</span><span>Troubleshooting</span></div></article>
-<article class="skill-card reveal" data-category="cloud" data-search="cloud networking aws ec2 vpc iam dns" id="cloud"><div class="skill-card-head"><span class="skill-symbol blue">☁</span><span class="skill-category">CLOUD &amp; NETWORKING</span></div><h3>Cloud &amp; Networking</h3><p>Core AWS infrastructure and networking concepts used to connect and protect services.</p><div class="tag-list"><span>AWS</span><span>EC2</span><span>VPC</span><span>IAM</span><span>DNS</span></div></article>
-<article class="skill-card reveal" data-category="frontend" data-search="development html css javascript angular" id="frontend"><div class="skill-card-head"><span class="skill-symbol purple">⌘</span><span class="skill-category">DEVELOPMENT</span></div><h3>Development</h3><p>Building responsive interfaces with structured markup, styling, and interactive web code.</p><div class="tag-list"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Angular</span></div></article>
-<article class="skill-card reveal" data-category="tools" data-search="tools reporting git excel sql power bi"><div class="skill-card-head"><span class="skill-symbol orange">▤</span><span class="skill-category">TOOLS &amp; REPORTING</span></div><h3>Tools &amp; Reporting</h3><p>Version control, working with data, and preparing clear reports and analysis.</p><div class="tag-list"><span>Git</span><span>Excel</span><span>SQL</span><span>Power BI</span></div></article>
+<div class="section-heading"><div><p class="eyebrow">SKILLS DIRECTORY</p><h2 id="skills-overview-title">One toolkit. <span class="gradient-text">Multiple disciplines.</span></h2><p class="muted">Search technologies or filter by area. Skill descriptions focus on tools and practical work rather than unverified proficiency scores.</p></div></div>
+
+<div class="skills-toolbar skills-toolbar-premium">
+<div class="search-box skills-search-box"><span aria-hidden="true">⌕</span><input aria-label="Search technical skills" id="skill-search" placeholder="Search skills, tools, or practical use cases..." type="search"/></div>
+<div class="filter-chips skill-filters" id="skill-filters" aria-label="Filter skills by category">
+<button class="filter-chip active" data-filter="all" type="button" aria-pressed="true">All skills</button>
+<button class="filter-chip" data-filter="operations" type="button" aria-pressed="false">Systems</button>
+<button class="filter-chip" data-filter="cloud" type="button" aria-pressed="false">Cloud</button>
+<button class="filter-chip" data-filter="networking" type="button" aria-pressed="false">Networking</button>
+<button class="filter-chip" data-filter="frontend" type="button" aria-pressed="false">Development</button>
+<button class="filter-chip" data-filter="analytics" type="button" aria-pressed="false">Reporting</button>
+<button class="filter-chip" data-filter="tools" type="button" aria-pressed="false">Tools</button>
 </div>
-<p class="empty-state" hidden id="skills-empty">No skills match your search.</p>
+</div>
+
+<div class="skill-grid skill-category-grid" id="skill-grid" aria-label="Technical skill categories">
+<article class="skill-card skill-card-premium reveal" data-category="operations" data-search="system administration linux windows package management services storage lvm troubleshooting assets operations">
+<div class="skill-card-head"><span class="skill-symbol green" aria-hidden="true">⌁</span><span class="skill-category">SYSTEMS · OPERATIONS</span></div>
+<h3>System Administration</h3>
+<p>Operating-system support and practical troubleshooting across Linux and Windows environments.</p>
+<div class="tag-list"><span>Linux</span><span>Windows</span><span>Services</span><span>Storage</span><span>Troubleshooting</span></div>
+<button aria-expanded="false" class="details-toggle skill-detail-toggle" type="button">Explore practical details <span>＋</span></button>
+<div class="skill-detail-panel" hidden>
+<p><strong>Tools and topics</strong> Package management, service checks, permissions, storage, LVM, scheduled tasks, and basic server troubleshooting.</p>
+<p><strong>Practical use case</strong> Follow a repeatable path to inspect a service, verify logs and permissions, check storage, and document the result.</p>
+<p><strong>Experience connection</strong> System support and asset coordination within IT operations.</p>
+<div class="skill-project-links"><a href="projects.html#aws-architecture">Related project: AWS 3-Tier Architecture ↗</a></div>
+</div>
+</article>
+
+<article class="skill-card skill-card-premium reveal" data-category="cloud" data-search="aws cloud infrastructure ec2 ami ebs s3 iam vpc load balancer autoscaling rds efs cloudwatch lambda">
+<div class="skill-card-head"><span class="skill-symbol blue" aria-hidden="true">☁</span><span class="skill-category">CLOUD INFRASTRUCTURE</span></div>
+<h3>AWS &amp; Cloud</h3>
+<p>Core AWS services for compute, storage, access management, networking, and monitoring.</p>
+<div class="tag-list"><span>EC2</span><span>S3</span><span>IAM</span><span>VPC</span><span>RDS</span><span>CloudWatch</span></div>
+<button aria-expanded="false" class="details-toggle skill-detail-toggle" type="button">Explore practical details <span>＋</span></button>
+<div class="skill-detail-panel" hidden>
+<p><strong>Tools and topics</strong> AMIs, EBS, security groups, load balancers, Auto Scaling, EFS, Lambda, and monitoring basics.</p>
+<p><strong>Practical use case</strong> Map application components to AWS services and review network boundaries, access permissions, storage, and service health.</p>
+<p><strong>Project connection</strong> Explore the web, application, and database layers in the three-tier architecture example.</p>
+<div class="skill-project-links"><a href="projects.html#aws-architecture">Related project: AWS 3-Tier Architecture ↗</a></div>
+</div>
+</article>
+
+<article class="skill-card skill-card-premium reveal" data-category="networking" data-search="networking tcp ip subnetting dns routes vpn firewall security groups connectivity">
+<div class="skill-card-head"><span class="skill-symbol cyan" aria-hidden="true">⌘</span><span class="skill-category">NETWORKING · SECURITY</span></div>
+<h3>Networking</h3>
+<p>Network fundamentals used to understand connectivity between clients, servers, and cloud services.</p>
+<div class="tag-list"><span>TCP/IP</span><span>DNS</span><span>Subnetting</span><span>VPN</span><span>Firewalls</span></div>
+<button aria-expanded="false" class="details-toggle skill-detail-toggle" type="button">Explore practical details <span>＋</span></button>
+<div class="skill-detail-panel" hidden>
+<p><strong>Tools and topics</strong> Addressing, routing concepts, DNS resolution, VPN connectivity, firewall rules, and AWS security groups.</p>
+<p><strong>Practical use case</strong> Investigate whether a problem is related to name resolution, the route, a port, or an access rule before changing configuration.</p>
+<p><strong>Project connection</strong> Consider how traffic moves between tiers and which services should be reachable.</p>
+<div class="skill-project-links"><a href="projects.html#aws-architecture">Related project: AWS 3-Tier Architecture ↗</a></div>
+</div>
+</article>
+
+<article class="skill-card skill-card-premium reveal" data-category="frontend" data-search="frontend development html css javascript typescript angular tailwind responsive user interface api git">
+<div class="skill-card-head"><span class="skill-symbol purple" aria-hidden="true">⌘</span><span class="skill-category">WEB DEVELOPMENT</span></div>
+<h3>Front-end Development</h3>
+<p>Building responsive web interfaces with structured markup, styling, and interactive behavior.</p>
+<div class="tag-list"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>TypeScript</span><span>Angular</span><span>Tailwind CSS</span></div>
+<button aria-expanded="false" class="details-toggle skill-detail-toggle" type="button">Explore practical details <span>＋</span></button>
+<div class="skill-detail-panel" hidden>
+<p><strong>Tools and topics</strong> Responsive layouts, reusable UI components, browser interactions, API integration, and version control.</p>
+<p><strong>Practical use case</strong> Build a page that adapts to mobile and desktop, keeps navigation usable, and presents validation and empty states clearly.</p>
+<p><strong>Project connection</strong> The Job-Check concept explores responsive UI, search, and authentication-flow patterns.</p>
+<div class="skill-project-links"><a href="projects.html#job-check">Related project: Job-Check ↗</a></div>
+</div>
+</article>
+
+<article class="skill-card skill-card-premium reveal" data-category="analytics" data-search="reporting analytics excel sql power bi formulas pivot tables report making report distribution background check data">
+<div class="skill-card-head"><span class="skill-symbol orange" aria-hidden="true">▤</span><span class="skill-category">REPORTING · ANALYTICS</span></div>
+<h3>Data &amp; Reporting</h3>
+<p>Preparing operational reports, organizing data, and making information easier to review and share.</p>
+<div class="tag-list"><span>Excel</span><span>SQL</span><span>Power BI</span><span>Report preparation</span><span>Distribution</span></div>
+<button aria-expanded="false" class="details-toggle skill-detail-toggle" type="button">Explore practical details <span>＋</span></button>
+<div class="skill-detail-panel" hidden>
+<p><strong>Tools and topics</strong> Excel formulas and data organization, SQL query fundamentals, dashboard concepts, and clear report formatting.</p>
+<p><strong>Practical use case</strong> Check data consistency, structure key findings, prepare reports, and distribute the right output to its intended audience.</p>
+<p><strong>Experience connection</strong> Background-check operations and report preparation/distribution workflows.</p>
+</div>
+</article>
+
+<article class="skill-card skill-card-premium reveal" data-category="tools" data-search="tools git github vs code ssh bash shell scripts automation documentation source control">
+<div class="skill-card-head"><span class="skill-symbol cyan" aria-hidden="true">⌁</span><span class="skill-category">TOOLS · AUTOMATION</span></div>
+<h3>Tools &amp; Automation</h3>
+<p>Tools and repeatable workflows that help organize code, administer systems, and reduce manual steps.</p>
+<div class="tag-list"><span>Git</span><span>GitHub</span><span>VS Code</span><span>SSH</span><span>Bash</span></div>
+<button aria-expanded="false" class="details-toggle skill-detail-toggle" type="button">Explore practical details <span>＋</span></button>
+<div class="skill-detail-panel" hidden>
+<p><strong>Tools and topics</strong> Source control, remote access, shell scripts, command-line workflows, and technical documentation.</p>
+<p><strong>Practical use case</strong> Keep changes versioned, make administration steps repeatable, and document commands so tasks can be reviewed later.</p>
+<p><strong>Project connection</strong> The portfolio itself is maintained as an HTML project in GitHub.</p>
+<div class="skill-project-links"><a href="projects.html#job-check">Related project: Job-Check ↗</a></div>
+</div>
+</article>
+</div>
+<p class="empty-state" hidden id="skills-empty" aria-live="polite">No skills match your search. Try another keyword or choose “All skills”.</p>
 </section>
-<section class="section-wrap cta-panel reveal"><div><p class="eyebrow">LEARNING NEVER STOPS</p><h2>Always building the<br/><span class="gradient-text">next skill.</span></h2></div><a class="btn btn-primary" href="projects.html">See projects <span>↗</span></a></section></section>
+
+<section class="section-wrap skills-learning-section reveal" aria-labelledby="skills-learning-title">
+<div class="skills-section-heading"><div><p class="eyebrow">GROWTH IN PROGRESS</p><h2 id="skills-learning-title">Currently learning &amp; developing</h2><p class="muted">Focus areas I am continuing to build through practice—without assigning arbitrary proficiency scores.</p></div><span class="skills-section-mark" aria-hidden="true">↗</span></div>
+<div class="skills-learning-grid">
+<article class="learning-card"><span class="learning-index">01</span><h3>SQL &amp; Data Analysis</h3><p>Build confidence with filtering, joins, grouping, and turning query results into useful reporting inputs.</p><div class="learning-tags"><span>Query practice</span><span>Data quality</span></div></article>
+<article class="learning-card"><span class="learning-index">02</span><h3>Power BI Fundamentals</h3><p>Explore data preparation, clear visual choices, and dashboard layouts that answer practical questions.</p><div class="learning-tags"><span>Data shaping</span><span>Visuals</span></div></article>
+<article class="learning-card"><span class="learning-index">03</span><h3>AWS &amp; Linux Automation</h3><p>Continue developing practical understanding of network boundaries, monitoring, shell commands, and repeatable administration tasks.</p><div class="learning-tags"><span>AWS networking</span><span>Shell scripting</span></div></article>
+</div>
+</section>
+
+<section class="section-wrap skills-experience-section reveal" aria-labelledby="skills-experience-title">
+<div class="skills-section-heading"><div><p class="eyebrow">WHERE SKILLS MEET WORK</p><h2 id="skills-experience-title">Experience &amp; practical use cases</h2><p class="muted">A concise view of how these skills connect to real operational work and portfolio projects.</p></div></div>
+<div class="skills-use-case-grid">
+<article class="use-case-card"><span class="use-case-number">01</span><div><h3>System support &amp; asset coordination</h3><p>Support day-to-day IT operations, investigate issues methodically, keep asset information organized, and document useful findings.</p><div class="tag-list"><span>IT Operations</span><span>System Support</span><span>Assets</span></div></div></article>
+<article class="use-case-card"><span class="use-case-number">02</span><div><h3>Background-check &amp; reporting workflows</h3><p>Work with background-check operations, prepare reports, and distribute report outputs in a clear, organized workflow.</p><div class="tag-list"><span>Operations</span><span>Excel</span><span>Report Distribution</span></div></div></article>
+<article class="use-case-card"><span class="use-case-number">03</span><div><h3>Cloud architecture practice</h3><p>Explore how a web server, application server, and database can be separated, connected, and considered in terms of access and monitoring.</p><div class="tag-list"><span>AWS</span><span>NGINX</span><span>Tomcat</span></div><a class="skill-project-link" href="projects.html#aws-architecture">View AWS architecture project ↗</a></div></article>
+<article class="use-case-card"><span class="use-case-number">04</span><div><h3>Responsive web interfaces</h3><p>Build and refine user interfaces with attention to responsive layout, readable content, interactive controls, and consistent themes.</p><div class="tag-list"><span>HTML/CSS</span><span>JavaScript</span><span>Responsive UI</span></div><a class="skill-project-link" href="projects.html#job-check">View front-end project ↗</a></div></article>
+</div>
+</section>
+
+<section class="section-wrap cta-panel reveal"><div><p class="eyebrow">LEARNING NEVER STOPS</p><h2>Keep building the<br/><span class="gradient-text">next capability.</span></h2></div><a class="btn btn-primary" href="projects.html">Explore projects <span>↗</span></a></section>
+</section>
+
 <section aria-hidden="true" class="app-page" data-page="projects" id="page-projects"><section class="page-hero section-wrap reveal"><p class="eyebrow">SELECTED PROJECTS</p><h1>Thoughtful work.<br/><span class="gradient-text">Practical outcomes.</span></h1><p class="page-lead">A selection of development and infrastructure work. These summaries describe project experience and learning; add repository links when you are ready to publish them.</p></section>
 <section class="section-wrap project-toolbar reveal"><div class="search-box"><span>⌕</span><input aria-label="Search projects" id="project-search" placeholder="Search projects or technologies..." type="search"/></div><div class="filter-chips" id="project-filters"><button class="filter-chip active" data-filter="all" type="button">All work</button><button class="filter-chip" data-filter="frontend" type="button">Frontend</button><button class="filter-chip" data-filter="cloud" type="button">Cloud</button><button class="filter-chip" data-filter="design" type="button">Design &amp; services</button></div></section>
 <section class="section-wrap projects-grid" id="projects-grid">
@@ -1894,5 +2010,64 @@ document.querySelectorAll('[data-skill-group]').forEach(b=>b.addEventListener('c
  render('frontend');
 })();
 </script>
+
+<style id="skills-tab-enhancements">
+/* Skills tab: premium charcoal/cyan layer that follows the existing site theme variables. */
+#page-skills .skills-overview{margin-bottom:38px}
+#page-skills .skills-toolbar-premium{display:flex;flex-direction:column;align-items:stretch;gap:15px;margin:24px 0 25px}
+#page-skills .skills-search-box{width:100%;max-width:620px;min-width:0;min-height:48px;border-radius:13px;border-color:color-mix(in srgb,var(--accent) 24%,var(--line));box-shadow:0 8px 26px #0000000d}
+#page-skills .skills-search-box:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 13%,transparent)}
+#page-skills .skill-filters{width:100%;gap:8px}
+#page-skills .skill-filters .filter-chip{font-size:11px;padding:9px 13px;border-radius:10px}
+#page-skills .skill-filters .filter-chip.active{background:color-mix(in srgb,var(--accent) 13%,var(--surface));border-color:color-mix(in srgb,var(--accent) 56%,var(--line));color:var(--text);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 12%,transparent)}
+#page-skills #skill-grid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:17px;margin:0 0 26px}
+#page-skills .skill-card-premium{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;gap:12px;min-width:0;padding:24px;border-radius:18px;border-color:color-mix(in srgb,var(--accent) 18%,var(--line));background:linear-gradient(145deg,color-mix(in srgb,var(--surface) 94%,#102532),var(--surface));box-shadow:0 12px 34px #0000000b;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+#page-skills .skill-card-premium:before{content:"";position:absolute;z-index:-1;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--accent),color-mix(in srgb,var(--accent2) 60%,transparent),transparent);opacity:.72}
+#page-skills .skill-card-premium:after{content:"";position:absolute;z-index:-1;right:-72px;top:-82px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 10%,transparent),transparent 70%);pointer-events:none}
+#page-skills .skill-card-premium:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 52%,var(--line));box-shadow:0 18px 45px #00000016}
+#page-skills .skill-card-premium .skill-card-head{gap:12px;align-items:center}
+#page-skills .skill-card-premium .skill-symbol{display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px;margin:0;border:1px solid color-mix(in srgb,var(--accent) 24%,var(--line));border-radius:12px;background:color-mix(in srgb,var(--accent) 8%,var(--surface));font-size:23px}
+#page-skills .skill-card-premium .skill-category{margin-left:auto;text-align:right;letter-spacing:.09em;line-height:1.6}
+#page-skills .skill-card-premium h3{font-size:19px;line-height:1.35;margin:2px 0 0;letter-spacing:-.025em}
+#page-skills .skill-card-premium>p{color:var(--muted);font-size:12px;line-height:1.85;margin:0}
+#page-skills .skill-card-premium .tag-list{gap:7px;margin-top:2px}
+#page-skills .skill-card-premium .tag-list span{border-radius:8px;padding:6px 9px;font-size:10px}
+#page-skills .skill-card-premium .details-toggle{margin-top:auto;padding-top:14px;font-size:12px;border-top:1px solid color-mix(in srgb,var(--accent) 15%,var(--line));font-weight:650}
+#page-skills .skill-card-premium .details-toggle span{color:var(--accent);font-size:18px}
+#page-skills .skill-detail-panel{margin-top:0;padding:13px 14px;border:1px solid color-mix(in srgb,var(--accent) 22%,var(--line));border-radius:12px;background:color-mix(in srgb,var(--surface-2) 72%,transparent);animation:skill-detail-open .24s ease both}
+#page-skills .skill-detail-panel[hidden]{display:none}
+#page-skills .skill-detail-panel p{font-size:12px;line-height:1.8;margin:0 0 10px;color:var(--muted)}
+#page-skills .skill-detail-panel p:last-of-type{margin-bottom:4px}
+#page-skills .skill-detail-panel strong{color:var(--text);font-weight:700}
+#page-skills .skill-project-links{display:flex;flex-wrap:wrap;margin-top:11px}
+#page-skills .skill-project-links a,#page-skills .skill-project-link{color:var(--accent);font-size:11px;font-weight:700;text-decoration:none}
+#page-skills .skill-project-links a:hover,#page-skills .skill-project-link:hover{text-decoration:underline;text-underline-offset:4px}
+#page-skills .skills-learning-section,#page-skills .skills-experience-section{margin-top:72px;margin-bottom:76px}
+#page-skills .skills-section-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:22px}
+#page-skills .skills-section-heading h2{font:700 clamp(24px,3vw,32px) Manrope,sans-serif;letter-spacing:-.04em;margin:5px 0 9px}
+#page-skills .skills-section-heading .muted{max-width:680px;line-height:1.8}
+#page-skills .skills-section-mark{display:grid;place-items:center;flex:0 0 44px;width:44px;height:44px;border:1px solid color-mix(in srgb,var(--accent) 24%,var(--line));border-radius:13px;color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,var(--surface));font-size:23px}
+#page-skills .skills-learning-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+#page-skills .learning-card{position:relative;min-width:0;padding:22px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(150deg,var(--surface),color-mix(in srgb,var(--accent) 3%,var(--surface)));transition:border-color .2s,transform .2s}
+#page-skills .learning-card:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+#page-skills .learning-index{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;background:color-mix(in srgb,var(--accent) 11%,var(--surface));color:var(--accent);font:11px 'DM Mono',monospace}
+#page-skills .learning-card h3{font-size:15px;margin:15px 0 8px}
+#page-skills .learning-card p,#page-skills .use-case-card p{font-size:12px;line-height:1.85;color:var(--muted);margin:0}
+#page-skills .learning-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+#page-skills .learning-tags span{border:1px solid var(--line);border-radius:99px;padding:5px 8px;color:var(--muted);font-size:10px}
+#page-skills .skills-use-case-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#page-skills .use-case-card{display:grid;grid-template-columns:34px minmax(0,1fr);align-items:start;gap:14px;padding:22px;border:1px solid var(--line);border-radius:16px;background:var(--surface);transition:border-color .2s,background .2s}
+#page-skills .use-case-card:hover{border-color:color-mix(in srgb,var(--accent) 42%,var(--line));background:color-mix(in srgb,var(--accent) 3%,var(--surface))}
+#page-skills .use-case-number{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:color-mix(in srgb,var(--accent) 10%,var(--surface));color:var(--accent);font:11px 'DM Mono',monospace}
+#page-skills .use-case-card h3{font-size:14px;margin:2px 0 8px}
+#page-skills .use-case-card .tag-list{margin-top:13px}
+#page-skills .use-case-card .skill-project-link{display:inline-block;margin-top:13px}
+#page-skills .empty-state{border:1px dashed var(--line);border-radius:13px;margin:14px 0;padding:25px}
+@keyframes skill-detail-open{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:820px){#page-skills #skill-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#page-skills .skills-learning-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){#page-skills #skill-grid,#page-skills .skills-learning-grid,#page-skills .skills-use-case-grid{grid-template-columns:minmax(0,1fr)}#page-skills .skill-card-premium{padding:20px}#page-skills .skills-section-heading{gap:10px}#page-skills .skills-learning-section,#page-skills .skills-experience-section{margin-top:52px;margin-bottom:55px}}
+@media(prefers-reduced-motion:reduce){#page-skills .skill-card-premium,#page-skills .learning-card,#page-skills .use-case-card{transition:none!important}#page-skills .skill-detail-panel{animation:none!important}}
+</style>
+
 </body>
 </html>
