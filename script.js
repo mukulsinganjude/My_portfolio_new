@@ -717,7 +717,7 @@ function renderSkillGroup(group){const picks=document.getElementById('skill-map-
 document.querySelectorAll('[data-skill-group]').forEach(b=>b.addEventListener('click',()=>{const group=b.dataset.skillGroup;document.querySelectorAll('[data-skill-group]').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-pressed',String(x===b))});renderSkillGroup(group)}));renderSkillGroup('frontend');
  // Lightweight startup animation adds a greeting without delaying the rest of the page.
  const welcome=document.getElementById('terminal-welcome');
- if(welcome&&!booted){booted=true;welcome.style.opacity='0';welcome.style.transform='translateY(5px)';requestAnimationFrame(()=>{welcome.style.transition='opacity .45s ease,transform .45s ease';welcome.style.opacity='1';welcome.style.transform='translateY(0)';});}
+ if(welcome){welcome.style.opacity='0';welcome.style.transform='translateY(5px)';requestAnimationFrame(()=>{welcome.style.transition='opacity .45s ease,transform .45s ease';welcome.style.opacity='1';welcome.style.transform='translateY(0)';});}
 })();
 
 // Interactive simulated AWS architecture explorer
@@ -949,6 +949,48 @@ document.querySelectorAll('[data-skill-group]').forEach(b=>b.addEventListener('c
 
 
 /* Extracted script 17: portrait-favicon-init */
+;
+(function(){
+  const photo=document.querySelector("#page-about .about-feature-photo");
+  if(!photo)return;
+  const source=photo.getAttribute("src")||photo.currentSrc||photo.src;
+  if(!source)return;
+  // Load a separate eager image so a hidden lazy-loaded About section doesn't block favicon creation.
+  const image=new Image();
+  image.onload=function(){
+    try{
+      if(!image.naturalWidth||!image.naturalHeight)return;
+      const size=64,canvas=document.createElement("canvas");
+      canvas.width=size;canvas.height=size;
+      const context=canvas.getContext("2d");
+      if(!context)return;
+      context.clearRect(0,0,size,size);
+      context.beginPath();
+      if(typeof context.roundRect==="function")context.roundRect(0,0,size,size,13);
+      else{
+        const radius=13;
+        context.moveTo(radius,0);context.lineTo(size-radius,0);context.quadraticCurveTo(size,0,size,radius);
+        context.lineTo(size,size-radius);context.quadraticCurveTo(size,size,size-radius,size);
+        context.lineTo(radius,size);context.quadraticCurveTo(0,size,0,size-radius);
+        context.lineTo(0,radius);context.quadraticCurveTo(0,0,radius,0);
+      }
+      context.closePath();context.clip();
+      const scale=Math.max(size/image.naturalWidth,size/image.naturalHeight);
+      const width=image.naturalWidth*scale,height=image.naturalHeight*scale;
+      context.drawImage(image,(size-width)/2,(size-height)*0.22,width,height);
+      let link=document.getElementById("portfolio-favicon");
+      if(!link){link=document.createElement("link");link.id="portfolio-favicon";link.rel="icon";document.head.appendChild(link);}
+      link.type="image/png";
+      link.sizes="64x64";
+      link.href=canvas.toDataURL("image/png");
+    }catch(_){
+      // Keep the branded SVG favicon fallback if canvas generation is unavailable.
+    }
+  };
+  image.onerror=function(){/* Preserve the valid SVG fallback. */};
+  image.src=source;
+})();
+
 ;
 (function(){
   const photo=document.querySelector("#page-about .about-feature-photo");
