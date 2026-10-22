@@ -28,6 +28,44 @@
     const map = {home:"index", index:"index", about:"about", skills:"skills", projects:"projects", contact:"contact"};
     return map[hash] || "index";
   }
+  // Reveal a linked section even when its card is hidden by the project carousel or skill-tree view.
+  function revealPageTarget(targetId) {
+    const target = document.getElementById(targetId);
+    if (!target) {
+      const feedback = document.getElementById("action-feedback");
+      const message = document.getElementById("action-feedback-message");
+      if (feedback && message) {
+        message.textContent = "This section is not available on this page yet.";
+        feedback.hidden = false;
+      }
+      return;
+    }
+
+    const projectCard = target.matches(".project-card") ? target : target.closest(".project-card");
+    if (projectCard && projectCard.closest("#projects-grid.project-carousel")) {
+      const search = document.getElementById("project-search");
+      if (search && search.value) { search.value = ""; search.dispatchEvent(new Event("input", {bubbles:true})); }
+      document.querySelector('#project-filters [data-filter="all"]')?.click();
+      const cards = [...document.querySelectorAll("#projects-grid .project-card")];
+      const index = cards.indexOf(projectCard);
+      document.querySelectorAll("#project-carousel-dots .project-carousel-dot")[index]?.click();
+      window.setTimeout(() => target.scrollIntoView({behavior:"smooth", block:"start"}), 80);
+      return;
+    }
+
+    const skillCard = target.matches(".skill-card") ? target : target.closest(".skill-card");
+    if (skillCard && skillCard.closest("#skill-grid")) {
+      document.getElementById("skills-grid-view")?.click();
+      const search = document.getElementById("skill-search");
+      if (search && search.value) { search.value = ""; search.dispatchEvent(new Event("input", {bubbles:true})); }
+      document.querySelector('#skill-filters [data-filter="all"]')?.click();
+      window.setTimeout(() => target.scrollIntoView({behavior:"smooth", block:"start"}), 80);
+      return;
+    }
+
+    target.scrollIntoView({behavior:"smooth", block:"start"});
+  }
+
   function showPage(name, updateHash=true) {
     pages.forEach(page => {
       const active = page.dataset.page === name;
@@ -63,20 +101,7 @@
     const route = routeName === "index" ? "index" : routeName;
     const targetId = match[2] ? decodeURIComponent(match[2]) : "";
     showPage(route);
-    if (targetId) {
-      setTimeout(() => {
-        const target = document.getElementById(targetId);
-        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-        else {
-          const feedback = document.getElementById("action-feedback");
-          const message = document.getElementById("action-feedback-message");
-          if (feedback && message) {
-            message.textContent = "This section is not available on this page yet.";
-            feedback.hidden = false;
-          }
-        }
-      }, 100);
-    }
+    if (targetId) setTimeout(() => revealPageTarget(targetId), 100);
   }, true);
 
   window.addEventListener("hashchange", () => showPage(routeFromHash(), false));
@@ -275,7 +300,7 @@
       copy.append(title, detail); button.append(icon, copy);
       button.addEventListener("click", () => {
         closeQuickSearch(); showPage(item.route);
-        if (item.target) setTimeout(() => document.getElementById(item.target)?.scrollIntoView({behavior:"smooth",block:"center"}), 180);
+        if (item.target) setTimeout(() => revealPageTarget(item.target), 180);
       });
       quickResults.append(button);
     });
