@@ -203,7 +203,74 @@ button.addEventListener('click', () => {
 <section class="section-wrap intro-strip reveal"><span class="strip-label">MY APPROACH</span><p>Build with purpose. Keep learning. Make the complicated feel simple.</p><span class="strip-star">✳</span></section>
 <section class="section-wrap network-globe-section" aria-labelledby="network-globe-title">
  <div class="network-globe-copy"><p class="eyebrow">CONNECTED SYSTEMS</p><h2 id="network-globe-title">A connected <span class="gradient-text">digital world.</span></h2><p>Explore how cloud infrastructure, servers, and networks connect. This interactive globe is a visual concept demo, not a live infrastructure map.</p><div class="globe-legend"><span><i class="legend-dot cloud-dot"></i>Cloud</span><span><i class="legend-dot server-dot"></i>Servers</span><span><i class="legend-dot network-dot"></i>Networking</span></div><button class="btn btn-secondary" id="globe-motion-toggle" type="button" aria-pressed="false">Pause globe</button></div>
- <div class="network-globe-wrap"><canvas id="network-globe-canvas" role="img" aria-label="Animated globe with connected nodes representing cloud, servers, and networking"></canvas><div class="globe-label globe-label-cloud"><span>☁</span><b>Cloud</b><small>AWS · Services</small></div><div class="globe-label globe-label-server"><span>▣</span><b>Servers</b><small>Compute · Storage</small></div><div class="globe-label globe-label-network"><span>⌁</span><b>Networking</b><small>DNS · Routing</small></div></div>
+ <div class="network-globe-wrap"><div class="network-globe-art" id="network-globe-art" role="img" aria-label="Illustration of a globe connecting cloud infrastructure, servers, and networking">
+  <svg viewBox="0 0 560 420" aria-hidden="true" focusable="false">
+    <defs>
+      <radialGradient id="globe-sphere-fill" cx="34%" cy="27%" r="78%">
+        <stop offset="0" stop-color="#183552" stop-opacity=".92"/>
+        <stop offset=".58" stop-color="#101c31" stop-opacity=".88"/>
+        <stop offset="1" stop-color="#0b111e" stop-opacity=".72"/>
+      </radialGradient>
+      <linearGradient id="globe-line-fill" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#75d8ff" stop-opacity=".58"/>
+        <stop offset=".52" stop-color="#a99aff" stop-opacity=".44"/>
+        <stop offset="1" stop-color="#75e5b6" stop-opacity=".5"/>
+      </linearGradient>
+      <filter id="globe-node-glow" x="-150%" y="-150%" width="400%" height="400%">
+        <feGaussianBlur stdDeviation="3" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+    <g class="globe-orbit-rings" fill="none" stroke="#78b8ff" stroke-width="1">
+      <ellipse cx="280" cy="210" rx="205" ry="64" transform="rotate(-22 280 210)" stroke-opacity=".2"/>
+      <ellipse cx="280" cy="210" rx="193" ry="76" transform="rotate(31 280 210)" stroke-opacity=".13"/>
+    </g>
+    <circle cx="280" cy="210" r="153" fill="url(#globe-sphere-fill)" stroke="#78b8ff" stroke-opacity=".42" stroke-width="1.2"/>
+    <g class="globe-wireframe" fill="none" stroke="#82b5ff" stroke-opacity=".24" stroke-width="1">
+      <ellipse cx="280" cy="210" rx="153" ry="48"/>
+      <ellipse cx="280" cy="210" rx="153" ry="94"/>
+      <ellipse cx="280" cy="210" rx="58" ry="153"/>
+      <ellipse cx="280" cy="210" rx="111" ry="153"/>
+      <path d="M127 210H433"/>
+      <path d="M143 160Q280 206 417 160"/>
+      <path d="M143 260Q280 214 417 260"/>
+    </g>
+    <g class="globe-network-lines" fill="none" stroke="url(#globe-line-fill)" stroke-width="1.35" stroke-linecap="round">
+      <path d="M176 151L220 119L272 133L319 111L365 145L390 191L358 225L378 266L330 292L282 274L235 294L198 258L163 220L176 151"/>
+      <path d="M220 119L236 172L272 133L294 186L365 145"/>
+      <path d="M176 151L236 172L198 216L163 220"/>
+      <path d="M236 172L294 186L358 225L330 292"/>
+      <path d="M198 216L250 231L282 274L235 294"/>
+      <path d="M250 231L294 186L315 239L378 266"/>
+      <path d="M315 239L282 274L330 292"/>
+      <path d="M198 258L250 231L236 172"/>
+      <path d="M319 111L332 164L294 186L315 239"/>
+      <path d="M332 164L390 191L358 225"/>
+    </g>
+    <g class="globe-nodes" filter="url(#globe-node-glow)">
+      <circle class="globe-node node-cloud" cx="220" cy="119" r="4.2" fill="#75d8ff"/>
+      <circle class="globe-node node-server" cx="272" cy="133" r="3.5" fill="#a99aff"/>
+      <circle class="globe-node node-cloud" cx="319" cy="111" r="4" fill="#75d8ff"/>
+      <circle class="globe-node node-network" cx="365" cy="145" r="4" fill="#75e5b6"/>
+      <circle class="globe-node node-network" cx="176" cy="151" r="3.6" fill="#75e5b6"/>
+      <circle class="globe-node node-server" cx="236" cy="172" r="4.4" fill="#a99aff"/>
+      <circle class="globe-node node-cloud" cx="294" cy="186" r="4" fill="#75d8ff"/>
+      <circle class="globe-node node-server" cx="332" cy="164" r="3.5" fill="#a99aff"/>
+      <circle class="globe-node node-network" cx="390" cy="191" r="4" fill="#75e5b6"/>
+      <circle class="globe-node node-cloud" cx="198" cy="216" r="3.5" fill="#75d8ff"/>
+      <circle class="globe-node node-network" cx="250" cy="231" r="4" fill="#75e5b6"/>
+      <circle class="globe-node node-server" cx="315" cy="239" r="4.2" fill="#a99aff"/>
+      <circle class="globe-node node-network" cx="358" cy="225" r="3.6" fill="#75e5b6"/>
+      <circle class="globe-node node-cloud" cx="163" cy="220" r="3" fill="#75d8ff"/>
+      <circle class="globe-node node-server" cx="198" cy="258" r="3.6" fill="#a99aff"/>
+      <circle class="globe-node node-network" cx="235" cy="294" r="3.8" fill="#75e5b6"/>
+      <circle class="globe-node node-cloud" cx="282" cy="274" r="4.2" fill="#75d8ff"/>
+      <circle class="globe-node node-server" cx="330" cy="292" r="3.8" fill="#a99aff"/>
+      <circle class="globe-node node-network" cx="378" cy="266" r="3.5" fill="#75e5b6"/>
+    </g>
+    <circle cx="280" cy="210" r="153" fill="none" stroke="#9ad5ff" stroke-opacity=".1"/>
+  </svg>
+</div><div class="globe-label globe-label-cloud"><span>☁</span><b>Cloud</b><small>AWS · Services</small></div><div class="globe-label globe-label-server"><span>▣</span><b>Servers</b><small>Compute · Storage</small></div><div class="globe-label globe-label-network"><span>⌁</span><b>Networking</b><small>DNS · Routing</small></div></div>
 </section>
 <section class="section-wrap section-block">
 <div class="section-heading reveal"><div><p class="eyebrow">WHAT I BRING</p><h2>Different skills.<br/><span class="gradient-text">One practical mindset.</span></h2></div><a class="text-link" href="about.html">More about me <span>↗</span></a></div>
