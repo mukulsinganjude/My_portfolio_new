@@ -412,150 +412,76 @@ button.addEventListener('click', () => {
 </section>
 
 
-<section aria-hidden="true" class="app-page" data-page="projects" id="page-projects"><section class="page-hero section-wrap reveal"><p class="eyebrow">SELECTED PROJECTS</p><h1>Thoughtful work.<br/><span class="gradient-text">Practical outcomes.</span></h1><p class="page-lead">Source-linked case studies, technical context, and clearly labeled architecture views. UI screenshots and live demos are linked only when genuine assets or verified URLs are available.</p></section>
+<section aria-hidden="true" class="app-page" data-page="projects" id="page-projects"><section class="page-hero section-wrap reveal"><p class="eyebrow">SELECTED PROJECTS</p><h1>Thoughtful work.<br/><span class="gradient-text">Practical outcomes.</span></h1><p class="page-lead">Project case studies with visual previews, technical context, design decisions, and clearly marked next steps.</p></section>
 <section class="section-wrap project-toolbar reveal"><div class="search-box"><span>⌕</span><input aria-label="Search projects" id="project-search" placeholder="Search projects or technologies..." type="search"/></div><div class="filter-chips" id="project-filters"><button class="filter-chip active" data-filter="all" type="button">All work</button><button class="filter-chip" data-filter="frontend" type="button">Frontend</button><button class="filter-chip" data-filter="cloud" type="button">Cloud</button><button class="filter-chip" data-filter="design" type="button">Design &amp; services</button></div></section>
 <section class="section-wrap projects-grid" id="projects-grid">
-<article class="project-card reveal" data-category="frontend" data-search="job-check angular source repository responsive ui authentication search" id="job-check">
-<div class="project-card-art art-job case-preview-art source-evidence-art">
-  <span class="art-tag">VERIFIED SOURCE ASSET</span>
-  <div class="project-source-mark-panel">
-    <div class="project-source-mark-frame"><img class="project-source-mark" alt="Job-Check project logo from its public source repository" decoding="async" loading="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFkAAABbCAYAAAAYwymkAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAB5xJREFUeF7tnPmTFEUQhRdQQDy4VEAFPGBBCEBBQlAQ5HIRJIAV5b7REA9EBcX71j/ZH4jC7+XmDG3b9/TszmzUi/iiZ3e6a2deV2dnVWXvSFRUVFRUVFRUVFRUVFRUVFRUVFRUlsICGIV1sBrm+xtRvSs8C5fgG7iT4Bacgqd9x6j6CrNgO3wLP8HPGej3n8OrflBUdZnBm93ELHPTfAmv+MFR1RSWAuHh7i9uYgm238fwhDcQVawwF8Yw7vcJAyvzAxzxRqKKFRbBzeq9uIPtfx3meUNR+QpPYdif982ripn8BTznDUXlKyyHvyeMq4OZrBvgGm8oKl9hCYb9et+8qpjJSuc4SfV17969mSGEx9guYPuQ/3q6ykZ2ZAp1jbb9lWE84A1VEoYugzdhHINPCF6/C4dgPT/Xam9IFObAHkz7i22Gmbl8D4e8kVLJPNiCkSfhPFxKwnsX2Z6Bt4Cb8bRTWAZfVe/Ntt9nsNAbKJQMxritYOa6oRfS6Pf+3kG2022uJMyEjQkDU6Ymufsb269hnR9cKMxS7B11I9Vr/2duksQJ4OqadlJsDS/BrYnQkTZb5tqART14dCT8M8MPLBSmPY5hp6DU4A5utMLKKm9mOsnmMMib1YvCR0DcNbO/g6uwAxbXMHguRu2HyzKvAQe8qWFUeBReBE0KbYAn/Q2X3QyJt0rvbF5DW2Uhs32HUmHwLExaB7kxuAT1/OMwbOmdmXsYPgGN1rjZ2YDiUzgNa33HnoU5i0GXfOUwkULHKbVb7E0OgzTZHj4AhQDFVwYTXTrxV4OLfX5AYylMwD4MuuKGNUEmK5celizDLvcKAw4bxWlFpLHRmDIT1kInHcsysAoyeVhm+SxEXMRApV4ZxqYxoxVKKqVoaWGMwsT7blKWeaX4yTkLw7AwoBtV2F/egzM5741UFqbMgb3QS5gQulkeZTsMNz1bZVYMVu/MMjIHOyk34RlvqFSY0maYOK22vOlBlpbwwzUMq7viAXZSbsNWb6xUGLMI3nOTsswrJXFy9vKaUehAKzwImvSpGIcz0Q1wpzdYKExRmNgDPYcJGJa0zWon7tQPE/9B8xOlS//qcbq01QsTPbE2fqxm4RgcDbzCw8BNq0mY6NDNMDhZxcKUNsPEfl5P5nyyzYxVHsZOyOYetmFSk2wigZlMPNdnyBemKExoAr6tMDEZJQa2PE9uGI7DObgAKo1icFDlTl93XjgLM1jxeIs3mil6nKYw16gXJnpibfzYyQoTmtYzY90kXe4dbBXiQ3gDci4nO0Hjvn+GeZVRFZFOLFdFvjBlEQZp6ajpDNtkhgkLC+vhhpua0QvVuyxTUOHfGKQMsDY0m1a1zCqHbn5cWFSIIbNhN+a0MejQiep3mFAYsOKSCj3QLmUVBO72g102LXm9Wht5WNuaNy5ckcAUhYnVMonXbYSJjd50v6TqG8XfOsUlZoamJ31uoTt07jVMiMtQOJTFFGUTukm1ESYO8Lrf2YRNP/4IWV+4DN39NbumnJjebeZn7VcBCxOqPx71D5YpTFE2sQvaChOpxYLWZemW1tQaVO8YKvhTsfbZFnqxbqyH/YNlClPaDBNn2fLd+y67zHdh0B/+RRtgvbfplZBE63mFk+OYshBzxqGtMMHQv+8yk0nJejG5VyxMKCd+2T9UpmQIxuyEq25SUzTo0OiQMDcp6tY6NA0XbaCr4ETR6jMGz8CUVTIp0RNr48dqIr7whPZBtvyu2JplQJ+xUKMaiqX+YTKFOQoTWjVuK0zUnCroWd0Urm4dWo+Ywcq3d/gHyRSGKEy8Dq2ECdorPKF9VFgJtz0+ZhjSFzQy1BA+t1dhyAx4XiaxHcYwkZSlcq9hchuDiQpYLy6tkMec+RhzDBqHiQSq1JzjTU+VwiNwCgMaPFZQBzNYOTEjxHxhsMLENmgrm+DeMxAKK6DHacpKqKaNk5otDFaYWIEx5/1SzzKvFD92qsNEWhY2tmNyL+tyBVgv1uLoev+DmcKceRhzEBoPnRMnZwymOkykZUtH/Qobpc/dYU7nZtfGSofCxKA+h923sKFn7gpXgVvsxefYFq6sTLG62UZLYcPChIbOhTUU6sWYsxLaGHSM8XquNz2osmzjDAa1Ma+hnPgkFC6KYoqe69gEjTMKN3mQw0RabQxSrBffgNIv7SaraLuRyW6wsonN3uQwyJ7h0Cxdw0GKGVy6nJQUBi2HazKtDm6wXg/CoKOuwmNwqYewcQUqP2COWZoMOpMwrRLaH7TSMSiDjroKL4BKrmqEDevFKrOqVcuASVpeqjUh5Cdk0AYdddUJG13zUoamsX00T3zQG6glzFoCp6E0y/AeLJNVNzHZU5htywpX9EAN5hXFaOvtyiaOAQOb+sIsPbW0AdQ7c/NlN1eDjneg3wuikyUzWuVanSIYQS5t+M/2NBM9uLd/L4aBnXROa3oyWqhnd9DPGnDo4ZvKheJDJD0GFo6CaiT0lL4eF1N5wDhsglR1UXNh4grYgZFvg1ZHxBE3VyeBG/O0ltVc6HEF/YM8LWO1Zm5amKmCFqV3KzF4KQz6aC4qKioqKioqKioqKioqKioqKioqKioqKioqqrlGRv4F6mxJ118X5PEAAAAASUVORK5CYII="/></div>
-    <div class="project-source-summary"><p class="project-source-overline">JOB-CHECK</p><strong>Public source repository</strong><span>Angular build and project assets</span></div>
-    <div class="project-source-status"><span class="project-status-dot"></span><span>No desktop/mobile UI screenshots are stored in the linked repository.</span></div>
-  </div>
-  <span class="case-preview-caption">Authentic project logo · not an application screenshot</span>
+<article class="project-card reveal" data-category="frontend" data-search="job-check responsive ui authentication search frontend" id="job-check"><div class="project-card-art art-job case-preview-art">
+<span class="art-tag">ILLUSTRATIVE UI PREVIEW</span>
+<div class="case-browser-frame case-job-browser">
+<div class="case-browser-top"><span class="case-browser-dots"><i></i><i></i><i></i></span><span class="case-browser-label">Job-Check · concept</span><span class="case-browser-mark">↗</span></div>
+<div class="case-job-layout">
+<aside class="case-job-sidebar"><b>JOB<span> CHECK</span></b><i class="is-active"></i><i></i><i></i><i></i><span class="case-sidebar-foot"></span></aside>
+<div class="case-job-main"><span class="case-micro-label">SEARCH EXPERIENCE</span><strong>Find a role</strong><div class="case-job-search"><span>⌕ Search roles or keywords</span><b>Search</b></div><div class="case-job-result"><span class="case-result-icon">↗</span><div><b>Sample result</b><small>Role summary · location</small><i></i></div></div><div class="case-job-result second"><span class="case-result-icon">◇</span><div><b>Another result</b><small>Role summary · details</small><i></i></div></div></div>
 </div>
-<div class="project-card-body">
-  <div class="project-heading"><h2>Job-Check</h2><span class="project-index">01</span></div>
-  <div class="case-study-type">Angular project · source available</div>
-  <p>Job-Check has a public repository containing an Angular build and project assets. This case study links to the source; an independently verified live demo URL and UI screenshots were not found in the repository.</p>
-  <div class="tag-list"><span>Angular build</span><span>Responsive UI</span><span>Source assets</span></div>
-  <div class="case-study-actions"><a class="case-study-link" href="https://github.com/mukulsinganjude/Job-Check" target="_blank" rel="noopener noreferrer">View source repository <span aria-hidden="true">↗</span></a></div>
-  <button aria-expanded="false" class="details-toggle" type="button">View project notes <span>＋</span></button>
-  <div class="project-details case-study-details" hidden="">
-    <p class="case-study-label">PROJECT CASE STUDY · SOURCE AVAILABLE</p>
-    <p><strong>Goal:</strong> present job-related information in a clear, searchable, responsive interface.</p>
-    <div class="case-study-facts">
-      <div><span>Source evidence</span><p>The public repository contains an Angular production build, static assets, and Netlify redirect configuration.</p></div>
-      <div><span>Demo status</span><p>A working public demo URL is not recorded in the checked repository. The source link is the verifiable project entry point.</p></div>
-      <div><span>Technical review</span><p>Verify keyboard reachability, empty/error states, form feedback, and small-screen overflow against the running application before documenting results.</p></div>
-      <div><span>Evidence to add</span><p>Add genuine desktop and mobile browser captures and a verified demo URL if one is published.</p></div>
-    </div>
-    <p class="case-study-note">The visual above is the real repository logo, not a UI screenshot. No unverified demo link or unconfirmed functionality is claimed.</p>
-  </div>
 </div>
-</article>
-
-<article class="project-card reveal" data-category="cloud" data-search="aws three tier architecture nginx tomcat relational database ec2 vpc subnet security groups" id="aws-architecture">
-<div class="project-card-art art-cloud case-preview-art aws-architecture-art">
-  <span class="art-tag">PLANNED AWS REQUEST FLOW</span>
-  <div class="aws-flow-visual" role="group" aria-label="Conceptual three-tier AWS learning architecture; this is not deployment evidence">
-    <div class="aws-client-node"><small>REQUEST ORIGIN</small><strong>Browser / User</strong><span>Incoming web request</span></div>
-    <div class="aws-vpc-entry-arrow" aria-hidden="true">↓</div>
-    <div class="aws-vpc-boundary">
-      <div class="aws-vpc-heading"><strong>VPC boundary</strong><span>Intended network segmentation</span></div>
-      <div class="aws-tier-grid">
-        <div class="aws-tier-subnet public"><small class="aws-subnet-label">PUBLIC SUBNET</small><div class="aws-tier-node"><span>WEB TIER · EC2</span><strong>Nginx</strong><small>Web entry / routing</small></div></div>
-        <span class="aws-tier-arrow" aria-hidden="true">→</span>
-        <div class="aws-tier-subnet private"><small class="aws-subnet-label">PRIVATE APP SUBNET</small><div class="aws-tier-node"><span>APP TIER · EC2</span><strong>Tomcat</strong><small>Application processing</small></div></div>
-        <span class="aws-tier-arrow" aria-hidden="true">→</span>
-        <div class="aws-tier-subnet data"><small class="aws-subnet-label">PRIVATE DATA SUBNET</small><div class="aws-tier-node"><span>DATA TIER</span><strong>Relational DB</strong><small>Persistent data</small></div></div>
-      </div>
-      <div class="aws-boundary-note">Planned path: web tier → application tier → data tier</div>
-    </div>
-    <div class="aws-diagram-legend"><span>Dashed outline = intended VPC boundary</span><span>Arrows = expected request/data flow</span></div>
-  </div>
-  <button class="case-preview-open" type="button" data-preview-title="AWS 3-Tier Architecture" aria-label="Expand planned AWS 3-Tier Architecture diagram">Expand architecture <span aria-hidden="true">↗</span></button>
-  <span class="case-preview-caption">Conceptual learning diagram · no live AWS deployment is claimed</span>
+<button class="case-preview-open" type="button" data-preview-title="Job-Check" aria-label="Expand Job-Check visual preview">Expand preview <span aria-hidden="true">↗</span></button>
+<span class="case-preview-caption">Concept preview · not a live application screenshot</span>
+</div><div class="project-card-body"><div class="project-heading"><h2>Job-Check</h2><span class="project-index">01</span></div><div class="case-study-type">Front-end concept</div><p>A responsive interface concept focused on job-related search, user authentication flows, and a clear browsing experience.</p><div class="tag-list"><span>Responsive UI</span><span>Authentication</span><span>Search</span></div><button aria-expanded="false" class="details-toggle" type="button">View project notes <span>＋</span></button><div class="project-details case-study-details" hidden="">
+<p class="case-study-label">PROJECT CASE STUDY · FRONT-END CONCEPT</p>
+<p><strong>Goal:</strong> make job-related information easy to search, scan, and navigate through a responsive interface concept.</p>
+<div class="case-study-facts">
+<div><span>Technical focus</span><p>Responsive layout, search input/results presentation, authentication-flow concepts, and a clear page hierarchy.</p></div>
+<div><span>Interaction model</span><p>Search input → action → scannable result summaries. The sample results are placeholders; no search API or authentication service is claimed.</p></div>
+<div><span>Validation checklist</span><p>Keyboard reachability, visible focus, empty-result state, form feedback, and small-screen overflow.</p></div>
+<div><span>Next step</span><p>Add approved captures from the source project and document its actual front-end stack and API/auth behavior.</p></div>
 </div>
-<div class="project-card-body">
-  <div class="project-heading"><h2>AWS 3-Tier Architecture</h2><span class="project-index">02</span></div>
-  <div class="case-study-type">Infrastructure learning project</div>
-  <p>A learning design for a three-tier request path: Nginx on a web-tier EC2 instance, Tomcat on an application-tier EC2 instance, and a relational database behind private network boundaries.</p>
-  <div class="tag-list"><span>AWS EC2</span><span>VPC</span><span>Nginx</span><span>Tomcat</span><span>Relational DB</span></div>
-  <button aria-expanded="false" class="details-toggle" type="button">View project notes <span>＋</span></button>
-  <div class="project-details case-study-details" hidden="">
-    <p class="case-study-label">PROJECT CASE STUDY · INFRASTRUCTURE LEARNING</p>
-    <p><strong>Goal:</strong> explore separation between the web, application, and data layers with explicit network boundaries.</p>
-    <div class="case-study-facts">
-      <div><span>Planned request flow</span><p>Browser → public web subnet (EC2/Nginx) → private application subnet (EC2/Tomcat) → private data subnet (relational database).</p></div>
-      <div><span>Components in the design</span><p>Amazon VPC and subnet boundaries, EC2 compute for the web and application tiers, Nginx, Tomcat, and a relational database layer.</p></div>
-      <div><span>Intended trust boundaries</span><p>Allow web requests to reach the web tier, permit only required web-to-app and app-to-database paths, and avoid direct public access to the data tier. Exact rules and ports require confirmation.</p></div>
-      <div><span>Verification before deployment claims</span><p>Record actual subnet CIDRs, security-group rules, instance details, database type, health checks, and runbook steps only after they are verified.</p></div>
-    </div>
-    <p class="case-study-note">This diagram describes an intended learning architecture only. No deployed VPC, EC2 instances, Nginx/Tomcat services, database, or live endpoint are asserted here.</p>
-  </div>
+<p class="case-study-note">Scope note: this is described as an interface concept; the page does not claim a live backend or working authentication service.</p>
+</div></div></article>
+<article class="project-card reveal" data-category="cloud" data-search="aws three tier architecture nginx tomcat rdb ec2 vpc cloud" id="aws-architecture"><div class="project-card-art art-cloud case-preview-art">
+<span class="art-tag">ARCHITECTURE SKETCH</span>
+<div class="case-architecture-preview">
+<div class="case-architecture-title"><span>THREE-TIER FLOW</span><small>Learning project</small></div>
+<div class="case-architecture-flow">
+<div class="case-architecture-node user"><small>ENTRY</small><b>Users</b></div><span class="case-architecture-arrow">↓</span>
+<div class="case-architecture-node web"><small>WEB TIER</small><b>Nginx</b></div><span class="case-architecture-arrow">↓</span>
+<div class="case-architecture-node app"><small>APP TIER</small><b>Tomcat</b></div><span class="case-architecture-arrow">↓</span>
+<div class="case-architecture-node data"><small>DATA TIER</small><b>Relational DB</b></div>
 </div>
-</article>
-
-<article class="project-card reveal" data-category="design" data-search="connect my doc telehealth appointment service design flow low level design" id="connect-my-doc">
-<div class="project-card-art art-design case-preview-art service-flow-art">
-  <span class="art-tag">SERVICE-DESIGN CONCEPT</span>
-  <div class="service-flow-visual" role="img" aria-label="Conceptual service flow from appointment overview to details to next step; not a captured product screen">
-    <div class="service-flow-step"><small>01</small><strong>Appointment overview</strong><span>Scan key information</span></div>
-    <span class="service-flow-arrow" aria-hidden="true">→</span>
-    <div class="service-flow-step"><small>02</small><strong>Details</strong><span>Review relevant fields</span></div>
-    <span class="service-flow-arrow" aria-hidden="true">→</span>
-    <div class="service-flow-step"><small>03</small><strong>Next step</strong><span>Clear action hierarchy</span></div>
-  </div>
-  <span class="case-preview-caption">Conceptual journey diagram · not a product screenshot</span>
+<div class="case-architecture-foot"><span>VPC / subnet design</span><span>Security-group boundaries</span></div>
 </div>
-<div class="project-card-body">
-  <div class="project-heading"><h2>Connect My Doc</h2><span class="project-index">03</span></div>
-  <div class="case-study-type">Service-design concept</div>
-  <p>Telehealth interface and service-design work involving appointment concepts, screen flows, and clear information presentation.</p>
-  <div class="tag-list"><span>UI flows</span><span>Appointment service</span><span>Low-level design</span></div>
-  <button aria-expanded="false" class="details-toggle" type="button">View project notes <span>＋</span></button>
-  <div class="project-details case-study-details" hidden="">
-    <p class="case-study-label">PROJECT CASE STUDY · SERVICE-DESIGN CONCEPT</p>
-    <p><strong>Goal:</strong> explore a telehealth service experience through appointment-related flows and low-level design.</p>
-    <div class="case-study-facts">
-      <div><span>Service flow</span><p>Appointment overview → details → next-step screen, represented here as a conceptual journey.</p></div>
-      <div><span>Design constraints</span><p>Keep appointment information scannable, make primary actions distinct, and group related fields consistently.</p></div>
-      <div><span>Technical/design review</span><p>Navigation clarity, keyboard and accessibility checks, feedback states, spacing consistency, and responsive layout.</p></div>
-      <div><span>Evidence status</span><p>Real desktop/mobile product captures and a source repository are not linked to this portfolio card. This visual remains a service-flow concept, not an implementation screenshot.</p></div>
-    </div>
-    <p class="case-study-note">This card describes service-design concepts only. No live telehealth service, code repository, or public demo is claimed.</p>
-  </div>
+<button class="case-preview-open" type="button" data-preview-title="AWS 3-Tier Architecture" aria-label="Expand AWS 3-Tier Architecture visual preview">Expand preview <span aria-hidden="true">↗</span></button>
+<span class="case-preview-caption">Conceptual architecture · not a deployed-environment screenshot</span>
+</div><div class="project-card-body"><div class="project-heading"><h2>AWS 3-Tier Architecture</h2><span class="project-index">02</span></div><div class="case-study-type">Infrastructure learning project</div><p>An infrastructure learning project exploring how a web tier, application tier, and relational database tier can work together.</p><div class="tag-list"><span>AWS EC2</span><span>VPC</span><span>Nginx</span><span>Tomcat</span><span>RDB</span></div><button aria-expanded="false" class="details-toggle" type="button">View project notes <span>＋</span></button><div class="project-details case-study-details" hidden="">
+<p class="case-study-label">PROJECT CASE STUDY · INFRASTRUCTURE LEARNING</p>
+<p><strong>Goal:</strong> explore how a web tier, application tier, and relational database tier can be separated.</p>
+<div class="case-study-facts">
+<div><span>Architecture flow</span><p>Users → Nginx web tier → Tomcat application tier → relational database.</p></div>
+<div><span>Technologies shown</span><p>AWS EC2 compute, a VPC network boundary, Nginx, Tomcat, and a relational database tier.</p></div>
+<div><span>Security considerations</span><p>Plan subnet boundaries, security-group rules, database access paths, and separation between public entry and private services.</p></div>
+<div><span>Operations follow-up</span><p>Document the intended deployment steps, health/log checks, and recovery notes in a runbook.</p></div>
 </div>
-</article>
-
-<article class="project-card reveal" data-category="frontend" data-search="assetflow it asset management angular 18 node express json api assignments assets warranties employees returns roles activity history" id="assetflow">
-<div class="project-card-art art-assetflow case-preview-art assetflow-architecture-art">
-  <span class="art-tag">SOURCE-BASED SYSTEM VIEW</span>
-  <div class="assetflow-system-visual" role="img" aria-label="AssetFlow source-documented structure: Angular frontend to Node and Express API to local JSON persistence">
-    <div class="assetflow-system-node frontend"><small>FRONTEND</small><strong>Angular 18</strong><span>Asset and employee screens</span></div>
-    <span class="assetflow-system-arrow" aria-hidden="true">→</span>
-    <div class="assetflow-system-node api"><small>API</small><strong>Node / Express</strong><span>JWT and server-side role checks</span></div>
-    <span class="assetflow-system-arrow" aria-hidden="true">→</span>
-    <div class="assetflow-system-node storage"><small>PERSISTENCE</small><strong>Local JSON</strong><span>server/data.json</span></div>
-  </div>
-  <div class="assetflow-source-label"><span class="project-status-dot"></span>Architecture derived from the public README</div>
-  <span class="case-preview-caption">Source-based system view · not a running application screenshot</span>
+<p class="case-study-note">Scope note: this is an infrastructure learning project and architecture exploration, not a claim of a production deployment.</p>
+</div></div></article>
+<article class="project-card reveal" data-category="design" data-search="connect my doc telehealth screens appointment service inventory low level design"><div class="project-card-art art-design case-preview-art">
+<span class="art-tag">ILLUSTRATIVE SCREEN FLOW</span>
+<div class="case-design-preview">
+<div class="case-design-screen case-design-wide"><div class="case-design-top"><span></span><b>Connect My Doc</b><i>•••</i></div><div class="case-design-banner"><small>SERVICE CONCEPT</small><b>Appointment overview</b><span></span><span class="short"></span></div><div class="case-design-row"><i></i><div><b>Appointment details</b><span></span></div></div><div class="case-design-row"><i></i><div><b>Next step</b><span></span></div></div></div>
+<div class="case-design-screen case-design-narrow"><div class="case-design-top"><span></span><b>Details</b><i>•••</i></div><div class="case-design-avatar"></div><div class="case-design-line"></div><div class="case-design-line mid"></div><div class="case-design-field"></div><div class="case-design-button"></div></div>
+<div class="case-design-screen case-design-third"><div class="case-design-top"><span></span><b>Flow</b><i>•••</i></div><div class="case-design-progress"><i></i><i></i><i></i></div><div class="case-design-line"></div><div class="case-design-line mid"></div><div class="case-design-field"></div></div>
 </div>
-<div class="project-card-body">
-  <div class="project-heading"><h2>AssetFlow</h2><span class="project-index">04</span></div>
-  <div class="case-study-type">IT asset management · source available</div>
-  <p>An Angular and Node/Express application for tracking IT assets, assignments, returns, warranties, support cases, consumables, roles, and activity history.</p>
-  <div class="tag-list"><span>Angular 18</span><span>Node.js / Express</span><span>JWT</span><span>JSON persistence</span></div>
-  <div class="case-study-actions">
-    <a class="case-study-link" href="https://github.com/mukulsinganjude/Assetflow_New" target="_blank" rel="noopener noreferrer">View source repository <span aria-hidden="true">↗</span></a>
-    <a class="case-study-link secondary" href="https://github.com/mukulsinganjude/Assetflow_New/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read setup notes <span aria-hidden="true">↗</span></a>
-  </div>
-  <button aria-expanded="false" class="details-toggle" type="button">View project notes <span>＋</span></button>
-  <div class="project-details case-study-details" hidden="">
-    <p class="case-study-label">PROJECT CASE STUDY · SOURCE-BASED APPLICATION</p>
-    <p><strong>Goal:</strong> centralize asset lifecycle information and related operations in one application, as described in the project README.</p>
-    <div class="case-study-facts">
-      <div><span>Frontend</span><p>Angular 18 screens for assets, employees, assignments, returns, warranty, inventory, and administration areas.</p></div>
-      <div><span>API and access control</span><p>Node/Express API with JWT-protected routes and server-side role/per-user permission checks, according to the README.</p></div>
-      <div><span>Persistence</span><p>Local JSON state in server/data.json. The README describes the current setup as single-machine rather than multi-server hosting.</p></div>
-      <div><span>Operations to document</span><p>Use approved screenshots, a redacted sample data set, and repeatable start/build instructions. Never publish credentials or real employee data.</p></div>
-    </div>
-    <p class="case-study-note">Source code and README are linked. The repository documents local run steps; a verified public live demo and genuine UI screenshot files were not found during this review.</p>
-  </div>
+<button class="case-preview-open" type="button" data-preview-title="Connect My Doc" aria-label="Expand Connect My Doc visual preview">Expand preview <span aria-hidden="true">↗</span></button>
+<span class="case-preview-caption">Illustrative screen concepts · not actual product captures</span>
+</div><div class="project-card-body"><div class="project-heading"><h2>Connect My Doc</h2><span class="project-index">03</span></div><div class="case-study-type">Service-design concept</div><p>Telehealth interface and service-design work involving screen flows, appointment concepts, and clear information presentation.</p><div class="tag-list"><span>UI screens</span><span>Appointment service</span><span>Low-level design</span></div><button aria-expanded="false" class="details-toggle" type="button">View project notes <span>＋</span></button><div class="project-details case-study-details" hidden="">
+<p class="case-study-label">PROJECT CASE STUDY · SERVICE-DESIGN CONCEPT</p>
+<p><strong>Goal:</strong> explore a telehealth service experience through screen concepts, appointment-related flows, and low-level design.</p>
+<div class="case-study-facts">
+<div><span>Service flow</span><p>Appointment overview → details → next-step screen, represented as a visual concept.</p></div>
+<div><span>Design constraints</span><p>Keep appointment information scannable, make primary actions distinct, and group related fields consistently.</p></div>
+<div><span>Technical/design review</span><p>Navigation clarity, keyboard and accessibility checks, feedback states, spacing consistency, and responsive layout.</p></div>
+<div><span>Evidence to add</span><p>Replace the illustrative screens with approved project captures and document the actual technology/data flow when confirmed.</p></div>
 </div>
-</article>
+<p class="case-study-note">Scope note: this card describes interface and service-design work; it does not imply a live telehealth service.</p>
+</div></div></article>
 </section>
 <dialog class="case-preview-dialog" id="case-preview-dialog" aria-labelledby="case-preview-dialog-title" aria-describedby="case-preview-dialog-note">
   <div class="case-preview-dialog-panel">
@@ -563,7 +489,7 @@ button.addEventListener('click', () => {
       <div>
         <p class="eyebrow">PROJECT VISUAL · CONCEPT PREVIEW</p>
         <h2 id="case-preview-dialog-title">Project preview</h2>
-        <p class="case-preview-dialog-subtitle">An enlarged view of the planned AWS architecture diagram. Conceptual diagrams are kept distinct from real application screenshots.</p>
+        <p class="case-preview-dialog-subtitle">An enlarged view of the existing portfolio illustration.</p>
       </div>
       <button class="case-preview-dialog-close" id="case-preview-dialog-close" type="button" aria-label="Close enlarged project preview">×</button>
     </div>
