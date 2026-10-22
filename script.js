@@ -1181,3 +1181,25 @@ document.querySelectorAll('[data-skill-group]').forEach(b=>b.addEventListener('c
     applySize(false);
   });
 })();
+
+
+/* Connected Systems SVG globe motion control (works without canvas support). */
+(() => {
+  const toggle=document.getElementById("globe-motion-toggle");
+  const wrap=document.querySelector("#page-index .network-globe-wrap");
+  const reduceMotion=window.matchMedia("(prefers-reduced-motion: reduce)");
+  if(!toggle||!wrap)return;
+  function syncGlobeMotion(){
+    const paused=toggle.getAttribute("aria-pressed")==="true"
+      ||document.documentElement.dataset.reduceMotion==="true"
+      ||reduceMotion.matches
+      ||document.getElementById("pref-motion")?.checked===true
+      ||document.getElementById("pref-motion-level")?.value==="off";
+    wrap.classList.toggle("is-paused",paused);
+  }
+  syncGlobeMotion();
+  document.addEventListener("portfolio-globe-motion",syncGlobeMotion);
+  document.getElementById("pref-motion")?.addEventListener("change",syncGlobeMotion);
+  document.getElementById("pref-motion-level")?.addEventListener("change",syncGlobeMotion);
+  reduceMotion.addEventListener?.("change",syncGlobeMotion);
+})();
