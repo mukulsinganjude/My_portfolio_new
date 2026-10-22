@@ -599,6 +599,87 @@ img,svg,video,canvas{max-width:100%}
 @media(max-width:620px){#page-skills #skill-grid.skill-category-grid{grid-template-columns:minmax(0,1fr);gap:13px}#page-skills #skill-grid.skill-category-grid .skill-card{min-height:0;padding:18px}}
 </style>
 
+<style id="project-case-study-enhancements">
+/* Case-study previews are intentionally illustrative because no actual screenshot assets are stored in this repository. */
+#page-projects .project-card-art.case-preview-art{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:48px 18px 16px;height:310px;min-height:310px}
+#page-projects .case-preview-art .art-tag{top:14px;left:17px;font-size:9px;letter-spacing:1px}
+#page-projects .case-preview-caption{display:block;max-width:100%;text-align:center;color:#d8e3efb8;font-size:9px;line-height:1.45;letter-spacing:.02em}
+#page-projects .case-browser-frame{position:relative;width:min(100%,370px);overflow:hidden;border:1px solid #5b668bb0;border-radius:11px;background:#f8faff;box-shadow:0 16px 38px #05091465}
+#page-projects .case-browser-top{display:flex;align-items:center;gap:10px;height:28px;padding:0 10px;background:#e8edf6;border-bottom:1px solid #d2dbe8;color:#607087}
+#page-projects .case-browser-dots{display:flex;gap:4px}
+#page-projects .case-browser-dots i{display:block;width:5px;height:5px;border-radius:50%;background:#acb8ce}
+#page-projects .case-browser-label{flex:1;text-align:center;font-size:8px;color:#52627c}
+#page-projects .case-browser-mark{font-size:10px;color:#52627c}
+#page-projects .case-job-layout{display:grid;grid-template-columns:62px minmax(0,1fr);min-height:175px}
+#page-projects .case-job-sidebar{display:flex;flex-direction:column;gap:13px;padding:14px 8px;background:#17233a;color:#f5f8ff}
+#page-projects .case-job-sidebar b{font-size:7px;letter-spacing:.06em;white-space:nowrap}
+#page-projects .case-job-sidebar b span{color:#54dbe5}
+#page-projects .case-job-sidebar>i{display:block;width:100%;height:5px;border-radius:3px;background:#394b66}
+#page-projects .case-job-sidebar>i.is-active{background:#4ed6df}
+#page-projects .case-sidebar-foot{margin-top:auto;height:19px;border-radius:5px;background:#273b55}
+#page-projects .case-job-main{padding:14px 13px;background:#f8faff;color:#1b2d48}
+#page-projects .case-micro-label{display:block;font-size:7px;letter-spacing:.1em;color:#73839d;margin-bottom:4px}
+#page-projects .case-job-main>strong{display:block;font-size:12px;color:#1c2c47}
+#page-projects .case-job-search{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:7px 7px;margin:10px 0 9px;border:1px solid #d7e0ec;border-radius:6px;color:#8c9ab0;font-size:7px}
+#page-projects .case-job-search b{border-radius:4px;background:#087d93;color:#fff;padding:5px 7px;font-size:7px}
+#page-projects .case-job-result{display:flex;align-items:center;gap:8px;padding:8px;border:1px solid #e0e7f0;border-radius:6px;background:#fff}
+#page-projects .case-job-result.second{margin-top:6px}
+#page-projects .case-result-icon{display:grid;place-items:center;width:23px;height:23px;flex:0 0 23px;border-radius:6px;background:#e6f8fa;color:#08879c;font-size:11px}
+#page-projects .case-job-result>div{flex:1;min-width:0}
+#page-projects .case-job-result b{display:block;font-size:8px;color:#2a3d59}
+#page-projects .case-job-result small{display:block;margin-top:3px;font-size:6px;color:#8491a6}
+#page-projects .case-job-result i{display:block;width:44%;height:3px;margin-top:5px;border-radius:3px;background:#dbe3ed}
+#page-projects .case-architecture-preview{width:min(100%,370px);padding:12px 14px;border:1px solid #55b7d28a;border-radius:12px;background:linear-gradient(145deg,#11253b,#0b1728);box-shadow:0 16px 38px #05091465;color:#ecf8ff}
+#page-projects .case-architecture-title{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px;font:8px 'DM Mono',monospace;letter-spacing:.08em;color:#a8dce7}
+#page-projects .case-architecture-title small{font-size:8px;letter-spacing:0;color:#91a7be}
+#page-projects .case-architecture-flow{display:flex;align-items:center;justify-content:center;gap:7px}
+#page-projects .case-architecture-node{display:flex;flex:1;min-width:0;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:60px;padding:8px 4px;border:1px solid #4c9db48a;border-radius:8px;background:#15364c;text-align:center}
+#page-projects .case-architecture-node small{font:7px 'DM Mono',monospace;letter-spacing:.06em;color:#8ddbe8}
+#page-projects .case-architecture-node b{font:700 10px Manrope,sans-serif;color:#f3fbff;overflow-wrap:anywhere}
+#page-projects .case-architecture-node.app{background:#1a3350;border-color:#628bc1a8}
+#page-projects .case-architecture-node.data{background:#1b3340;border-color:#58bcb39b}
+#page-projects .case-architecture-arrow{color:#66dae9;font-size:13px}
+#page-projects .case-architecture-foot{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-top:10px}
+#page-projects .case-architecture-foot span{padding:4px 7px;border:1px solid #355469;border-radius:99px;color:#b0c7d7;font-size:7px}
+#page-projects .case-design-preview{display:flex;align-items:center;justify-content:center;gap:9px;width:min(100%,360px);height:178px;perspective:600px}
+#page-projects .case-design-screen{width:31%;height:160px;padding:8px;border:1px solid #d4daea;border-radius:8px;background:#f8f7ff;box-shadow:0 14px 28px #09081565;overflow:hidden;color:#2c3155}
+#page-projects .case-design-wide{transform:translateY(7px)}
+#page-projects .case-design-narrow{height:172px;transform:translateY(-5px);background:#effbfc;border-color:#b8e1e4}
+#page-projects .case-design-third{transform:translateY(12px);background:#f8f4ff}
+#page-projects .case-design-top{display:flex;align-items:center;gap:4px;padding-bottom:7px;border-bottom:1px solid #e2e4ef;font-size:6px}
+#page-projects .case-design-top>span{display:block;width:8px;height:8px;flex:0 0 8px;border-radius:3px;background:#8a83d8}
+#page-projects .case-design-top b{flex:1;min-width:0;font-size:6px}
+#page-projects .case-design-top i{font-size:6px;font-style:normal;letter-spacing:-1px;color:#999bb1}
+#page-projects .case-design-banner{margin:9px 0;padding:9px 6px;border-radius:5px;background:#d9eaf1}
+#page-projects .case-design-banner small{display:block;font-size:5px;letter-spacing:.04em;color:#607f92}
+#page-projects .case-design-banner b{display:block;margin:5px 0;font-size:7px;color:#31465c}
+#page-projects .case-design-banner span{display:block;width:80%;height:3px;margin-top:4px;background:#b8cdd8;border-radius:4px}
+#page-projects .case-design-banner span.short{width:54%}
+#page-projects .case-design-row{display:flex;align-items:center;gap:5px;margin-top:8px}
+#page-projects .case-design-row>i{width:12px;height:12px;flex:0 0 12px;border-radius:4px;background:#b9b7e6}
+#page-projects .case-design-row>div{flex:1;min-width:0}
+#page-projects .case-design-row b{display:block;font-size:6px}
+#page-projects .case-design-row span{display:block;width:86%;height:3px;margin-top:4px;background:#d2d4e3;border-radius:3px}
+#page-projects .case-design-avatar{width:24px;height:24px;margin:10px auto 7px;border-radius:50%;background:#a6d8d8}
+#page-projects .case-design-line{height:4px;width:85%;margin:7px auto;background:#cfd2e0;border-radius:4px}
+#page-projects .case-design-line.mid{width:58%}
+#page-projects .case-design-field{height:21px;margin:9px 0;border:1px solid #d0dae4;border-radius:4px;background:#fff}
+#page-projects .case-design-button{height:12px;width:70%;margin:9px auto;border-radius:4px;background:#7c76c4}
+#page-projects .case-design-progress{display:flex;gap:4px;margin:12px 0}
+#page-projects .case-design-progress i{height:3px;flex:1;border-radius:3px;background:#98caca}
+#page-projects .case-study-type{display:flex;align-items:center;gap:7px;margin:2px 0 6px;color:var(--accent);font:9px 'DM Mono',monospace;letter-spacing:.07em;text-transform:uppercase}
+#page-projects .case-study-type:before{content:"";display:block;width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 9px color-mix(in srgb,var(--accent) 65%,transparent)}
+#page-projects .case-study-details{padding-top:12px}
+#page-projects .case-study-details .case-study-label{margin:0 0 8px;color:var(--accent);font:9px 'DM Mono',monospace;letter-spacing:.09em}
+#page-projects .case-study-details>p{line-height:1.8}
+#page-projects .case-study-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}
+#page-projects .case-study-facts>div{padding:12px;border:1px solid var(--line);border-radius:9px;background:color-mix(in srgb,var(--surface-2) 55%,transparent)}
+#page-projects .case-study-facts>div>span{display:block;margin-bottom:5px;color:var(--accent);font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.05em}
+#page-projects .case-study-facts p{margin:0;font-size:11px;line-height:1.7}
+#page-projects .case-study-note{padding:10px 12px;border-left:2px solid var(--line);background:var(--surface-2);border-radius:0 8px 8px 0;font-size:10px!important;line-height:1.75!important}
+@media(max-width:700px){#page-projects .project-card-art.case-preview-art{height:280px;min-height:280px;padding-inline:10px}#page-projects .case-architecture-flow{gap:3px}#page-projects .case-architecture-node{min-height:58px;padding-inline:2px}#page-projects .case-architecture-node b{font-size:8px}#page-projects .case-architecture-arrow{font-size:11px}#page-projects .case-study-facts{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){#page-projects .case-study-visual,#page-projects .project-card-art.case-preview-art{transition:none!important}}
+</style>
 </head>
 <body>
 <canvas id="ambient-network-canvas" aria-hidden="true"></canvas><div id="cursor-glow" aria-hidden="true"></div>
@@ -1006,12 +1087,73 @@ button.addEventListener('click', () => {
 </section>
 
 
-<section aria-hidden="true" class="app-page" data-page="projects" id="page-projects"><section class="page-hero section-wrap reveal"><p class="eyebrow">SELECTED PROJECTS</p><h1>Thoughtful work.<br/><span class="gradient-text">Practical outcomes.</span></h1><p class="page-lead">A selection of development and infrastructure work. These summaries describe project experience and learning; add repository links when you are ready to publish them.</p></section>
+<section aria-hidden="true" class="app-page" data-page="projects" id="page-projects"><section class="page-hero section-wrap reveal"><p class="eyebrow">SELECTED PROJECTS</p><h1>Thoughtful work.<br/><span class="gradient-text">Practical outcomes.</span></h1><p class="page-lead">Project case studies with visual previews, technical context, design decisions, and clearly marked next steps.</p></section>
 <section class="section-wrap project-toolbar reveal"><div class="search-box"><span>⌕</span><input aria-label="Search projects" id="project-search" placeholder="Search projects or technologies..." type="search"/></div><div class="filter-chips" id="project-filters"><button class="filter-chip active" data-filter="all" type="button">All work</button><button class="filter-chip" data-filter="frontend" type="button">Frontend</button><button class="filter-chip" data-filter="cloud" type="button">Cloud</button><button class="filter-chip" data-filter="design" type="button">Design &amp; services</button></div></section>
 <section class="section-wrap projects-grid" id="projects-grid">
-<article class="project-card reveal" data-category="frontend" data-search="job-check responsive ui authentication search frontend" id="job-check"><div class="project-card-art art-job"><span class="art-tag">01 / FRONTEND</span><div class="mock-window large"><div class="mock-nav"></div><div class="mock-title"></div><div class="mock-line"></div><div class="mock-line short"></div><div class="mock-button"></div><div class="mock-row"><i></i><i></i><i></i></div></div></div><div class="project-card-body"><div class="project-heading"><h2>Job-Check</h2><span class="project-index">01</span></div><p>A responsive interface concept focused on job-related search, user authentication flows, and a clear browsing experience.</p><div class="tag-list"><span>Responsive UI</span><span>Authentication</span><span>Search</span></div><button aria-expanded="false" class="details-toggle" type="button">View project notes <span>＋</span></button><div class="project-details" hidden=""><p class="case-study-label">CASE STUDY NOTES</p><p><strong>Challenge:</strong> present job-related information in a way that feels easy to scan and navigate.</p><p><strong>Approach:</strong> organize the interface around search, clear page hierarchy, responsive layout, and authentication-flow concepts.</p><p><strong>What to validate:</strong> keyboard navigation, empty search results, form errors, and small-screen layouts.</p><p><strong>Next step:</strong> connect to a real API and document the authentication and validation behavior.</p></div></div></article>
-<article class="project-card reveal" data-category="cloud" data-search="aws three tier architecture nginx tomcat rdb ec2 vpc cloud" id="aws-architecture"><div class="project-card-art art-cloud"><span class="art-tag">02 / CLOUD</span><div class="cloud-diagram large-diagram"><span>Users</span><i>↓</i><span>NGINX</span><i>↓</i><span>Tomcat</span><i>↓</i><span>RDB</span></div></div><div class="project-card-body"><div class="project-heading"><h2>AWS 3-Tier Architecture</h2><span class="project-index">02</span></div><p>An infrastructure learning project exploring how a web tier, application tier, and relational database tier can work together.</p><div class="tag-list"><span>AWS EC2</span><span>VPC</span><span>Nginx</span><span>Tomcat</span><span>RDB</span></div><button aria-expanded="false" class="details-toggle" type="button">View project notes <span>＋</span></button><div class="project-details" hidden=""><p class="case-study-label">CASE STUDY NOTES</p><p><strong>Goal:</strong> understand how a web tier, application tier, and relational database tier work together.</p><p><strong>Architecture:</strong> users → Nginx web tier → Tomcat application tier → relational database.</p><p><strong>Key considerations:</strong> VPC and subnet design, security-group boundaries, database access paths, and separating public entry points from private services.</p><p><strong>Next step:</strong> add a deployment runbook with network diagram, monitoring checks, and recovery notes.</p></div></div></article>
-<article class="project-card reveal" data-category="design" data-search="connect my doc telehealth screens appointment service inventory low level design"><div class="project-card-art art-design"><span class="art-tag">03 / PRODUCT DESIGN</span><div class="design-screens"><div class="design-screen"><span></span><i></i><i></i><i></i></div><div class="design-screen second"><span></span><i></i><i></i><i></i></div><div class="design-screen third"><span></span><i></i><i></i><i></i></div></div></div><div class="project-card-body"><div class="project-heading"><h2>Connect My Doc</h2><span class="project-index">03</span></div><p>Telehealth interface and service-design work involving screen flows, appointment concepts, and clear information presentation.</p><div class="tag-list"><span>UI screens</span><span>Appointment service</span><span>Low-level design</span></div><button aria-expanded="false" class="details-toggle" type="button">View project notes <span>＋</span></button><div class="project-details" hidden=""><p class="case-study-label">CASE STUDY NOTES</p><p><strong>Goal:</strong> explore a telehealth service experience through clear screens and appointment-related flows.</p><p><strong>Approach:</strong> organize information into understandable steps and keep the screen concepts consistent.</p><p><strong>What to review:</strong> navigation clarity, accessibility, form feedback, and how appointment information is presented.</p><p><strong>Next step:</strong> add project screenshots and explain the design decisions once the approved assets are available.</p></div></div></article>
+<article class="project-card reveal" data-category="frontend" data-search="job-check responsive ui authentication search frontend" id="job-check"><div class="project-card-art art-job case-preview-art">
+<span class="art-tag">ILLUSTRATIVE UI PREVIEW</span>
+<div class="case-browser-frame case-job-browser">
+<div class="case-browser-top"><span class="case-browser-dots"><i></i><i></i><i></i></span><span class="case-browser-label">Job-Check · concept</span><span class="case-browser-mark">↗</span></div>
+<div class="case-job-layout">
+<aside class="case-job-sidebar"><b>JOB<span> CHECK</span></b><i class="is-active"></i><i></i><i></i><i></i><span class="case-sidebar-foot"></span></aside>
+<div class="case-job-main"><span class="case-micro-label">SEARCH EXPERIENCE</span><strong>Find a role</strong><div class="case-job-search"><span>⌕ Search roles or keywords</span><b>Search</b></div><div class="case-job-result"><span class="case-result-icon">↗</span><div><b>Sample result</b><small>Role summary · location</small><i></i></div></div><div class="case-job-result second"><span class="case-result-icon">◇</span><div><b>Another result</b><small>Role summary · details</small><i></i></div></div></div>
+</div>
+</div>
+<span class="case-preview-caption">Concept preview · not a live application screenshot</span>
+</div><div class="project-card-body"><div class="project-heading"><h2>Job-Check</h2><span class="project-index">01</span></div><p>A responsive interface concept focused on job-related search, user authentication flows, and a clear browsing experience.</p><div class="tag-list"><span>Responsive UI</span><span>Authentication</span><span>Search</span></div><button aria-expanded="false" class="details-toggle" type="button">View project notes <span>＋</span></button><div class="project-details case-study-details" hidden="">
+<p class="case-study-label">PROJECT CASE STUDY · FRONT-END CONCEPT</p>
+<p><strong>Goal:</strong> make job-related information easy to search, scan, and navigate through a responsive interface concept.</p>
+<div class="case-study-facts">
+<div><span>Technical focus</span><p>Responsive layout, search UI, authentication-flow concepts, and clear page hierarchy.</p></div>
+<div><span>Design decisions</span><p>Keep search visible, separate results into scannable blocks, and use consistent interaction patterns.</p></div>
+<div><span>Validation checklist</span><p>Keyboard navigation, empty results, form feedback, and small-screen layout behavior.</p></div>
+<div><span>Next step</span><p>Connect a real API and document the authentication and validation behavior.</p></div>
+</div>
+<p class="case-study-note">Scope note: this is described as an interface concept; the page does not claim a live backend or working authentication service.</p>
+</div></div></article>
+<article class="project-card reveal" data-category="cloud" data-search="aws three tier architecture nginx tomcat rdb ec2 vpc cloud" id="aws-architecture"><div class="project-card-art art-cloud case-preview-art">
+<span class="art-tag">ARCHITECTURE SKETCH</span>
+<div class="case-architecture-preview">
+<div class="case-architecture-title"><span>THREE-TIER FLOW</span><small>Learning project</small></div>
+<div class="case-architecture-flow">
+<div class="case-architecture-node user"><small>ENTRY</small><b>Users</b></div><span class="case-architecture-arrow">↓</span>
+<div class="case-architecture-node web"><small>WEB TIER</small><b>Nginx</b></div><span class="case-architecture-arrow">↓</span>
+<div class="case-architecture-node app"><small>APP TIER</small><b>Tomcat</b></div><span class="case-architecture-arrow">↓</span>
+<div class="case-architecture-node data"><small>DATA TIER</small><b>Relational DB</b></div>
+</div>
+<div class="case-architecture-foot"><span>VPC / subnet design</span><span>Security-group boundaries</span></div>
+</div>
+<span class="case-preview-caption">Conceptual architecture · not a deployed-environment screenshot</span>
+</div><div class="project-card-body"><div class="project-heading"><h2>AWS 3-Tier Architecture</h2><span class="project-index">02</span></div><p>An infrastructure learning project exploring how a web tier, application tier, and relational database tier can work together.</p><div class="tag-list"><span>AWS EC2</span><span>VPC</span><span>Nginx</span><span>Tomcat</span><span>RDB</span></div><button aria-expanded="false" class="details-toggle" type="button">View project notes <span>＋</span></button><div class="project-details case-study-details" hidden="">
+<p class="case-study-label">PROJECT CASE STUDY · INFRASTRUCTURE LEARNING</p>
+<p><strong>Goal:</strong> explore how a web tier, application tier, and relational database tier can be separated.</p>
+<div class="case-study-facts">
+<div><span>Architecture flow</span><p>Users → Nginx web tier → Tomcat application tier → relational database.</p></div>
+<div><span>Technologies shown</span><p>AWS EC2, VPC, Nginx, Tomcat, and a relational database tier.</p></div>
+<div><span>Technical considerations</span><p>VPC and subnet design, security-group boundaries, database access paths, and public-entry/private-service separation.</p></div>
+<div><span>Next step</span><p>Document deployment steps, monitoring checks, and recovery notes in a runbook.</p></div>
+</div>
+<p class="case-study-note">Scope note: this is an infrastructure learning project and architecture exploration, not a claim of a production deployment.</p>
+</div></div></article>
+<article class="project-card reveal" data-category="design" data-search="connect my doc telehealth screens appointment service inventory low level design"><div class="project-card-art art-design case-preview-art">
+<span class="art-tag">ILLUSTRATIVE SCREEN FLOW</span>
+<div class="case-design-preview">
+<div class="case-design-screen case-design-wide"><div class="case-design-top"><span></span><b>Connect My Doc</b><i>•••</i></div><div class="case-design-banner"><small>SERVICE CONCEPT</small><b>Appointment overview</b><span></span><span class="short"></span></div><div class="case-design-row"><i></i><div><b>Appointment details</b><span></span></div></div><div class="case-design-row"><i></i><div><b>Next step</b><span></span></div></div></div>
+<div class="case-design-screen case-design-narrow"><div class="case-design-top"><span></span><b>Details</b><i>•••</i></div><div class="case-design-avatar"></div><div class="case-design-line"></div><div class="case-design-line mid"></div><div class="case-design-field"></div><div class="case-design-button"></div></div>
+<div class="case-design-screen case-design-third"><div class="case-design-top"><span></span><b>Flow</b><i>•••</i></div><div class="case-design-progress"><i></i><i></i><i></i></div><div class="case-design-line"></div><div class="case-design-line mid"></div><div class="case-design-field"></div></div>
+</div>
+<span class="case-preview-caption">Illustrative screen concepts · not actual product captures</span>
+</div><div class="project-card-body"><div class="project-heading"><h2>Connect My Doc</h2><span class="project-index">03</span></div><p>Telehealth interface and service-design work involving screen flows, appointment concepts, and clear information presentation.</p><div class="tag-list"><span>UI screens</span><span>Appointment service</span><span>Low-level design</span></div><button aria-expanded="false" class="details-toggle" type="button">View project notes <span>＋</span></button><div class="project-details case-study-details" hidden="">
+<p class="case-study-label">PROJECT CASE STUDY · SERVICE-DESIGN CONCEPT</p>
+<p><strong>Goal:</strong> explore a telehealth service experience through screen concepts, appointment-related flows, and low-level design.</p>
+<div class="case-study-facts">
+<div><span>Design focus</span><p>Screen hierarchy, appointment information, and clear movement between steps.</p></div>
+<div><span>Technical/design review</span><p>Navigation clarity, accessibility, form feedback, and consistency between screens.</p></div>
+<div><span>Current visual</span><p>The preview above is illustrative and uses layout placeholders; it is not a captured product screen.</p></div>
+<div><span>Next step</span><p>Add approved project screenshots and record the specific design decisions once the source assets are available.</p></div>
+</div>
+<p class="case-study-note">Scope note: this card describes interface and service-design work; it does not imply a live telehealth service.</p>
+</div></div></article>
 </section><div class="section-wrap project-carousel-controls" id="project-carousel-controls" aria-label="Project slider controls"><div class="project-carousel-arrows"><button class="project-carousel-arrow" id="project-prev" type="button" aria-label="Previous project">←</button><button class="project-carousel-arrow" id="project-next" type="button" aria-label="Next project">→</button></div><div class="project-carousel-dots" id="project-carousel-dots" aria-label="Choose a project"></div><span class="project-carousel-count" id="project-carousel-count" aria-live="polite">01 / 03</span></div><p class="empty-state" hidden="" id="projects-empty">No projects match your search. Try another keyword or category.</p>
 <section class="section-wrap cta-panel reveal"><div><p class="eyebrow">COLLABORATE</p><h2>Have an idea worth<br/><span class="gradient-text">bringing to life?</span></h2></div><a class="btn btn-primary" href="contact.html">Let's talk <span>↗</span></a></section><section class="section-wrap section-block device-lab"><p class="eyebrow">RESPONSIVE DESIGN LAB</p><h2>One experience. <span class="gradient-text">Every screen.</span></h2><p class="muted">Switch device sizes to preview a sample responsive layout.</p><div class="device-toolbar"><button aria-pressed="true" class="device-choice active" data-device="desktop" type="button">Desktop</button><button aria-pressed="false" class="device-choice" data-device="tablet" type="button">Tablet</button><button aria-pressed="false" class="device-choice" data-device="mobile" type="button">Mobile</button><span id="device-size-label">Preview · Desktop</span></div><div class="preview-stage"><div class="preview-frame desktop" id="preview-frame"><iframe id="responsive-preview" sandbox="allow-scripts" srcdoc="&lt;!doctype html&gt;&lt;meta name=viewport content='width=device-width,initial-scale=1'&gt;&lt;style&gt;body{margin:0;font:15px Arial;background:#f2f6fc;color:#17233b}.nav{padding:18px;background:#101a31;color:white}.hero{padding:28px;background:linear-gradient(120deg,#152440,#315789);color:white}h1{font-size:clamp(24px,5vw,40px)}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;padding:16px}.card{background:white;border:1px solid #dce5f1;border-radius:12px;padding:16px}&lt;/style&gt;&lt;div class=nav&gt;MUKUL / LAB&lt;/div&gt;&lt;div class=hero&gt;&lt;small&gt;RESPONSIVE SAMPLE&lt;/small&gt;&lt;h1&gt;Built for every screen.&lt;/h1&gt;&lt;p&gt;Clean interfaces for desktop, tablet, and mobile.&lt;/p&gt;&lt;/div&gt;&lt;div class=cards&gt;&lt;div class=card&gt;&lt;b&gt;Cloud&lt;/b&gt;&lt;p&gt;Reliable infrastructure.&lt;/p&gt;&lt;/div&gt;&lt;div class=card&gt;&lt;b&gt;Development&lt;/b&gt;&lt;p&gt;User-friendly interfaces.&lt;/p&gt;&lt;/div&gt;&lt;div class=card&gt;&lt;b&gt;Operations&lt;/b&gt;&lt;p&gt;Practical problem-solving.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;" title="Responsive sample project"></iframe></div></div><p class="preview-note">This is a sample layout demonstration, not a live external project.</p></section>
 </section>
