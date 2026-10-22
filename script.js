@@ -1059,93 +1059,112 @@ document.querySelectorAll('[data-skill-group]').forEach(b=>b.addEventListener('c
 ;
 
 
-/* Interactive Labs sizing controls: adjustable box width and height. */
+/* Interactive Labs: drag the lower-right corner to resize. */
 (() => {
   const setups = [
-    { key: "console", host: document.getElementById("interactive-console-panel"),
-      box: document.getElementById("portfolio-terminal"), insertBefore: document.getElementById("portfolio-terminal"),
-      label: "Interactive Console", defaultWidth: 860, defaultHeight: 410, minHeight: 320, maxHeight: 900 },
-    { key: "playground", host: document.getElementById("webdev-lab"),
-      box: document.querySelector("#webdev-lab .wdl-shell"), insertBefore: document.querySelector("#webdev-lab .wdl-shell"),
-      label: "Interactive Playground", defaultWidth: 1120, defaultHeight: 700, minHeight: 460, maxHeight: 1000 }
+    {key:"console", host:document.getElementById("interactive-console-panel"),
+      box:document.getElementById("portfolio-terminal"), label:"Interactive Console",
+      defaultWidth:860, defaultHeight:410, minHeight:320, maxHeight:900},
+    {key:"playground", host:document.getElementById("webdev-lab"),
+      box:document.querySelector("#webdev-lab .wdl-shell"), label:"Interactive Playground",
+      defaultWidth:1120, defaultHeight:700, minHeight:460, maxHeight:1000}
   ];
-  const readSize = (key, defaults) => {
-    try {
-      const value = JSON.parse(localStorage.getItem("mukul-lab-size-" + key) || "null");
+  const desktopQuery=window.matchMedia("(min-width: 781px)");
+  const readSize=config=>{
+    try{
+      const saved=JSON.parse(localStorage.getItem("mukul-lab-size-"+config.key)||"null");
       return {
-        width: Math.min(1800, Math.max(680, Number(value?.width) || defaults.defaultWidth)),
-        height: Math.min(defaults.maxHeight, Math.max(defaults.minHeight, Number(value?.height) || defaults.defaultHeight))
+        width:Math.min(1800,Math.max(680,Number(saved?.width)||config.defaultWidth)),
+        height:Math.min(config.maxHeight,Math.max(config.minHeight,Number(saved?.height)||config.defaultHeight))
       };
-    } catch (_) { return {width:defaults.defaultWidth,height:defaults.defaultHeight}; }
+    }catch(_){return {width:config.defaultWidth,height:config.defaultHeight};}
   };
-  const saveSize = (key, size) => {
-    try { localStorage.setItem("mukul-lab-size-" + key, JSON.stringify(size)); } catch (_) {}
+  const saveSize=(config,size)=>{
+    try{localStorage.setItem("mukul-lab-size-"+config.key,JSON.stringify(size));}catch(_){}
   };
 
-  setups.forEach(config => {
-    if (!config.host || !config.box || !config.insertBefore || config.host.querySelector("[data-lab-size-controls]")) return;
-    const size = readSize(config.key, config);
-    const controls = document.createElement("div");
-    controls.className = "lab-size-controls";
-    controls.dataset.labSizeControls = config.key;
-    controls.setAttribute("aria-label", config.label + " sizing controls");
-    controls.innerHTML = `
-      <div class="lab-size-head">
-        <span class="lab-size-title"><span aria-hidden="true">↔</span> Adjust window size</span>
-        <button type="button" class="lab-size-reset">Reset size</button>
-      </div>
-      <label class="lab-size-field lab-size-width">
-        <span>Width</span>
-        <input type="range" min="680" max="1800" step="40" value="${size.width}" data-lab-width aria-label="${config.label} width in pixels">
-        <output>${size.width}px</output>
-      </label>
-      <label class="lab-size-field">
-        <span>Height</span>
-        <input type="range" min="${config.minHeight}" max="${config.maxHeight}" step="20" value="${size.height}" data-lab-height aria-label="${config.label} height in pixels">
-        <output>${size.height}px</output>
-      </label>
-    `;
-    config.host.insertBefore(controls, config.insertBefore);
+  setups.forEach(config=>{
+    const {host,box}=config;
+    if(!host||!box||box.querySelector("[data-lab-resize]"))return;
+    const size=readSize(config);
+    const handle=document.createElement("button");
+    handle.type="button";
+    handle.className="lab-resize-handle";
+    handle.dataset.labResize=config.key;
+    handle.setAttribute("aria-label","Resize "+config.label);
+    handle.title="Drag to resize. Use arrow keys to adjust width and height.";
+    handle.setAttribute("aria-keyshortcuts","ArrowLeft ArrowRight ArrowUp ArrowDown");
+    box.appendChild(handle);
+    box.dataset.labResizable="true";
 
-    const widthInput = controls.querySelector("[data-lab-width]");
-    const heightInput = controls.querySelector("[data-lab-height]");
-    const widthOutput = widthInput.parentElement.querySelector("output");
-    const heightOutput = heightInput.parentElement.querySelector("output");
-
-    function applySize(shouldSave = true) {
-      const current = {width:Number(widthInput.value),height:Number(heightInput.value)};
-      widthOutput.value = current.width + "px";
-      widthOutput.textContent = current.width + "px";
-      heightOutput.value = current.height + "px";
-      heightOutput.textContent = current.height + "px";
-
-      const desktop = window.matchMedia("(min-width: 781px)").matches;
-      config.host.style.setProperty("width", desktop ? current.width + "px" : "calc(100vw - 24px)", "important");
-      config.host.style.setProperty("max-width", "calc(100vw - 24px)", "important");
-      config.host.style.setProperty("margin-left", "auto", "important");
-      config.host.style.setProperty("margin-right", "auto", "important");
-      config.box.dataset.labResizable = "true";
-      config.box.style.setProperty("--lab-window-height", current.height + "px");
-      config.box.style.setProperty("height", current.height + "px", "important");
-      config.box.style.setProperty("max-height", "none", "important");
-      config.box.style.setProperty("width", "100%", "important");
-      config.box.style.setProperty("max-width", "none", "important");
-      if (shouldSave) saveSize(config.key, current);
+    let dragging=null;
+    const clamp=(value,min,max)=>Math.min(max,Math.max(min,value));
+    function maxAvailableWidth(){return Math.max(320,window.innerWidth-32);}
+    function applySize(persist=false){
+      const desktop=desktopQuery.matches;
+      const available=maxAvailableWidth();
+      const actualWidth=clamp(size.width,desktop?Math.min(680,available):320,available);
+      if(desktop){
+        host.style.setProperty("width",actualWidth+"px","important");
+        host.style.setProperty("max-width","calc(100vw - 32px)","important");
+        host.style.setProperty("margin-left","auto","important");
+        host.style.setProperty("margin-right","auto","important");
+      }else{
+        host.style.setProperty("width","calc(100vw - 24px)","important");
+        host.style.setProperty("max-width","calc(100vw - 24px)","important");
+        host.style.removeProperty("margin-left");
+        host.style.removeProperty("margin-right");
+      }
+      box.style.setProperty("--lab-window-height",size.height+"px");
+      box.style.setProperty("height",size.height+"px","important");
+      box.style.setProperty("max-height","none","important");
+      box.style.setProperty("width","100%","important");
+      box.style.setProperty("max-width","none","important");
+      handle.setAttribute("aria-label",config.label+" size: "+Math.round(actualWidth)+" pixels wide by "+size.height+" pixels high. Drag to resize or use arrow keys.");
+      if(persist)saveSize(config,size);
+    }
+    function changeSize(widthDelta,heightDelta){
+      const available=maxAvailableWidth();
+      size.width=clamp(size.width+widthDelta,Math.min(680,available),Math.min(1800,available));
+      size.height=clamp(size.height+heightDelta,config.minHeight,config.maxHeight);
+      applySize(true);
     }
 
-    widthInput.addEventListener("input", () => applySize());
-    heightInput.addEventListener("input", () => applySize());
-    controls.querySelector(".lab-size-reset").addEventListener("click", () => {
-      widthInput.value = String(config.defaultWidth);
-      heightInput.value = String(config.defaultHeight);
-      applySize();
+    handle.addEventListener("pointerdown",event=>{
+      if(!desktopQuery.matches&&event.pointerType!=="touch")return;
+      event.preventDefault();
+      const actualWidth=Math.min(host.getBoundingClientRect().width,maxAvailableWidth());
+      dragging={x:event.clientX,y:event.clientY,width:actualWidth,height:size.height};
+      handle.setPointerCapture?.(event.pointerId);
+      handle.classList.add("is-dragging");
     });
-    window.addEventListener("resize", () => applySize(false), {passive:true});
-    document.querySelectorAll("#personalize-panel input, #personalize-panel select, #personalize-panel button").forEach(control => {
-      if (control.classList.contains("lab-size-reset")) return;
-      control.addEventListener("change", () => window.setTimeout(() => applySize(false), 0));
-      control.addEventListener("input", () => window.setTimeout(() => applySize(false), 0));
+    handle.addEventListener("pointermove",event=>{
+      if(!dragging)return;
+      event.preventDefault();
+      const available=maxAvailableWidth();
+      size.width=clamp(dragging.width+(event.clientX-dragging.x),Math.min(680,available),Math.min(1800,available));
+      size.height=clamp(dragging.height+(event.clientY-dragging.y),config.minHeight,config.maxHeight);
+      applySize(false);
     });
+    function finishDrag(event){
+      if(!dragging)return;
+      dragging=null;
+      handle.classList.remove("is-dragging");
+      try{if(event&&handle.hasPointerCapture?.(event.pointerId))handle.releasePointerCapture(event.pointerId);}catch(_){}
+      applySize(true);
+    }
+    handle.addEventListener("pointerup",finishDrag);
+    handle.addEventListener("pointercancel",finishDrag);
+    handle.addEventListener("lostpointercapture",()=>{if(dragging){dragging=null;handle.classList.remove("is-dragging");applySize(true);}});
+    handle.addEventListener("keydown",event=>{
+      const step=event.shiftKey?100:32;
+      if(event.key==="ArrowRight"){event.preventDefault();changeSize(step,0);}
+      else if(event.key==="ArrowLeft"){event.preventDefault();changeSize(-step,0);}
+      else if(event.key==="ArrowDown"){event.preventDefault();changeSize(0,step);}
+      else if(event.key==="ArrowUp"){event.preventDefault();changeSize(0,-step);}
+      else if(event.key==="Home"){event.preventDefault();size.width=config.defaultWidth;size.height=config.defaultHeight;applySize(true);}
+    });
+    window.addEventListener("resize",()=>applySize(false),{passive:true});
     applySize(false);
   });
 })();
