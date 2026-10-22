@@ -488,6 +488,9 @@
  const defaults={accent:'violet',font:100,contrast:false,motion:false,compact:false,readable:false,corners:'rounded',background:'grid',focus:'system',motionLevel:'subtle',pageBg:'',cardBg:'',borderColor:'',glow:25,fontFamily:'default',lineHeight:17,letterSpace:0,contentWidth:'89%',shadow:25,ambient:true,hover:true,animatedBorder:false,viewport:'100%'};
  const palettes={violet:{dark:['#a78bfa','#67d7f5'],light:['#7552dc','#138cb4']},ocean:{dark:['#38bdf8','#818cf8'],light:['#0369a1','#4f46e5']},mint:{dark:['#34d399','#5eead4'],light:['#047857','#0f766e']},sunset:{dark:['#fb923c','#fb7185'],light:['#c2410c','#be123c']}};
  let prefs={...defaults},history=[];try{prefs={...prefs,...JSON.parse(localStorage.getItem(key)||'{}')}}catch(_){}
+ // Restore the original focused width once, while preserving other preferences and future width choices.
+ try{const widthResetKey='mukul-portfolio-content-width-reset-v1';if(!localStorage.getItem(widthResetKey)){prefs.contentWidth='89%';localStorage.setItem(key,JSON.stringify(prefs));localStorage.setItem(widthResetKey,'done')}}catch(_){prefs.contentWidth='89%'}
+
  const base={bg:'#0b0d13',surface:'#121621',line:'rgba(174,190,220,.14)'};
  function status(msg){const el=$('pref-status');if(el)el.textContent=msg}
  function snapshot(){history.push(JSON.stringify(prefs));if(history.length>25)history.shift()}
