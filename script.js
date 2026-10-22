@@ -44,6 +44,8 @@
     window.scrollTo({top:0, behavior:"smooth"});
     initReveals(document.querySelector("#page-" + name));
   }
+  // Shared route entry point for CTA/footer links handled outside this closure.
+  window.showPortfolioPage = showPage;
   navLinks.forEach(link => link.addEventListener("click", event => {
     const route = link.dataset.route;
     if (route) { event.preventDefault(); showPage(route); }
@@ -301,22 +303,6 @@
   window.addEventListener("resize", clampWideContent, {passive:true});
 
 
-  // Standalone-file navigation safety: intercept portfolio routes and keep them in this document.
-  document.addEventListener("click", function(event) {
-    const link = event.target.closest("a");
-    if (!link) return;
-    const href = link.getAttribute("href") || "";
-    const routeMatch = href.match(/^(?:\.\/)?(index|about|skills|projects|contact)\.html(?:#.*)?$/i);
-    if (routeMatch && typeof showPage === "function") {
-      event.preventDefault();
-      const route = routeMatch[1].toLowerCase();
-      showPage(route === "index" ? "home" : route);
-      const hash = href.includes("#") ? href.split("#").pop() : "";
-      if (hash) setTimeout(() => document.getElementById(hash)?.scrollIntoView({behavior:"smooth"}), 80);
-    }
-  });
-
-
   // Local-file friendly click handling: explain broken destinations instead of opening ERR_FILE_NOT_FOUND.
   (function(){
     const toast = document.getElementById("action-feedback");
@@ -345,20 +331,25 @@
       }
       if (/^(mailto:|tel:|https?:|sms:|whatsapp:)/i.test(href)) return;
       if (href.startsWith("#")) {
-        const target = document.getElementById(decodeURIComponent(href.slice(1)));
+        const rawHash = decodeURIComponent(href.slice(1));
+        const routeKey = rawHash.split(/[/?]/)[0].toLowerCase();
+        const routeMap = {home:"index",index:"index",about:"about",skills:"skills",projects:"projects",contact:"contact"};
+        if (routeMap[routeKey]) {
+          event.preventDefault();
+          // Header/footer links have their own handler; allow it to keep aria/current state in sync.
+          if (link.hasAttribute("data-route")) return;
+          window.showPortfolioPage?.(routeMap[routeKey]);
+          return;
+        }
+        const target = document.getElementById(rawHash);
         if (target) return;
         event.preventDefault();
         notify("This section link is not connected to a section in this HTML file.");
         return;
       }
-      if (/^(index|about|skills|projects|contact)\.html(?:#.*)?$/i.test(href)) {
+      if (/^(?:\.\/)?(index|about|skills|projects|contact)\.html(?:#.*)?$/i.test(href)) {
+        // The main route handler already dealt with these single-document routes.
         event.preventDefault();
-        const route = href.split(".")[0].toLowerCase();
-        if (typeof showPage === "function") {
-          showPage(route === "index" ? "home" : route);
-          return;
-        }
-        notify("This page link is not configured in the single-file version.");
         return;
       }
       if (/^(javascript:|data:|file:|content:)/i.test(href)) {
@@ -367,26 +358,13 @@
       }
     }, true);
 
-    // Give buttons with no actual behavior a helpful message, instead of doing nothing.
-    document.addEventListener("click", function(event){
-      const button = event.target.closest("button");
-      if (!button || button === close) return;
-      if (button.type === "submit") return;
-      const hasBehavior = button.onclick || button.getAttribute("onclick") ||
-        button.dataset.action || button.getAttribute("aria-controls") ||
-        button.classList.contains("menu-toggle") ||
-        button.matches("[data-theme-toggle], [data-search-toggle], [data-filter]");
-      if (!hasBehavior) {
-        notify("This button does not have an action configured yet.");
-      }
-    }, true);
   })();
 ;
 
 
 /* Extracted script 2 */
 ;
-(function(){const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>Array.from(r.querySelectorAll(s));$('#download-resume')?.addEventListener('click',()=>{const t=`MUKUL SINGANJUNDE\nSystem Engineer | IT Operations | Cloud & Front-end Development\n\nSUMMARY\nTechnology and operations professional with around 2 years of experience, combining front-end development, process operations, reporting, and practical problem-solving.\n\nEXPERIENCE\nSystem Engineer — Cross Country Infotech Pvt. Ltd.\nIT operations, technical support, asset management, and process-focused problem solving.\n\nSKILLS\nHTML, CSS, JavaScript, TypeScript, Angular, AWS fundamentals, Linux, Nginx, Tomcat, Git, GitLab, VS Code\n\nPROJECTS\nIT Service Desk website; AWS 3-tier architecture learning project; Job-Check; Connect My Doc.\n`;const u=URL.createObjectURL(new Blob([t],{type:'text/plain'})),a=document.createElement('a');a.href=u;a.download='Mukul_Singanjunde_Resume.txt';document.body.append(a);a.click();a.remove();URL.revokeObjectURL(u)});const f=$('#preview-frame'),lab=$('#device-size-label');$$('.device-choice').forEach(b=>b.addEventListener('click',()=>{$$('.device-choice').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-pressed',x===b)});f.classList.remove('desktop','tablet','mobile');f.classList.add(b.dataset.device);lab.textContent='Preview · '+b.dataset.device}));const puz=[1,0,3,0,1,0,2,0,1],sol=[1,2,3,3,1,2,2,3,1],board=$('#sudoku-board');function sudoku(){board.replaceChildren();puz.forEach((v,i)=>{const e=document.createElement(v?'div':'input');e.className='sudoku-cell'+(v?' given':'');if(v)e.textContent=v;else{e.type='number';e.min=1;e.max=3;e.dataset.i=i;e.setAttribute('aria-label','Sudoku cell '+(i+1))}board.append(e)})}sudoku();$('#check-sudoku')?.addEventListener('click',()=>{const a=puz.map((v,i)=>v||Number($('[data-i="'+i+'"]',board)?.value||0));$('#sudoku-feedback').textContent=a.every((v,i)=>v===sol[i])?'Correct! Puzzle solved.':'Not quite. Check each row and column using 1–3.'});$('#reset-sudoku')?.addEventListener('click',sudoku);const icons=['⌘','☁','🐧','⚙','⌘','☁','🐧','⚙'];let first=null,lock=false,moves=0,found=0;function mix(a){for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}function memory(){const root=$('#memory-board');root.replaceChildren();first=null;lock=false;moves=found=0;$('#memory-moves').textContent=0;$('#memory-feedback').textContent='Find all 4 pairs.';mix([...icons]).forEach((v,i)=>{const b=document.createElement('button');b.className='memory-card';b.type='button';b.textContent='?';b.dataset.v=v;b.setAttribute('aria-label','Memory card '+(i+1));b.onclick=()=>{if(lock||b.classList.contains('matched')||b===first)return;b.textContent=v;b.classList.add('flipped');if(!first){first=b;return}moves++;$('#memory-moves').textContent=moves;if(first.dataset.v===v){first.classList.add('matched');b.classList.add('matched');found+=2;first=null;if(found===8)$('#memory-feedback').textContent='All pairs matched in '+moves+' moves!'}else{lock=true;const old=first;first=null;setTimeout(()=>{old.textContent=b.textContent='?';old.classList.remove('flipped');b.classList.remove('flipped');lock=false},650)}};root.append(b)})}memory();$('#reset-memory')?.addEventListener('click',memory);const prompt=$('#typing-prompt').textContent;$('#check-typing')?.addEventListener('click',()=>{const v=$('#typing-input').value;let n=0;for(let i=0;i<Math.min(v.length,prompt.length);i++)if(v[i]===prompt[i])n++;const pct=v.length?Math.round(n/Math.max(v.length,prompt.length)*100):0;$('#typing-feedback').textContent=v===prompt?'Perfect match! Accuracy 100%.':'Accuracy: '+pct+'%. Keep going until the sentence matches exactly.'});$('#reset-typing')?.addEventListener('click',()=>{$('#typing-input').value='';$('#typing-feedback').textContent='Challenge restarted.'});const qs=[['Which command lists hidden files?',['ls -a','pwd','mkdir'],0,'ls -a includes hidden entries.'],['Which command shows the current directory?',['cd','pwd','touch'],1,'pwd prints the working directory.'],['Which command lists running processes?',['ps','cp','grep'],0,'ps reports process information.'],['Which command changes file permissions?',['chmod','chown','cat'],0,'chmod modifies permissions.'],['Which command checks mounted filesystem space?',['free -m','df -h','du -x'],1,'df -h shows filesystem space.']];let qi=0,score=0,answered=false;function quiz(){const q=qs[qi],root=$('#quiz-options');$('#quiz-question').textContent=q[0];root.replaceChildren();answered=false;q[1].forEach((v,i)=>{const b=document.createElement('button');b.type='button';b.className='quiz-option';b.textContent=v;b.onclick=()=>{if(answered)return;answered=true;if(i===q[2]){score++;$('#quiz-score').textContent=score;$('#quiz-feedback').textContent='Correct. '+q[3]}else $('#quiz-feedback').textContent='Not quite. '+q[3];$$('button',root).forEach(x=>x.disabled=true)};root.append(b)})}quiz();$('#next-quiz')?.addEventListener('click',()=>{qi=(qi+1)%qs.length;if(qi===0)score=0;$('#quiz-score').textContent=score;quiz()})
+(function(){const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>Array.from(r.querySelectorAll(s));$('#download-resume')?.addEventListener('click',()=>{const t=`MUKUL SINGANJUNDE\nSystem Engineer | IT Operations | Cloud & Front-end Development\n\nSUMMARY\nTechnology and operations professional with around 2 years of experience, combining front-end development, process operations, reporting, and practical problem-solving.\n\nEXPERIENCE\nSystem Engineer — Cross Country Infotech Pvt. Ltd.\nIT operations, technical support, asset management, and process-focused problem solving.\n\nSKILLS\nHTML, CSS, JavaScript, TypeScript, Angular, AWS fundamentals, Linux, Nginx, Tomcat, Git, GitLab, VS Code\n\nPROJECTS\nIT Service Desk website; AWS 3-tier architecture learning project; Job-Check; Connect My Doc.\n`;const u=URL.createObjectURL(new Blob([t],{type:'text/plain'})),a=document.createElement('a');a.href=u;a.download='Mukul_Singanjunde_Resume.txt';document.body.append(a);a.click();a.remove();URL.revokeObjectURL(u)});if(!$('#sudoku-board')||!$('#memory-board')||!$('#typing-prompt')||!$('#quiz-options'))return;const f=$('#preview-frame'),lab=$('#device-size-label');$$('.device-choice').forEach(b=>b.addEventListener('click',()=>{$$('.device-choice').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-pressed',x===b)});f.classList.remove('desktop','tablet','mobile');f.classList.add(b.dataset.device);lab.textContent='Preview · '+b.dataset.device}));const puz=[1,0,3,0,1,0,2,0,1],sol=[1,2,3,3,1,2,2,3,1],board=$('#sudoku-board');function sudoku(){board.replaceChildren();puz.forEach((v,i)=>{const e=document.createElement(v?'div':'input');e.className='sudoku-cell'+(v?' given':'');if(v)e.textContent=v;else{e.type='number';e.min=1;e.max=3;e.dataset.i=i;e.setAttribute('aria-label','Sudoku cell '+(i+1))}board.append(e)})}sudoku();$('#check-sudoku')?.addEventListener('click',()=>{const a=puz.map((v,i)=>v||Number($('[data-i="'+i+'"]',board)?.value||0));$('#sudoku-feedback').textContent=a.every((v,i)=>v===sol[i])?'Correct! Puzzle solved.':'Not quite. Check each row and column using 1–3.'});$('#reset-sudoku')?.addEventListener('click',sudoku);const icons=['⌘','☁','🐧','⚙','⌘','☁','🐧','⚙'];let first=null,lock=false,moves=0,found=0;function mix(a){for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}function memory(){const root=$('#memory-board');root.replaceChildren();first=null;lock=false;moves=found=0;$('#memory-moves').textContent=0;$('#memory-feedback').textContent='Find all 4 pairs.';mix([...icons]).forEach((v,i)=>{const b=document.createElement('button');b.className='memory-card';b.type='button';b.textContent='?';b.dataset.v=v;b.setAttribute('aria-label','Memory card '+(i+1));b.onclick=()=>{if(lock||b.classList.contains('matched')||b===first)return;b.textContent=v;b.classList.add('flipped');if(!first){first=b;return}moves++;$('#memory-moves').textContent=moves;if(first.dataset.v===v){first.classList.add('matched');b.classList.add('matched');found+=2;first=null;if(found===8)$('#memory-feedback').textContent='All pairs matched in '+moves+' moves!'}else{lock=true;const old=first;first=null;setTimeout(()=>{old.textContent=b.textContent='?';old.classList.remove('flipped');b.classList.remove('flipped');lock=false},650)}};root.append(b)})}memory();$('#reset-memory')?.addEventListener('click',memory);const prompt=$('#typing-prompt').textContent;$('#check-typing')?.addEventListener('click',()=>{const v=$('#typing-input').value;let n=0;for(let i=0;i<Math.min(v.length,prompt.length);i++)if(v[i]===prompt[i])n++;const pct=v.length?Math.round(n/Math.max(v.length,prompt.length)*100):0;$('#typing-feedback').textContent=v===prompt?'Perfect match! Accuracy 100%.':'Accuracy: '+pct+'%. Keep going until the sentence matches exactly.'});$('#reset-typing')?.addEventListener('click',()=>{$('#typing-input').value='';$('#typing-feedback').textContent='Challenge restarted.'});const qs=[['Which command lists hidden files?',['ls -a','pwd','mkdir'],0,'ls -a includes hidden entries.'],['Which command shows the current directory?',['cd','pwd','touch'],1,'pwd prints the working directory.'],['Which command lists running processes?',['ps','cp','grep'],0,'ps reports process information.'],['Which command changes file permissions?',['chmod','chown','cat'],0,'chmod modifies permissions.'],['Which command checks mounted filesystem space?',['free -m','df -h','du -x'],1,'df -h shows filesystem space.']];let qi=0,score=0,answered=false;function quiz(){const q=qs[qi],root=$('#quiz-options');$('#quiz-question').textContent=q[0];root.replaceChildren();answered=false;q[1].forEach((v,i)=>{const b=document.createElement('button');b.type='button';b.className='quiz-option';b.textContent=v;b.onclick=()=>{if(answered)return;answered=true;if(i===q[2]){score++;$('#quiz-score').textContent=score;$('#quiz-feedback').textContent='Correct. '+q[3]}else $('#quiz-feedback').textContent='Not quite. '+q[3];$$('button',root).forEach(x=>x.disabled=true)};root.append(b)})}quiz();$('#next-quiz')?.addEventListener('click',()=>{qi=(qi+1)%qs.length;if(qi===0)score=0;$('#quiz-score').textContent=score;quiz()})
  // Reference-inspired Star Catcher game
  const starGrid=$('star-grid');let starActive=-1,starScore=0,starTime=15,starTimer=null,starRunning=false;
  function renderStars(){if(!starGrid)return;starGrid.innerHTML='';for(let i=0;i<9;i++){const b=document.createElement('button');b.type='button';b.className='star-target'+(starRunning&&i===starActive?' active':'');b.textContent=starRunning&&i===starActive?'⭐':'·';b.disabled=!starRunning;b.setAttribute('aria-label','Star target '+(i+1));b.onclick=()=>{if(!starRunning)return;if(i===starActive){starScore++;$('star-score').textContent=starScore;$('star-feedback').textContent='Nice catch! Keep going.';score(2);if(starScore>=5)unlock('stars');let next=Math.floor(Math.random()*9);if(next===starActive)next=(next+1)%9;starActive=next;beep(620)}else beep(210);renderStars()};starGrid.append(b)}}
@@ -404,6 +382,8 @@
 ;
 (()=>{
  const $=id=>document.getElementById(id), $$=(sel,root=document)=>[...root.querySelectorAll(sel)];
+ // The Play/Arcade page was removed; do not let its old handlers abort later site features.
+ if(!$('arcade-score')||!$('arcade-theme')||!$('sudoku-board'))return;
  let total=0,unlocked=new Set(),soundOn=false,audioCtx=null;
  try{total=Number(localStorage.getItem('mukulArcadeTotal')||0)}catch(e){};
  $('arcade-score').textContent=total;
@@ -489,7 +469,7 @@
  const palettes={violet:{dark:['#a78bfa','#67d7f5'],light:['#7552dc','#138cb4']},ocean:{dark:['#38bdf8','#818cf8'],light:['#0369a1','#4f46e5']},mint:{dark:['#34d399','#5eead4'],light:['#047857','#0f766e']},sunset:{dark:['#fb923c','#fb7185'],light:['#c2410c','#be123c']}};
  let prefs={...defaults},history=[];try{prefs={...prefs,...JSON.parse(localStorage.getItem(key)||'{}')}}catch(_){}
  // Restore the original focused width once, while preserving other preferences and future width choices.
- try{const widthResetKey='mukul-portfolio-content-width-reset-v1';if(!localStorage.getItem(widthResetKey)){prefs.contentWidth='89%';localStorage.setItem(key,JSON.stringify(prefs));localStorage.setItem(widthResetKey,'done')}}catch(_){prefs.contentWidth='89%'}
+ try{const widthResetKey='mukul-portfolio-content-width-reset-v2';if(!localStorage.getItem(widthResetKey)){prefs.contentWidth='89%';localStorage.setItem(key,JSON.stringify(prefs));localStorage.setItem(widthResetKey,'done')}}catch(_){prefs.contentWidth='89%'}
 
  const base={bg:'#0b0d13',surface:'#121621',line:'rgba(174,190,220,.14)'};
  function status(msg){const el=$('pref-status');if(el)el.textContent=msg}

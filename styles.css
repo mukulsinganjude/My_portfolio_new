@@ -1201,3 +1201,80 @@ html.fx-reveal-ready .fx-reveal.fx-visible { opacity: 1; transform: none; }
   #page-projects .case-study-link{font-size:10px;padding:8px 9px}
 }
 
+
+
+/* Layout audit fix: restore the wider focused page and keep the complete desktop header visible. */
+@media (min-width: 781px) {
+  .section-wrap {
+    width: min(var(--personal-content-width, 89%), 1660px);
+    max-width: 1660px;
+  }
+  .app-page .section-wrap { max-width: 1660px; }
+  .site-header {
+    display: grid !important;
+    grid-template-columns: minmax(120px, 1fr) auto minmax(260px, 1fr);
+    align-items: center;
+    gap: clamp(8px, 1vw, 16px);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-inline: clamp(20px, 4vw, 70px);
+  }
+  .site-header > .brand {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    justify-self: start;
+    flex: 0 0 auto;
+    min-width: max-content;
+  }
+  .site-header .nav-links {
+    display: flex !important;
+    position: static;
+    justify-self: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: auto;
+    min-width: max-content;
+    max-width: 100%;
+    gap: clamp(2px, .5vw, 8px);
+    overflow: visible;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+  }
+  .site-header .nav-links a { padding-inline: clamp(7px, .65vw, 12px); white-space: nowrap; }
+  .site-header .header-tools {
+    display: flex;
+    justify-self: end;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: 0;
+    max-width: 100%;
+    gap: clamp(5px, .55vw, 9px);
+  }
+  .site-header .menu-toggle { display: none !important; }
+}
+@media (min-width: 781px) and (max-width: 1300px) {
+  .site-header {
+    grid-template-columns: minmax(92px, auto) minmax(0, 1fr) auto;
+    gap: 8px;
+    padding-inline: 22px;
+  }
+  .site-header .nav-links { justify-self: center; gap: 2px; min-width: 0; }
+  .site-header .nav-links a { padding: 8px 7px; font-size: 11px; }
+  #quick-search-button kbd, #quick-search-button .search-label,
+  .site-header .theme-toggle .theme-label, .personalize-trigger > span { display: none !important; }
+  #quick-search-button, .site-header .theme-toggle, .personalize-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    min-width: 38px;
+    height: 38px;
+    padding: 0;
+  }
+}
+@media (max-width: 780px) {
+  .section-wrap { width: min(var(--personal-content-width, 89%), 100%); max-width: 100%; }
+}
