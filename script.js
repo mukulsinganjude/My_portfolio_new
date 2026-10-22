@@ -503,7 +503,31 @@
   const ids={'pref-font-size':prefs.font,'pref-contrast':!!prefs.contrast,'pref-motion':!!prefs.motion,'pref-compact':!!prefs.compact,'pref-readable':!!prefs.readable,'pref-corners':prefs.corners,'pref-background':prefs.background,'pref-focus':prefs.focus,'pref-motion-level':prefs.motionLevel,'pref-page-bg':prefs.pageBg|| (mode==='dark'?base.bg:'#f6f7fb'),'pref-card-bg':prefs.cardBg||(mode==='dark'?base.surface:'#fff'),'pref-border-color':prefs.borderColor||'#343b4d','pref-glow':prefs.glow,'pref-font-family':prefs.fontFamily,'pref-line-height':prefs.lineHeight,'pref-letter-space':prefs.letterSpace,'pref-content-width':prefs.contentWidth,'pref-shadow':prefs.shadow,'pref-ambient':!!prefs.ambient,'pref-hover':!!prefs.hover,'pref-animated-border':!!prefs.animatedBorder,'pref-viewport':prefs.viewport};Object.entries(ids).forEach(([id,v])=>{const el=$(id);if(el)el.type==='checkbox'?el.checked=v:el.value=v});
   [['pref-font-output',prefs.font+'%'],['pref-glow-output',prefs.glow+'%'],['pref-line-output',(Number(prefs.lineHeight)/10).toFixed(1)],['pref-letter-output',prefs.letterSpace+'px'],['pref-shadow-output',prefs.shadow+'%']].forEach(([id,v])=>{if($(id))$(id).textContent=v});document.querySelectorAll('.accent-swatch').forEach(b=>{const active=b.dataset.accent===prefs.accent;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});$('pref-theme').textContent=mode==='light'?'Use dark mode':'Use light mode';if(save){try{localStorage.setItem(key,JSON.stringify(prefs))}catch(_){}} }
  function syncThemeButtons(){document.querySelectorAll('.theme-toggle').forEach(btn=>{const light=root.dataset.theme==='light',label=btn.querySelector('.theme-label'),icon=btn.querySelector('.theme-icon');if(label)label.textContent=light?'Dark mode':'Light mode';if(icon)icon.textContent=light?'☾':'☼';btn.setAttribute('aria-label',light?'Switch to dark mode':'Switch to light mode')})}
- function open(){panel.hidden=false;backdrop.hidden=false;document.body.style.overflow='hidden';$('personalize-close').focus()}function close(){panel.hidden=true;backdrop.hidden=true;document.body.style.overflow='';$('personalize-open').focus()}
+ function open(){
+  panel.hidden=false;
+  backdrop.hidden=false;
+  const desktop=window.matchMedia('(min-width: 781px)').matches;
+  const panelProps=['position','left','right','top','bottom','width','min-width','max-width','height','max-height','overflow-x','overflow-y','margin-left','transform','z-index','box-sizing'];
+  if(desktop){
+    panelProps.forEach(()=>{});
+    const place=(property,value)=>panel.style.setProperty(property,value,'important');
+    place('position','fixed');place('left','auto');place('right','0');place('top','0');place('bottom','0');
+    place('inset-inline-start','auto');place('inset-inline-end','0');
+    place('width','min(500px, calc(100vw - 24px))');place('min-width','0');place('max-width','500px');
+    place('height','100dvh');place('max-height','100dvh');place('overflow-x','hidden');place('overflow-y','auto');
+    place('margin-left','0');place('transform','none');place('z-index','1202');place('box-sizing','border-box');
+    backdrop.style.setProperty('position','fixed','important');
+    backdrop.style.setProperty('inset','0','important');
+    backdrop.style.setProperty('z-index','1201','important');
+  }else{
+    panelProps.forEach(property=>panel.style.removeProperty(property));
+    panel.style.removeProperty('inset-inline-start');panel.style.removeProperty('inset-inline-end');
+    ['position','inset','z-index'].forEach(property=>backdrop.style.removeProperty(property));
+  }
+  document.body.style.overflow='hidden';
+  $('personalize-close').focus();
+}
+function close(){panel.hidden=true;backdrop.hidden=true;document.body.style.overflow='';$('personalize-open').focus()}
  function change(k,v){snapshot();prefs[k]=v;apply();status('Changes applied and saved in this browser.')}
  $('personalize-open').addEventListener('click',open);$('personalize-close').addEventListener('click',close);backdrop.addEventListener('click',close);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden)close()});
  $('pref-theme').addEventListener('click',()=>{snapshot();root.dataset.theme=root.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('mukul-portfolio-theme',root.dataset.theme)}catch(_){}syncThemeButtons();apply()});

@@ -1366,3 +1366,34 @@ html.fx-reveal-ready .fx-reveal.fx-visible { opacity: 1; transform: none; }
     padding: 24px 22px 30px !important;
   }
 }
+
+
+/* Strong desktop drawer anchor; stays right even if earlier responsive rules conflict. */
+@media screen and (min-width: 781px) {
+  html body > #personalize-panel:not([hidden]) {
+    position: fixed !important;
+    inset: 0 0 0 auto !important;
+    inset-inline: auto 0 !important;
+    left: auto !important;
+    right: 0 !important;
+    margin-left: 0 !important;
+    transform: none !important;
+    width: min(500px, calc(100vw - 24px)) !important;
+    min-width: 0 !important;
+    max-width: 500px !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    z-index: 1202 !important;
+  }
+  html body > #personalize-backdrop:not([hidden]) {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 1201 !important;
+  }
+}
