@@ -563,18 +563,133 @@ function close(){panel.hidden=true;backdrop.hidden=true;document.body.style.over
  window.addEventListener('pointermove',e=>{pointer.x=e.clientX;pointer.y=e.clientY;lastPointerMove=performance.now();if(glow){glow.style.left=pointer.x+'px';glow.style.top=pointer.y+'px';glow.style.opacity=matchMedia('(pointer:fine)').matches && !reduceQuery.matches?'1':'0';}},{passive:true});
  window.addEventListener('pointerleave',()=>{if(glow)glow.style.opacity='0';});
  function sizeCanvas(canvas,ctx){const dpr=Math.min(window.devicePixelRatio||1,2),r=canvas.getBoundingClientRect();canvas.width=Math.max(1,Math.round(r.width*dpr));canvas.height=Math.max(1,Math.round(r.height*dpr));ctx.setTransform(dpr,0,0,dpr,0,0);return {w:r.width,h:r.height};}
- if(globe){const ctx=globe.getContext('2d');let w=0,h=0,angle=0,nodes=[];const kinds=['cloud','server','network','network','server','cloud'];
- function globeResize(){const d=sizeCanvas(globe,ctx);w=d.w;h=d.h;nodes=[];const count=48;for(let i=0;i<count;i++){const y=1-(i/(count-1))*2;const radius=Math.sqrt(1-y*y);const theta=i*Math.PI*(3-Math.sqrt(5));nodes.push({x:Math.cos(theta)*radius,y,z:Math.sin(theta)*radius,type:kinds[i%kinds.length],phase:i*.7});}}
- function drawGlobe(){ctx.clearRect(0,0,w,h);const cx=w/2,cy=h/2,R=Math.min(w*.34,h*.39,170);if(!globePaused&&!reduceQuery.matches&&document.visibilityState==='visible')angle+=.003;const projected=nodes.map(n=>{const x=n.x*Math.cos(angle)-n.z*Math.sin(angle),z=n.x*Math.sin(angle)+n.z*Math.cos(angle);return {...n,px:cx+x*R,py:cy+n.y*R,z};});
- const grad=ctx.createRadialGradient(cx-R*.25,cy-R*.3,4,cx,cy,R*1.2);grad.addColorStop(0,'rgba(80,165,255,.13)');grad.addColorStop(1,'rgba(90,105,220,.015)');ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.fillStyle=grad;ctx.fill();ctx.strokeStyle='rgba(113,171,255,.28)';ctx.lineWidth=1;ctx.stroke();
- // latitude and longitude arcs
- ctx.save();ctx.beginPath();ctx.arc(cx,cy,R*.68,0,Math.PI*2);ctx.strokeStyle='rgba(115,170,255,.13)';ctx.stroke();ctx.beginPath();ctx.ellipse(cx,cy,R,R*.38,0,0,Math.PI*2);ctx.stroke();ctx.beginPath();ctx.ellipse(cx,cy,R*.48,R,0,0,Math.PI*2);ctx.stroke();ctx.restore();
- const maxDist=Math.min(w,h)*.2;projected.forEach((a,i)=>{for(let j=i+1;j<projected.length;j++){const b=projected[j],dx=a.px-b.px,dy=a.py-b.py;if(dx*dx+dy*dy<maxDist*maxDist && a.z>-.2 && b.z>-.2){ctx.beginPath();ctx.moveTo(a.px,a.py);ctx.lineTo(b.px,b.py);ctx.strokeStyle=`rgba(108,176,255,${.05+Math.max(0,(a.z+b.z)/2)*.15})`;ctx.lineWidth=.7;ctx.stroke();}}});
- const colors={cloud:'#75d8ff',server:'#a99aff',network:'#75e5b6'};projected.forEach(n=>{if(n.z<-.42)return;const rr=(n.type==='cloud'?2.6:2)+(n.z+1)*.8;ctx.beginPath();ctx.arc(n.px,n.py,rr,0,Math.PI*2);ctx.fillStyle=colors[n.type];ctx.globalAlpha=.38+Math.max(0,n.z)*.62;ctx.fill();if(n.z>.35){ctx.beginPath();ctx.arc(n.px,n.py,rr+3,0,Math.PI*2);ctx.strokeStyle=colors[n.type];ctx.globalAlpha=.22;ctx.stroke();}ctx.globalAlpha=1;});
- if(!globePaused&&!reduceQuery.matches)raf=requestAnimationFrame(drawGlobe);}
- globeResize();drawGlobe();document.addEventListener('portfolio-globe-motion',()=>{cancelAnimationFrame(raf);drawGlobe()});window.addEventListener('resize',()=>{cancelAnimationFrame(raf);globeResize();drawGlobe();},{passive:true});document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'){cancelAnimationFrame(raf);drawGlobe()}else cancelAnimationFrame(raf)});
- }
- if(bg){const ctx=bg.getContext('2d');let w=0,h=0,particles=[];function bgResize(){const d=sizeCanvas(bg,ctx);w=d.w;h=d.h;const count=Math.min(65,Math.max(22,Math.floor(w*h/22000)));particles=Array.from({length:count},(_,i)=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,r:Math.random()*1.6+.5}));}
+ if(globe){
+  const ctx=globe.getContext('2d');
+  if(ctx){
+    let w=0,h=0,angle=0,nodes=[];
+    const kinds=['cloud','server','network','network','server','cloud'];
+    const motionDisabled=()=>reduceQuery.matches
+      ||document.getElementById('pref-motion')?.checked===true
+      ||document.getElementById('pref-motion-level')?.value==='off';
+    function globeResize(){
+      const d=sizeCanvas(globe,ctx);
+      w=d.w;h=d.h;nodes=[];
+      if(w<10||h<10)return;
+      const count=64;
+      for(let i=0;i<count;i++){
+        const y=1-(i/(count-1))*2;
+        const radius=Math.sqrt(Math.max(0,1-y*y));
+        const theta=i*Math.PI*(3-Math.sqrt(5));
+        nodes.push({x:Math.cos(theta)*radius,y,z:Math.sin(theta)*radius,type:kinds[i%kinds.length],phase:i*.73});
+      }
+    }
+    function project(x,y,z,cx,cy,R,cosA,sinA){
+      const rx=x*cosA-z*sinA;
+      const rz=x*sinA+z*cosA;
+      return {px:cx+rx*R,py:cy+y*R,z:rz};
+    }
+    function drawSurfacePath(points,stroke,alpha,lineWidth){
+      ctx.beginPath();
+      let drawing=false;
+      points.forEach(p=>{
+        if(p.z>-.035){
+          if(!drawing){ctx.moveTo(p.px,p.py);drawing=true;}
+          else ctx.lineTo(p.px,p.py);
+        }else{
+          drawing=false;
+        }
+      });
+      ctx.strokeStyle=stroke;
+      ctx.globalAlpha=alpha;
+      ctx.lineWidth=lineWidth;
+      ctx.stroke();
+      ctx.globalAlpha=1;
+    }
+    function drawGlobe(){
+      ctx.clearRect(0,0,w,h);
+      if(w<10||h<10)return;
+      const active=!globePaused&&!motionDisabled()&&document.visibilityState==='visible';
+      if(active)angle+=.0045;
+      const cx=w/2,cy=h/2,R=Math.min(w*.34,h*.39,174);
+      const cosA=Math.cos(angle),sinA=Math.sin(angle);
+      const sphereGlow=ctx.createRadialGradient(cx-R*.28,cy-R*.3,3,cx,cy,R*1.18);
+      sphereGlow.addColorStop(0,'rgba(80,165,255,.17)');
+      sphereGlow.addColorStop(.66,'rgba(73,114,205,.07)');
+      sphereGlow.addColorStop(1,'rgba(90,105,220,.012)');
+      ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);
+      ctx.fillStyle=sphereGlow;ctx.fill();
+      ctx.strokeStyle='rgba(113,171,255,.32)';ctx.lineWidth=1;ctx.stroke();
+
+      // Latitude and longitude lines are projected from 3D coordinates too,
+      // so the wireframe turns with the sphere instead of staying stationary.
+      const gridStroke='rgba(115,170,255,.62)';
+      for(const latitude of [-1.15,-.78,-.4,0,.4,.78,1.15]){
+        const points=[];
+        for(let step=0;step<=120;step++){
+          const longitude=(step/120)*Math.PI*2;
+          const x=Math.cos(latitude)*Math.sin(longitude);
+          const y=Math.sin(latitude);
+          const z=Math.cos(latitude)*Math.cos(longitude);
+          points.push(project(x,y,z,cx,cy,R,cosA,sinA));
+        }
+        drawSurfacePath(points,gridStroke,.18,.85);
+      }
+      for(let i=0;i<7;i++){
+        const longitude=(i/7)*Math.PI;
+        const points=[];
+        for(let step=0;step<=100;step++){
+          const latitude=-Math.PI/2+(step/100)*Math.PI*2;
+          const x=Math.cos(latitude)*Math.sin(longitude);
+          const y=Math.sin(latitude);
+          const z=Math.cos(latitude)*Math.cos(longitude);
+          points.push(project(x,y,z,cx,cy,R,cosA,sinA));
+        }
+        drawSurfacePath(points,gridStroke,.23,.9);
+      }
+
+      const projected=nodes.map(n=>({...n,...project(n.x,n.y,n.z,cx,cy,R,cosA,sinA)}));
+      const maxDist=Math.min(w,h)*.205;
+      projected.forEach((a,i)=>{
+        if(a.z<-.18)return;
+        for(let j=i+1;j<projected.length;j++){
+          const b=projected[j];
+          if(b.z<-.18)continue;
+          const dx=a.px-b.px,dy=a.py-b.py;
+          if(dx*dx+dy*dy<maxDist*maxDist){
+            ctx.beginPath();ctx.moveTo(a.px,a.py);ctx.lineTo(b.px,b.py);
+            ctx.strokeStyle='rgba(108,176,255,'+(.045+Math.max(0,(a.z+b.z)/2)*.16)+')';
+            ctx.lineWidth=.7;ctx.stroke();
+          }
+        }
+      });
+      const colors={cloud:'#75d8ff',server:'#a99aff',network:'#75e5b6'};
+      projected.forEach(n=>{
+        if(n.z<-.34)return;
+        const radius=(n.type==='cloud'?2.7:2.15)+(n.z+1)*.55;
+        ctx.beginPath();ctx.arc(n.px,n.py,radius,0,Math.PI*2);
+        ctx.fillStyle=colors[n.type];ctx.globalAlpha=.42+Math.max(0,n.z)*.58;ctx.fill();
+        if(n.z>.28){
+          ctx.beginPath();ctx.arc(n.px,n.py,radius+3,0,Math.PI*2);
+          ctx.strokeStyle=colors[n.type];ctx.globalAlpha=.24;ctx.lineWidth=.9;ctx.stroke();
+        }
+        ctx.globalAlpha=1;
+      });
+      // Keep the outer sphere edge crisp as the internal mesh rotates.
+      ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);
+      ctx.strokeStyle='rgba(113,171,255,.28)';ctx.lineWidth=1;ctx.stroke();
+      if(active)raf=requestAnimationFrame(drawGlobe);
+    }
+    globeResize();drawGlobe();
+    document.addEventListener('portfolio-globe-motion',()=>{cancelAnimationFrame(raf);drawGlobe()});
+    const refreshMotion=()=>{cancelAnimationFrame(raf);drawGlobe()};
+    document.getElementById('pref-motion')?.addEventListener('change',refreshMotion);
+    document.getElementById('pref-motion-level')?.addEventListener('change',refreshMotion);
+    reduceQuery.addEventListener?.('change',refreshMotion);
+    window.addEventListener('resize',()=>{cancelAnimationFrame(raf);globeResize();drawGlobe()},{passive:true});
+    document.addEventListener('visibilitychange',()=>{cancelAnimationFrame(raf);if(document.visibilityState==='visible')drawGlobe()});
+  }
+}
+if(bg){const ctx=bg.getContext('2d');let w=0,h=0,particles=[];function bgResize(){const d=sizeCanvas(bg,ctx);w=d.w;h=d.h;const count=Math.min(65,Math.max(22,Math.floor(w*h/22000)));particles=Array.from({length:count},(_,i)=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,r:Math.random()*1.6+.5}));}
  function drawBg(){ctx.clearRect(0,0,w,h);const off=reduceQuery.matches||document.getElementById('pref-motion')?.checked||document.getElementById('pref-motion-level')?.value==='off';const drawParticles=()=>{for(let i=0;i<particles.length;i++){const a=particles[i];if(!off){a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>w)a.vx*=-1;if(a.y<0||a.y>h)a.vy*=-1;}ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fillStyle='rgba(111,177,255,.42)';ctx.fill();for(let j=i+1;j<particles.length;j++){const b=particles[j],dx=a.x-b.x,dy=a.y-b.y,dist=Math.hypot(dx,dy);if(dist<115){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=`rgba(111,177,255,${(1-dist/115)*.13})`;ctx.lineWidth=.7;ctx.stroke();}}}};if(root.dataset.motionLevel!=='off')drawParticles();if(!reduceQuery.matches&&!document.getElementById('pref-motion')?.checked&&document.visibilityState==='visible')bgRaf=requestAnimationFrame(drawBg);}
  bgResize();drawBg();window.addEventListener('resize',()=>{cancelAnimationFrame(bgRaf);bgResize();drawBg()},{passive:true});document.getElementById('pref-motion')?.addEventListener('change',()=>{cancelAnimationFrame(bgRaf);drawBg()});document.getElementById('pref-motion-level')?.addEventListener('change',()=>{cancelAnimationFrame(bgRaf);drawBg()});document.addEventListener('visibilitychange',()=>{cancelAnimationFrame(bgRaf);if(document.visibilityState==='visible')drawBg()});}
  setMotion();
@@ -1180,26 +1295,4 @@ document.querySelectorAll('[data-skill-group]').forEach(b=>b.addEventListener('c
     window.addEventListener("resize",()=>applySize(false),{passive:true});
     applySize(false);
   });
-})();
-
-
-/* Connected Systems SVG globe motion control (works without canvas support). */
-(() => {
-  const toggle=document.getElementById("globe-motion-toggle");
-  const wrap=document.querySelector("#page-index .network-globe-wrap");
-  const reduceMotion=window.matchMedia("(prefers-reduced-motion: reduce)");
-  if(!toggle||!wrap)return;
-  function syncGlobeMotion(){
-    const paused=toggle.getAttribute("aria-pressed")==="true"
-      ||document.documentElement.dataset.reduceMotion==="true"
-      ||reduceMotion.matches
-      ||document.getElementById("pref-motion")?.checked===true
-      ||document.getElementById("pref-motion-level")?.value==="off";
-    wrap.classList.toggle("is-paused",paused);
-  }
-  syncGlobeMotion();
-  document.addEventListener("portfolio-globe-motion",syncGlobeMotion);
-  document.getElementById("pref-motion")?.addEventListener("change",syncGlobeMotion);
-  document.getElementById("pref-motion-level")?.addEventListener("change",syncGlobeMotion);
-  reduceMotion.addEventListener?.("change",syncGlobeMotion);
 })();
