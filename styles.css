@@ -1781,3 +1781,27 @@ html[data-reduce-motion="true"] #page-index .network-globe-art svg,
 html[data-reduce-motion="true"] #page-index .network-globe-art .globe-node{
   animation-play-state:paused!important;
 }
+
+
+/* Actual globe rotation: animate the globe's wireframe and network surface
+   around a vertical axis while keeping the outer sphere and floating labels fixed. */
+#page-index .network-globe-art .globe-rotating-surface{
+  transform-box:view-box;
+  transform-origin:50% 50%;
+  transform-style:preserve-3d;
+  backface-visibility:visible;
+  animation:connected-globe-spin 18s linear infinite;
+}
+@keyframes connected-globe-spin{
+  from{transform:perspective(1100px) rotateY(0deg)}
+  to{transform:perspective(1100px) rotateY(360deg)}
+}
+#page-index .network-globe-wrap.is-paused .network-globe-art .globe-rotating-surface{
+  animation-play-state:paused!important;
+}
+@media(prefers-reduced-motion:reduce){
+  #page-index .network-globe-art .globe-rotating-surface{animation:none!important}
+}
+html[data-reduce-motion="true"] #page-index .network-globe-art .globe-rotating-surface{
+  animation-play-state:paused!important;
+}
