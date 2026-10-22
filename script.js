@@ -868,7 +868,7 @@ document.querySelectorAll('[data-skill-group]').forEach(b=>b.addEventListener('c
   grid.dataset.view=mode;
   // Enforce the requested presentation directly as well as through CSS. This
   // prevents stale or cached layout rules from leaving icons/meters visible.
-  grid.querySelectorAll(".skill-meter-list, .skill-card-simple .skill-symbol").forEach(element=>{
+  grid.querySelectorAll(".skill-meter-icon, .skill-meter-track, .skill-card-simple .skill-symbol").forEach(element=>{
    const hide=isList;
    element.hidden=hide;
    if(hide)element.style.setProperty("display","none","important");
