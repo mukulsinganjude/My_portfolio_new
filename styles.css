@@ -1591,3 +1591,31 @@ html[data-theme="light"] #skill-grid .skill-meter-icon{
 @media(prefers-reduced-motion:reduce){
   #skill-grid .skill-meter-fill{animation:none!important}
 }
+
+
+/* Keep List and Tree views text-focused; keep the visual meters in Grid view. */
+#page-skills #skill-grid.is-list-view .skill-meter-list{
+  display:none!important;
+}
+#page-skills #skill-grid.is-list-view .skill-card-simple .skill-symbol{
+  display:none!important;
+}
+#page-skills #skill-grid.is-list-view .skill-card-simple{
+  grid-template-columns:minmax(0,1fr);
+  grid-template-areas:"head" "title" "summary" "toggle" "details";
+}
+#page-skills #skill-grid.is-list-view .skill-card-simple .skill-card-head{
+  min-height:0;
+}
+#page-skills #skill-tree-panel .skill-tree-branch-icon{
+  display:none!important;
+}
+#page-skills #skill-tree-panel .skill-tree-branch-toggle{
+  gap:10px;
+}
+@media(max-width:620px){
+  #page-skills #skill-grid.is-list-view .skill-card-simple{
+    grid-template-columns:minmax(0,1fr);
+    grid-template-areas:"head" "title" "summary" "toggle" "details";
+  }
+}
