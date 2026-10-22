@@ -5,7 +5,7 @@
 <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="Mukul Singanjude — front-end development, cloud and process operations portfolio." name="description"/>
 <title>Mukul Singanjude | Personal Portfolio</title>
-<link rel="stylesheet" href="./styles.css?v=lab-drag-resize-20261022"/>
+<link rel="stylesheet" href="./styles.css?v=skill-progress-bars-20261022"/>
 <script src="./script.js?v=lab-drag-resize-20261022" defer></script>
 <link id="portfolio-favicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g'%3E%3Cstop stop-color='%239a7cf7'/%3E%3Cstop offset='1' stop-color='%235dd8f1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='13' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-size='40' font-family='Arial,sans-serif' font-weight='700' text-anchor='middle' fill='%2310131d'%3EM%3C/text%3E%3C/svg%3E"/>
 
@@ -263,7 +263,7 @@ button.addEventListener('click', () => {
 <section class="page-hero section-wrap reveal"><p class="eyebrow">MY TOOLKIT</p><h1>Skills &amp; <span class="gradient-text">technologies.</span></h1><p class="page-lead">A clear overview of the systems, cloud, development, and reporting tools I work with and continue to learn.</p></section>
 
 <section class="section-wrap section-block skills-overview reveal" aria-labelledby="skills-overview-title">
-<div class="section-heading"><div><p class="eyebrow">TECHNICAL SKILLS</p><h2 id="skills-overview-title">Explore my skills</h2><p class="muted">Search a technology, choose a category, or open a card for a little more detail.</p></div></div>
+<div class="section-heading"><div><p class="eyebrow">TECHNICAL SKILLS</p><h2 id="skills-overview-title">Explore my skills</h2><p class="muted">Search a technology or open a card for more detail. The bars show editable estimates of familiarity.</p></div></div>
 
 <div class="skills-toolbar skills-toolbar-premium">
 <div class="skills-search-row">
@@ -289,7 +289,36 @@ button.addEventListener('click', () => {
 <article class="skill-card skill-card-simple reveal" data-category="operations" data-search="system administration linux windows package management services storage lvm troubleshooting asset coordination">
 <div class="skill-card-head"><span class="skill-symbol green" aria-hidden="true">⌁</span><span class="skill-category">SYSTEMS</span></div>
 <h3>System Administration</h3><p>Linux and Windows support, service checks, storage, permissions, and troubleshooting.</p>
-<div class="tag-list"><span>Linux</span><span>Windows</span><span>Services</span><span>Storage</span></div>
+<div class="skill-meter-list" aria-label="Core skill familiarity indicators">
+<div class="skill-meter-row" data-skill-level="85">
+<span class="skill-meter-icon" aria-hidden="true">🐧</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>Linux</span><span class="skill-meter-value">85%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="Linux skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85"><span class="skill-meter-fill" style="--skill-level:85%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="70">
+<span class="skill-meter-icon" aria-hidden="true">▦</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>Windows</span><span class="skill-meter-value">70%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="Windows skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"><span class="skill-meter-fill" style="--skill-level:70%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="75">
+<span class="skill-meter-icon" aria-hidden="true">⚙</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>Services</span><span class="skill-meter-value">75%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="Services skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><span class="skill-meter-fill" style="--skill-level:75%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="70">
+<span class="skill-meter-icon" aria-hidden="true">▣</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>Storage</span><span class="skill-meter-value">70%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="Storage skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"><span class="skill-meter-fill" style="--skill-level:70%"></span></div>
+</div>
+</div>
+</div>
 <button aria-expanded="false" class="details-toggle skill-detail-toggle" type="button">Details <span>＋</span></button>
 <div class="skill-detail-panel" hidden><p>Practical focus: checking services and logs, reviewing permissions and disk usage, and documenting fixes.</p><p><strong>Work connection:</strong> System Engineer responsibilities and asset coordination.</p></div>
 </article>
@@ -297,7 +326,43 @@ button.addEventListener('click', () => {
 <article class="skill-card skill-card-simple reveal" data-category="cloud" data-search="aws cloud infrastructure ec2 ami ebs s3 iam vpc load balancer autoscaling rds efs cloudwatch lambda" id="cloud">
 <div class="skill-card-head"><span class="skill-symbol blue" aria-hidden="true">☁</span><span class="skill-category">CLOUD</span></div>
 <h3>AWS &amp; Cloud</h3><p>Core AWS services for compute, storage, access, networking, and monitoring.</p>
-<div class="tag-list"><span>EC2</span><span>S3</span><span>IAM</span><span>VPC</span><span>RDS</span></div>
+<div class="skill-meter-list" aria-label="Core skill familiarity indicators">
+<div class="skill-meter-row" data-skill-level="75">
+<span class="skill-meter-icon" aria-hidden="true">☁</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>EC2</span><span class="skill-meter-value">75%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="EC2 skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><span class="skill-meter-fill" style="--skill-level:75%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="70">
+<span class="skill-meter-icon" aria-hidden="true">▤</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>S3</span><span class="skill-meter-value">70%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="S3 skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"><span class="skill-meter-fill" style="--skill-level:70%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="65">
+<span class="skill-meter-icon" aria-hidden="true">◈</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>IAM</span><span class="skill-meter-value">65%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="IAM skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="65"><span class="skill-meter-fill" style="--skill-level:65%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="70">
+<span class="skill-meter-icon" aria-hidden="true">⌘</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>VPC</span><span class="skill-meter-value">70%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="VPC skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"><span class="skill-meter-fill" style="--skill-level:70%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="60">
+<span class="skill-meter-icon" aria-hidden="true">▥</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>RDS</span><span class="skill-meter-value">60%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="RDS skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60"><span class="skill-meter-fill" style="--skill-level:60%"></span></div>
+</div>
+</div>
+</div>
 <button aria-expanded="false" class="details-toggle skill-detail-toggle" type="button">Details <span>＋</span></button>
 <div class="skill-detail-panel" hidden><p>Practical focus: understanding compute, storage, access policies, security groups, and service health.</p><p><strong>Related project:</strong> AWS 3-Tier Architecture.</p><div class="skill-project-links"><a href="projects.html#aws-architecture">View project ↗</a></div></div>
 </article>
@@ -305,7 +370,36 @@ button.addEventListener('click', () => {
 <article class="skill-card skill-card-simple reveal" data-category="networking" data-search="networking tcp ip subnetting dns routes vpn firewall security groups connectivity">
 <div class="skill-card-head"><span class="skill-symbol cyan" aria-hidden="true">⌘</span><span class="skill-category">NETWORKING</span></div>
 <h3>Networking</h3><p>Network fundamentals for understanding connectivity between users, servers, and cloud services.</p>
-<div class="tag-list"><span>TCP/IP</span><span>DNS</span><span>Subnetting</span><span>VPN</span></div>
+<div class="skill-meter-list" aria-label="Core skill familiarity indicators">
+<div class="skill-meter-row" data-skill-level="70">
+<span class="skill-meter-icon" aria-hidden="true">🌐</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>TCP/IP</span><span class="skill-meter-value">70%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="TCP/IP skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"><span class="skill-meter-fill" style="--skill-level:70%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="70">
+<span class="skill-meter-icon" aria-hidden="true">⌕</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>DNS</span><span class="skill-meter-value">70%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="DNS skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"><span class="skill-meter-fill" style="--skill-level:70%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="60">
+<span class="skill-meter-icon" aria-hidden="true">◉</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>Subnetting</span><span class="skill-meter-value">60%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="Subnetting skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60"><span class="skill-meter-fill" style="--skill-level:60%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="60">
+<span class="skill-meter-icon" aria-hidden="true">🔒</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>VPN</span><span class="skill-meter-value">60%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="VPN skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60"><span class="skill-meter-fill" style="--skill-level:60%"></span></div>
+</div>
+</div>
+</div>
 <button aria-expanded="false" class="details-toggle skill-detail-toggle" type="button">Details <span>＋</span></button>
 <div class="skill-detail-panel" hidden><p>Practical focus: working through name resolution, routes, port access, and firewall rules when investigating connectivity.</p><p><strong>Related area:</strong> AWS VPC and security groups.</p></div>
 </article>
@@ -313,7 +407,43 @@ button.addEventListener('click', () => {
 <article class="skill-card skill-card-simple reveal" data-category="frontend" data-search="frontend development html css javascript typescript angular tailwind responsive user interface api git" id="frontend">
 <div class="skill-card-head"><span class="skill-symbol purple" aria-hidden="true">⌘</span><span class="skill-category">DEVELOPMENT</span></div>
 <h3>Front-end Development</h3><p>Responsive web pages and interactive interfaces with structured markup and styling.</p>
-<div class="tag-list"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Angular</span><span>Tailwind</span></div>
+<div class="skill-meter-list" aria-label="Core skill familiarity indicators">
+<div class="skill-meter-row" data-skill-level="90">
+<span class="skill-meter-icon" aria-hidden="true">‹/›</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>HTML</span><span class="skill-meter-value">90%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="HTML skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="90"><span class="skill-meter-fill" style="--skill-level:90%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="85">
+<span class="skill-meter-icon" aria-hidden="true">✳</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>CSS</span><span class="skill-meter-value">85%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="CSS skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85"><span class="skill-meter-fill" style="--skill-level:85%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="70">
+<span class="skill-meter-icon" aria-hidden="true">JS</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>JavaScript</span><span class="skill-meter-value">70%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="JavaScript skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"><span class="skill-meter-fill" style="--skill-level:70%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="75">
+<span class="skill-meter-icon" aria-hidden="true">A</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>Angular</span><span class="skill-meter-value">75%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="Angular skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><span class="skill-meter-fill" style="--skill-level:75%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="80">
+<span class="skill-meter-icon" aria-hidden="true">≋</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>Tailwind</span><span class="skill-meter-value">80%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="Tailwind skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><span class="skill-meter-fill" style="--skill-level:80%"></span></div>
+</div>
+</div>
+</div>
 <button aria-expanded="false" class="details-toggle skill-detail-toggle" type="button">Details <span>＋</span></button>
 <div class="skill-detail-panel" hidden><p>Practical focus: responsive layouts, UI components, navigation, browser interactions, and API integration.</p><p><strong>Related project:</strong> Job-Check front-end concept.</p><div class="skill-project-links"><a href="projects.html#job-check">View project ↗</a></div></div>
 </article>
@@ -321,7 +451,36 @@ button.addEventListener('click', () => {
 <article class="skill-card skill-card-simple reveal" data-category="analytics" data-search="reporting analytics excel sql power bi formulas pivot tables report preparation report distribution background check data">
 <div class="skill-card-head"><span class="skill-symbol orange" aria-hidden="true">▤</span><span class="skill-category">REPORTING</span></div>
 <h3>Data &amp; Reporting</h3><p>Organizing information, preparing operational reports, and distributing clear outputs.</p>
-<div class="tag-list"><span>Excel</span><span>SQL</span><span>Power BI</span><span>Reports</span></div>
+<div class="skill-meter-list" aria-label="Core skill familiarity indicators">
+<div class="skill-meter-row" data-skill-level="80">
+<span class="skill-meter-icon" aria-hidden="true">▤</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>Excel</span><span class="skill-meter-value">80%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="Excel skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><span class="skill-meter-fill" style="--skill-level:80%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="60">
+<span class="skill-meter-icon" aria-hidden="true">⌘</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>SQL</span><span class="skill-meter-value">60%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="SQL skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60"><span class="skill-meter-fill" style="--skill-level:60%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="55">
+<span class="skill-meter-icon" aria-hidden="true">▥</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>Power BI</span><span class="skill-meter-value">55%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="Power BI skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="55"><span class="skill-meter-fill" style="--skill-level:55%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="85">
+<span class="skill-meter-icon" aria-hidden="true">▧</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>Reports</span><span class="skill-meter-value">85%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="Reports skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85"><span class="skill-meter-fill" style="--skill-level:85%"></span></div>
+</div>
+</div>
+</div>
 <button aria-expanded="false" class="details-toggle skill-detail-toggle" type="button">Details <span>＋</span></button>
 <div class="skill-detail-panel" hidden><p>Practical focus: checking data consistency, structuring reports, and sharing the correct output with its intended audience.</p><p><strong>Work connection:</strong> Background-check operations and report preparation/distribution.</p></div>
 </article>
@@ -329,7 +488,43 @@ button.addEventListener('click', () => {
 <article class="skill-card skill-card-simple reveal" data-category="tools" data-search="tools git github vs code ssh bash shell scripts automation documentation source control">
 <div class="skill-card-head"><span class="skill-symbol cyan" aria-hidden="true">⌁</span><span class="skill-category">TOOLS</span></div>
 <h3>Tools &amp; Automation</h3><p>Everyday tools for source control, remote access, scripting, and organized workflows.</p>
-<div class="tag-list"><span>Git</span><span>GitHub</span><span>VS Code</span><span>SSH</span><span>Bash</span></div>
+<div class="skill-meter-list" aria-label="Core skill familiarity indicators">
+<div class="skill-meter-row" data-skill-level="75">
+<span class="skill-meter-icon" aria-hidden="true">⑂</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>Git</span><span class="skill-meter-value">75%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="Git skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><span class="skill-meter-fill" style="--skill-level:75%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="80">
+<span class="skill-meter-icon" aria-hidden="true">⌘</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>GitHub</span><span class="skill-meter-value">80%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="GitHub skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><span class="skill-meter-fill" style="--skill-level:80%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="85">
+<span class="skill-meter-icon" aria-hidden="true">⌨</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>VS Code</span><span class="skill-meter-value">85%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="VS Code skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85"><span class="skill-meter-fill" style="--skill-level:85%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="70">
+<span class="skill-meter-icon" aria-hidden="true">›_</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>SSH</span><span class="skill-meter-value">70%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="SSH skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"><span class="skill-meter-fill" style="--skill-level:70%"></span></div>
+</div>
+</div>
+<div class="skill-meter-row" data-skill-level="65">
+<span class="skill-meter-icon" aria-hidden="true">$_</span>
+<div class="skill-meter-main">
+<div class="skill-meter-label"><span>Bash</span><span class="skill-meter-value">65%</span></div>
+<div class="skill-meter-track" role="meter" aria-label="Bash skill indicator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="65"><span class="skill-meter-fill" style="--skill-level:65%"></span></div>
+</div>
+</div>
+</div>
 <button aria-expanded="false" class="details-toggle skill-detail-toggle" type="button">Details <span>＋</span></button>
 <div class="skill-detail-panel" hidden><p>Practical focus: versioning changes, using command-line tools, and documenting repeatable steps.</p><p><strong>Project connection:</strong> This portfolio is maintained in GitHub.</p></div>
 </article>
@@ -405,7 +600,7 @@ button.addEventListener('click', () => {
 </div>
 </div>
 
-<p class="empty-state" hidden id="skills-empty" aria-live="polite">No skills found. Try a different search or category.</p>
+<p class="empty-state" hidden id="skills-empty" aria-live="polite">No skills found. Try a different search.</p>
 </section>
 
 <section class="section-wrap cta-panel reveal"><div><p class="eyebrow">NEXT STEP</p><h2>See these skills<br/><span class="gradient-text">in action.</span></h2></div><a class="btn btn-primary" href="projects.html">View projects <span>↗</span></a></section>
