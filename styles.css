@@ -1690,3 +1690,94 @@ html[data-theme="light"] #skill-grid .skill-meter-icon{
   gap:8px;
   font-size:12px;
 }
+
+
+/* Connected Systems repair: centered responsive layout and a dependable SVG globe. */
+#page-index .network-globe-section{
+  box-sizing:border-box;
+  width:min(1280px,calc(100% - 64px))!important;
+  max-width:1280px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:clamp(28px,4vw,56px);
+  overflow:visible!important;
+}
+#page-index .network-globe-copy{
+  min-width:0;
+  width:100%;
+  max-width:470px;
+}
+#page-index .network-globe-wrap{
+  position:relative;
+  display:block;
+  width:100%;
+  max-width:620px;
+  min-width:0;
+  min-height:0!important;
+  aspect-ratio:4/3;
+  margin-inline:auto!important;
+  overflow:visible;
+}
+#page-index .network-globe-art{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  display:block;
+  width:100%;
+  height:100%;
+  background:transparent!important;
+  pointer-events:none;
+}
+#page-index .network-globe-art svg{
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+  overflow:visible;
+  background:transparent!important;
+  transform-origin:50% 50%;
+  animation:connected-globe-float 11s ease-in-out infinite;
+}
+#page-index .network-globe-art .globe-node{
+  transform-box:fill-box;
+  transform-origin:center;
+  animation:connected-globe-pulse 3.8s ease-in-out infinite;
+}
+#page-index .network-globe-art .globe-node:nth-child(3n+2){animation-delay:.8s}
+#page-index .network-globe-art .globe-node:nth-child(3n){animation-delay:1.5s}
+#page-index .network-globe-wrap.is-paused .network-globe-art svg,
+#page-index .network-globe-wrap.is-paused .network-globe-art .globe-node{
+  animation-play-state:paused!important;
+}
+@keyframes connected-globe-float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-5px)}
+}
+@keyframes connected-globe-pulse{
+  0%,100%{opacity:.78;transform:scale(1)}
+  50%{opacity:1;transform:scale(1.2)}
+}
+@media(max-width:760px){
+  #page-index .network-globe-section{
+    width:calc(100% - 32px)!important;
+    max-width:620px!important;
+    grid-template-columns:minmax(0,1fr);
+    gap:18px;
+    overflow:visible!important;
+  }
+  #page-index .network-globe-copy{max-width:none}
+  #page-index .network-globe-wrap{
+    width:100%;
+    max-width:560px;
+    margin-inline:auto!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  #page-index .network-globe-art svg,
+  #page-index .network-globe-art .globe-node{animation:none!important}
+}
+html[data-reduce-motion="true"] #page-index .network-globe-art svg,
+html[data-reduce-motion="true"] #page-index .network-globe-art .globe-node{
+  animation-play-state:paused!important;
+}
