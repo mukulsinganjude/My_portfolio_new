@@ -1278,3 +1278,91 @@ html.fx-reveal-ready .fx-reveal.fx-visible { opacity: 1; transform: none; }
 @media (max-width: 780px) {
   .section-wrap { width: min(var(--personal-content-width, 89%), 100%); max-width: 100%; }
 }
+
+
+/* Desktop personalization drawer: pinned to the right, sized for desktop controls. */
+@media (min-width: 781px) {
+  .personalize-backdrop {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 1201 !important;
+    background: rgba(4, 7, 15, .56) !important;
+    backdrop-filter: blur(4px);
+  }
+  .personalize-panel {
+    position: fixed !important;
+    left: auto !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: min(500px, calc(100vw - 24px)) !important;
+    min-width: 0 !important;
+    max-width: 500px !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    box-sizing: border-box !important;
+    display: block;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    padding: 28px 26px 34px !important;
+    border-left: 1px solid var(--line);
+    border-right: 0;
+    border-radius: 0;
+    z-index: 1202 !important;
+    background: var(--surface);
+    box-shadow: -24px 0 70px rgba(0,0,0,.28);
+    -webkit-overflow-scrolling: touch;
+  }
+  .personalize-panel[hidden],
+  .personalize-backdrop[hidden] {
+    display: none !important;
+  }
+  .personalize-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    padding-bottom: 22px;
+  }
+  .personalize-head > div {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .personalize-head h2 {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+  .personalize-panel .pref-row {
+    width: 100%;
+    min-width: 0;
+    gap: 18px;
+  }
+  .personalize-panel .pref-row > div:first-child {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+  .personalize-panel .pref-select {
+    flex: 0 0 auto;
+    width: min(180px, 48%);
+    max-width: 180px;
+  }
+  .personalize-panel .pref-action {
+    max-width: 100%;
+  }
+  .personalize-panel .pref-switch {
+    gap: 18px;
+  }
+  .personalize-panel .pref-reset {
+    width: 100%;
+  }
+}
+@media (min-width: 781px) and (max-width: 1024px) {
+  .personalize-panel {
+    width: min(440px, calc(100vw - 24px)) !important;
+    max-width: 440px !important;
+    padding: 24px 22px 30px !important;
+  }
+}
