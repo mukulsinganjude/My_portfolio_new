@@ -1135,7 +1135,11 @@ button.addEventListener('click', () => {
     search.addEventListener("input", apply);
     filters.querySelectorAll("[data-filter]").forEach(btn => btn.addEventListener("click", () => {
       category = btn.dataset.filter;
-      filters.querySelectorAll("[data-filter]").forEach(other => other.classList.toggle("active", other === btn)); apply();
+      filters.querySelectorAll("[data-filter]").forEach(other => {
+        other.classList.toggle("active", other === btn);
+        other.setAttribute("aria-pressed", String(other === btn));
+      });
+      apply();
     }));
     apply();
   }
