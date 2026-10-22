@@ -1619,3 +1619,41 @@ html[data-theme="light"] #skill-grid .skill-meter-icon{
     grid-template-areas:"head" "title" "summary" "toggle" "details";
   }
 }
+
+
+/* Final override: this Skills section is rendered inside #page-skills.
+   List and Tree remain text-first; only Grid shows meter bars and skill icons. */
+#page-skills #skill-grid.is-list-view .skill-card-simple{
+  display:flex!important;
+  flex-direction:column!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  grid-template-areas:none!important;
+  align-items:stretch;
+  gap:10px;
+}
+#page-skills #skill-grid.is-list-view .skill-meter-list,
+#page-skills #skill-grid.is-list-view .skill-card-simple .skill-symbol{
+  display:none!important;
+}
+#page-skills #skill-grid.is-list-view .skill-card-simple .skill-card-head{
+  display:flex;
+  justify-content:flex-start;
+  min-height:0;
+}
+#page-skills #skill-grid.is-list-view .skill-card-simple .skill-category{
+  margin-left:0;
+  text-align:left;
+}
+#page-skills #skill-grid.is-list-view .skill-card-simple h3,
+#page-skills #skill-grid.is-list-view .skill-card-simple>p,
+#page-skills #skill-grid.is-list-view .skill-card-simple>.details-toggle,
+#page-skills #skill-grid.is-list-view .skill-card-simple>.skill-detail-panel{
+  width:100%;
+  grid-area:auto;
+}
+#page-skills #skill-tree-panel .skill-tree-branch-icon{
+  display:none!important;
+}
+#page-skills #skill-tree-panel .skill-tree-branch-toggle{
+  gap:10px;
+}
