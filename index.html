@@ -760,6 +760,14 @@ img,svg,video,canvas{max-width:100%}
 }
 @media(prefers-reduced-motion:reduce){#page-projects .case-preview-open{transition:none!important}}
 </style>
+<style id="portrait-only-small-brand-details">
+/* Photo is reused from the existing About portrait; the main profile.ts card stays unchanged. */
+.brand-mark.brand-mark-photo{padding:0;overflow:hidden;background:linear-gradient(135deg,#9a7cf7,#5dd8f1)}
+.brand-mark .brand-photo{display:block;width:100%;height:100%;object-fit:cover;object-position:center 22%}
+.profile-bottom .mini-avatar-photo-wrap{padding:0;overflow:hidden;border:1px solid color-mix(in srgb,var(--accent2) 40%,var(--line));background:var(--surface-2);font-size:0}
+.profile-bottom .mini-avatar-photo{display:block;width:100%;height:100%;object-fit:cover;object-position:center 22%}
+@media(prefers-reduced-motion:reduce){.brand-photo,.mini-avatar-photo{transition:none!important}}
+</style>
 </head>
 <body>
 <canvas id="ambient-network-canvas" aria-hidden="true"></canvas><div id="cursor-glow" aria-hidden="true"></div>
@@ -773,7 +781,7 @@ img,svg,video,canvas{max-width:100%}
 </div>
 </div>
 <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
-<header class="site-header"><a class="brand" data-route="index" href="#home"><span class="brand-mark">M</span><span>Mukul<span class="brand-dot">.</span></span></a>
+<header class="site-header"><a class="brand" data-route="index" href="#home"><span class="brand-mark brand-mark-photo"><img class="brand-photo" alt="" aria-hidden="true" decoding="async"/></span><span>Mukul<span class="brand-dot">.</span></span></a>
 <button aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle" type="button"><span></span><span></span><span></span></button>
 <nav aria-label="Main navigation" class="nav-links" id="primary-navigation"><a class="active" data-route="index" href="#home">Home</a><a data-route="about" href="#about">About</a><a data-route="skills" href="#skills">Skills</a><a data-route="projects" href="#projects">Projects</a><a data-route="contact" href="#contact">Contact</a></nav>
 <div class="header-tools"><button aria-label="Search the portfolio" id="quick-search-button" title="Quick search" type="button"><span>⌕</span><span class="search-label">Search</span><kbd>Ctrl K</kbd></button><button aria-label="Switch color theme" class="theme-toggle" title="Switch theme" type="button"><span class="theme-icon">☼</span><span class="theme-label">Light mode</span></button><button aria-label="Open personalization panel" class="personalize-trigger" id="personalize-open" title="Personalize your experience" type="button">⚙ <span>Customize</span></button></div></header>
@@ -843,7 +851,7 @@ img,svg,video,canvas{max-width:100%}
 <div class="profile-card">
 <div class="profile-top"><span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span><span class="profile-code">profile.ts</span></div>
 <div class="code-lines"><p><span class="code-purple">const</span> <span class="code-blue">developer</span> = {</p><p class="indent"><span class="code-green">name</span>: <span class="code-yellow">'Mukul'</span>,</p><p class="indent"><span class="code-green">focus</span>: [</p><p class="indent2"><span class="code-yellow">'Frontend'</span>,</p><p class="indent2"><span class="code-yellow">'Cloud'</span>,</p><p class="indent2"><span class="code-yellow">'Operations'</span></p><p class="indent">],</p><p class="indent"><span class="code-green">mindset</span>: <span class="code-yellow">'Always learning'</span></p><p>};</p><p class="code-comment">// building one idea at a time ✦</p></div>
-<div class="profile-bottom"><span class="mini-avatar">MS</span><span><strong>Mukul Singanjude</strong><small>Developer · Problem solver</small></span><span class="live-pulse"></span></div>
+<div class="profile-bottom"><span class="mini-avatar mini-avatar-photo-wrap"><img class="mini-avatar-photo" alt="" aria-hidden="true" decoding="async"/></span><span><strong>Mukul Singanjude</strong><small>Developer · Problem solver</small></span><span class="live-pulse"></span></div>
 </div>
 <div class="float-chip chip-angular"><span class="chip-icon">A</span><span><strong>Frontend</strong><small>Angular · TypeScript</small></span></div>
 <div class="float-chip chip-cloud"><span class="chip-icon">☁</span><span><strong>Cloud &amp; Linux</strong><small>AWS · Linux</small></span></div>
@@ -1263,7 +1271,7 @@ button.addEventListener('click', () => {
 
 
 </main>
-<footer class="site-footer"><a class="brand" data-route="index" href="#home"><span class="brand-mark">M</span><span>Mukul<span class="brand-dot">.</span></span></a><p>Designed with curiosity and care.</p><span>© <span class="year"></span> Mukul Singanjude</span></footer>
+<footer class="site-footer"><a class="brand" data-route="index" href="#home"><span class="brand-mark brand-mark-photo"><img class="brand-photo" alt="" aria-hidden="true" decoding="async"/></span><span>Mukul<span class="brand-dot">.</span></span></a><p>Designed with curiosity and care.</p><span>© <span class="year"></span> Mukul Singanjude</span></footer>
 <script>
 (() => {
   const root = document.documentElement;
@@ -2489,6 +2497,17 @@ document.querySelectorAll('[data-skill-group]').forEach(b=>b.addEventListener('c
   dialog.addEventListener("close",()=>{
     scene.replaceChildren();
     if(lastTrigger&&document.contains(lastTrigger))lastTrigger.focus({preventScroll:true});
+  });
+})();
+</script>
+<script id="apply-portrait-to-small-identities">
+(function(){
+  const reference=document.querySelector("#page-about .about-feature-photo");
+  if(!reference)return;
+  const portrait=reference.getAttribute("src")||reference.currentSrc||reference.src;
+  if(!portrait)return;
+  [".brand-photo",".mini-avatar-photo"].forEach(selector=>{
+    document.querySelectorAll(selector).forEach(img=>img.setAttribute("src",portrait));
   });
 })();
 </script>
