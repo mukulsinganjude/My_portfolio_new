@@ -618,7 +618,6 @@ function close(){panel.hidden=true;backdrop.hidden=true;document.body.style.over
       sphereGlow.addColorStop(1,'rgba(90,105,220,.012)');
       ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);
       ctx.fillStyle=sphereGlow;ctx.fill();
-      ctx.strokeStyle='rgba(113,171,255,.32)';ctx.lineWidth=1;ctx.stroke();
 
       // Latitude and longitude lines are projected from 3D coordinates too,
       // so the wireframe turns with the sphere instead of staying stationary.
@@ -674,9 +673,7 @@ function close(){panel.hidden=true;backdrop.hidden=true;document.body.style.over
         }
         ctx.globalAlpha=1;
       });
-      // Keep the outer sphere edge crisp as the internal mesh rotates.
-      ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);
-      ctx.strokeStyle='rgba(113,171,255,.28)';ctx.lineWidth=1;ctx.stroke();
+      // Outer sphere outline intentionally removed; keep the rotating grid and nodes.
       if(active)raf=requestAnimationFrame(drawGlobe);
     }
     globeResize();drawGlobe();
