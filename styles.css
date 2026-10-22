@@ -1657,3 +1657,36 @@ html[data-theme="light"] #skill-grid .skill-meter-icon{
 #page-skills #skill-tree-panel .skill-tree-branch-toggle{
   gap:10px;
 }
+
+
+/* Corrected List view: keep each skill label, hide only its icon and track. */
+#page-skills #skill-grid.is-list-view .skill-meter-list{
+  display:flex!important;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:9px 16px;
+  margin:8px 0 4px;
+  min-width:0;
+}
+#page-skills #skill-grid.is-list-view .skill-meter-row{
+  display:flex!important;
+  flex:1 1 130px;
+  grid-template-columns:minmax(0,1fr);
+  align-items:center;
+  gap:0;
+  min-width:0;
+}
+#page-skills #skill-grid.is-list-view .skill-meter-icon,
+#page-skills #skill-grid.is-list-view .skill-meter-track,
+#page-skills #skill-grid.is-list-view .skill-card-simple .skill-symbol{
+  display:none!important;
+}
+#page-skills #skill-grid.is-list-view .skill-meter-main{
+  width:100%;
+  min-width:0;
+}
+#page-skills #skill-grid.is-list-view .skill-meter-label{
+  margin:0;
+  gap:8px;
+  font-size:12px;
+}
