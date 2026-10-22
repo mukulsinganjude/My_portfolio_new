@@ -1497,3 +1497,97 @@ html.fx-reveal-ready .fx-reveal.fx-visible { opacity: 1; transform: none; }
 @media(prefers-reduced-motion:reduce){
   .lab-resize-handle{transition:none!important;}
 }
+
+
+/* Skills section: icon-led, animated proficiency meters (dark/light theme aware). */
+.skills-overview #skill-filters[hidden]{
+  display:none!important;
+}
+#skill-grid .skill-meter-list{
+  display:grid;
+  gap:12px;
+  margin:17px 0 4px;
+  min-width:0;
+}
+#skill-grid .skill-meter-row{
+  display:grid;
+  grid-template-columns:32px minmax(0,1fr);
+  align-items:center;
+  gap:10px;
+  min-width:0;
+}
+#skill-grid .skill-meter-icon{
+  display:grid;
+  place-items:center;
+  width:32px;
+  height:32px;
+  flex:0 0 32px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:var(--surface-2);
+  color:var(--accent2);
+  font:600 13px 'DM Mono',monospace;
+  line-height:1;
+}
+#skill-grid .skill-meter-main{
+  min-width:0;
+}
+#skill-grid .skill-meter-label{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  min-width:0;
+  margin-bottom:5px;
+  color:var(--text);
+  font-size:11px;
+  font-weight:600;
+  line-height:1.4;
+}
+#skill-grid .skill-meter-label>span:first-child{
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+#skill-grid .skill-meter-value{
+  flex:0 0 auto;
+  color:var(--muted);
+  font:10px 'DM Mono',monospace;
+  font-variant-numeric:tabular-nums;
+}
+#skill-grid .skill-meter-track{
+  height:5px;
+  width:100%;
+  overflow:hidden;
+  border-radius:999px;
+  background:var(--surface-2);
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--line) 65%,transparent);
+}
+#skill-grid .skill-meter-fill{
+  display:block;
+  width:var(--skill-level,0%);
+  height:100%;
+  border-radius:inherit;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  box-shadow:0 0 11px color-mix(in srgb,var(--accent2) 30%,transparent);
+  transform:scaleX(1);
+  transform-origin:left center;
+}
+#skill-grid .skill-card.is-visible .skill-meter-fill{
+  animation:skill-meter-grow .9s cubic-bezier(.2,.7,.2,1) both;
+}
+@keyframes skill-meter-grow{
+  from{transform:scaleX(0)}
+  to{transform:scaleX(1)}
+}
+html[data-theme="light"] #skill-grid .skill-meter-icon{
+  box-shadow:0 3px 9px rgba(35,48,78,.05);
+}
+@media(max-width:780px){
+  #skill-grid .skill-meter-list{gap:11px;margin-top:15px}
+  #skill-grid .skill-meter-row{grid-template-columns:30px minmax(0,1fr);gap:9px}
+  #skill-grid .skill-meter-icon{width:30px;height:30px;border-radius:9px}
+  #skill-grid .skill-meter-label{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  #skill-grid .skill-meter-fill{animation:none!important}
+}
