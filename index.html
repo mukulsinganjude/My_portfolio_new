@@ -860,7 +860,13 @@ button.addEventListener('click', () => {
 <div class="section-heading"><div><p class="eyebrow">SKILLS DIRECTORY</p><h2 id="skills-overview-title">One toolkit. <span class="gradient-text">Multiple disciplines.</span></h2><p class="muted">Search technologies or filter by area. Skill descriptions focus on tools and practical work rather than unverified proficiency scores.</p></div></div>
 
 <div class="skills-toolbar skills-toolbar-premium">
+<div class="skills-search-row">
 <div class="search-box skills-search-box"><span aria-hidden="true">⌕</span><input aria-label="Search technical skills" id="skill-search" placeholder="Search skills, tools, or practical use cases..." type="search"/></div>
+<div class="skills-view-toggle" role="group" aria-label="Skills layout">
+<button class="skills-view-button active" id="skills-grid-view" type="button" aria-label="Show skills in grid view" aria-pressed="true" title="Grid view"><span aria-hidden="true">▦</span><span>Grid</span></button>
+<button class="skills-view-button" id="skills-list-view" type="button" aria-label="Show skills in list view" aria-pressed="false" title="List view"><span aria-hidden="true">☷</span><span>List</span></button>
+</div>
+</div>
 <div class="filter-chips skill-filters" id="skill-filters" aria-label="Filter skills by category">
 <button class="filter-chip active" data-filter="all" type="button" aria-pressed="true">All skills</button>
 <button class="filter-chip" data-filter="operations" type="button" aria-pressed="false">Systems</button>
@@ -2071,7 +2077,65 @@ document.querySelectorAll('[data-skill-group]').forEach(b=>b.addEventListener('c
 @media(max-width:820px){#page-skills #skill-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#page-skills .skills-learning-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){#page-skills #skill-grid,#page-skills .skills-learning-grid,#page-skills .skills-use-case-grid{grid-template-columns:minmax(0,1fr)}#page-skills .skill-card-premium{padding:20px}#page-skills .skills-section-heading{gap:10px}#page-skills .skills-learning-section,#page-skills .skills-experience-section{margin-top:52px;margin-bottom:55px}}
 @media(prefers-reduced-motion:reduce){#page-skills .skill-card-premium,#page-skills .learning-card,#page-skills .use-case-card{transition:none!important}#page-skills .skill-detail-panel{animation:none!important}}
+
+/* Grid/List view toggle for Skills */
+#page-skills .skills-search-row{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;flex-wrap:wrap}
+#page-skills .skills-search-row .skills-search-box{flex:1 1 360px;width:auto;max-width:620px}
+#page-skills .skills-view-toggle{display:inline-flex;align-items:center;gap:4px;flex:0 0 auto;padding:4px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);box-shadow:0 6px 18px #0000000a}
+#page-skills .skills-view-button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:37px;min-width:83px;padding:8px 11px;border:1px solid transparent;border-radius:9px;background:transparent;color:var(--muted);font:600 11px Manrope,sans-serif;transition:color .18s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease}
+#page-skills .skills-view-button>span:first-child{font-size:16px;line-height:1;color:var(--accent)}
+#page-skills .skills-view-button:hover{color:var(--text);border-color:color-mix(in srgb,var(--accent) 30%,var(--line))}
+#page-skills .skills-view-button.active{color:var(--text);background:color-mix(in srgb,var(--accent) 13%,var(--surface));border-color:color-mix(in srgb,var(--accent) 47%,var(--line));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 8%,transparent)}
+#page-skills .skills-view-button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+#page-skills #skill-grid.is-list-view{grid-template-columns:minmax(0,1fr);gap:12px}
+#page-skills #skill-grid.is-list-view .skill-card-premium{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,.42fr);grid-template-areas:"head tags" "title tags" "summary tags" "toggle tags" "details details";align-items:start;column-gap:24px;row-gap:10px;padding:21px 23px}
+#page-skills #skill-grid.is-list-view .skill-card-premium .skill-card-head{grid-area:head;justify-content:flex-start;gap:11px}
+#page-skills #skill-grid.is-list-view .skill-card-premium .skill-symbol{width:36px;height:36px;flex-basis:36px;font-size:20px}
+#page-skills #skill-grid.is-list-view .skill-card-premium .skill-category{margin-left:0;text-align:left}
+#page-skills #skill-grid.is-list-view .skill-card-premium h3{grid-area:title;font-size:17px}
+#page-skills #skill-grid.is-list-view .skill-card-premium>p{grid-area:summary;max-width:760px}
+#page-skills #skill-grid.is-list-view .skill-card-premium>.tag-list{grid-area:tags;align-content:center;align-self:center;min-width:0;padding:7px 0}
+#page-skills #skill-grid.is-list-view .skill-card-premium>.details-toggle{grid-area:toggle;width:max-content;max-width:100%;min-width:min(100%,240px);margin-top:3px;padding-top:11px}
+#page-skills #skill-grid.is-list-view .skill-card-premium>.skill-detail-panel{grid-area:details;width:100%;margin-top:3px}
+#page-skills #skill-grid.is-list-view .skill-card-premium:hover{transform:translateY(-2px)}
+@media(max-width:620px){
+ #page-skills .skills-search-row{align-items:stretch}
+ #page-skills .skills-search-row .skills-search-box{flex-basis:100%;max-width:none}
+ #page-skills .skills-view-toggle{align-self:flex-end}
+ #page-skills #skill-grid.is-list-view .skill-card-premium{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "title" "summary" "tags" "toggle" "details";column-gap:0;padding:19px}
+ #page-skills #skill-grid.is-list-view .skill-card-premium>.tag-list{align-self:start;padding:0}
+ #page-skills #skill-grid.is-list-view .skill-card-premium>.details-toggle{width:100%;min-width:0}
+}
+@media(prefers-reduced-motion:reduce){#page-skills .skills-view-button{transition:none!important}}
+
 </style>
+
+
+<script id="skills-grid-list-controller">
+(function(){
+ const grid=document.getElementById("skill-grid");
+ const gridButton=document.getElementById("skills-grid-view");
+ const listButton=document.getElementById("skills-list-view");
+ if(!grid||!gridButton||!listButton)return;
+ const storageKey="mukul-portfolio-skills-view";
+ function setView(view,save){
+  const mode=view==="list"?"list":"grid";
+  const isList=mode==="list";
+  grid.classList.toggle("is-list-view",isList);
+  grid.dataset.view=mode;
+  gridButton.classList.toggle("active",!isList);
+  listButton.classList.toggle("active",isList);
+  gridButton.setAttribute("aria-pressed",String(!isList));
+  listButton.setAttribute("aria-pressed",String(isList));
+  if(save){try{localStorage.setItem(storageKey,mode)}catch(_){/* Storage may be unavailable; the view still works. */}}
+ }
+ let initial="grid";
+ try{if(localStorage.getItem(storageKey)==="list")initial="list"}catch(_){}
+ setView(initial,false);
+ gridButton.addEventListener("click",()=>setView("grid",true));
+ listButton.addEventListener("click",()=>setView("list",true));
+})();
+</script>
 
 </body>
 </html>
