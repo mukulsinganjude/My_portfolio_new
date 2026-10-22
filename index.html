@@ -865,6 +865,7 @@ button.addEventListener('click', () => {
 <div class="skills-view-toggle" role="group" aria-label="Skills layout">
 <button class="skills-view-button active" id="skills-grid-view" type="button" aria-label="Show skills in grid view" aria-pressed="true" title="Grid view"><span aria-hidden="true">▦</span><span>Grid</span></button>
 <button class="skills-view-button" id="skills-list-view" type="button" aria-label="Show skills in list view" aria-pressed="false" title="List view"><span aria-hidden="true">☷</span><span>List</span></button>
+<button class="skills-view-button" id="skills-tree-view" type="button" aria-label="Show skills in tree view" aria-pressed="false" title="Tree view"><span aria-hidden="true">⌘</span><span>Tree</span></button>
 </div>
 </div>
 <div class="filter-chips skill-filters" id="skill-filters" aria-label="Filter skills by category">
@@ -927,6 +928,77 @@ button.addEventListener('click', () => {
 <div class="skill-detail-panel" hidden><p>Practical focus: versioning changes, using command-line tools, and documenting repeatable steps.</p><p><strong>Project connection:</strong> This portfolio is maintained in GitHub.</p></div>
 </article>
 </div>
+<div class="skill-tree-view" id="skill-tree-panel" hidden aria-label="Technical skills tree">
+<div class="skill-tree-heading"><span class="eyebrow">SKILLS TREE</span><p>Expand a category, then select a technology to see a short description.</p></div>
+<div class="skill-tree-branches" id="skill-tree-branches">
+<div class="skill-tree-branch" data-category="operations" data-search="system administration linux windows packages services storage lvm troubleshooting nginx tomcat permissions">
+<button class="skill-tree-branch-toggle" type="button" aria-expanded="false"><span class="skill-tree-branch-icon tree-green" aria-hidden="true">⌁</span><span class="skill-tree-branch-title"><strong>System Administration</strong><small>Systems &amp; operations</small></span><span class="skill-tree-branch-count">6 items</span><span class="skill-tree-chevron" aria-hidden="true">＋</span></button>
+<div class="skill-tree-children" hidden>
+<button class="skill-tree-leaf" type="button" data-tree-skill="Linux administration" data-tree-category="operations" data-tree-summary="Linux basics including packages, services, permissions, storage, and troubleshooting."><span>Linux administration</span><small>Packages · services · storage</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="Windows support" data-tree-category="operations" data-tree-summary="Operating-system support and practical issue investigation."><span>Windows support</span><small>System support</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="Permissions and storage" data-tree-category="operations" data-tree-summary="Reviewing file permissions, disk usage, partitions, and storage configuration."><span>Permissions &amp; storage</span><small>Access · disks · LVM</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="Package and service management" data-tree-category="operations" data-tree-summary="Checking installed packages and service status when troubleshooting a server."><span>Packages &amp; services</span><small>Updates · service checks</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="Nginx and Tomcat" data-tree-category="operations" data-tree-summary="Web and application server fundamentals, configuration, and basic service checks."><span>Nginx &amp; Tomcat</span><small>Server services</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="Troubleshooting" data-tree-category="operations" data-tree-summary="A repeatable approach: check symptoms, logs, permissions, resources, and document the findings."><span>Troubleshooting</span><small>Logs · checks · documentation</small></button>
+</div>
+</div>
+<div class="skill-tree-branch" data-category="cloud" data-search="aws cloud ec2 ami ebs s3 iam vpc security groups rds efs lambda cloudwatch load balancer auto scaling">
+<button class="skill-tree-branch-toggle" type="button" aria-expanded="false"><span class="skill-tree-branch-icon tree-blue" aria-hidden="true">☁</span><span class="skill-tree-branch-title"><strong>AWS &amp; Cloud</strong><small>Cloud infrastructure</small></span><span class="skill-tree-branch-count">7 items</span><span class="skill-tree-chevron" aria-hidden="true">＋</span></button>
+<div class="skill-tree-children" hidden>
+<button class="skill-tree-leaf" type="button" data-tree-skill="EC2 and AMIs" data-tree-category="cloud" data-tree-summary="Compute instances and machine images used as building blocks for AWS workloads."><span>EC2 &amp; AMIs</span><small>Compute</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="S3 and EBS" data-tree-category="cloud" data-tree-summary="Object storage and block storage concepts for files, server volumes, and data."><span>S3 &amp; EBS</span><small>Storage</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="IAM and security groups" data-tree-category="cloud" data-tree-summary="Identity policies and network access rules that control which actions and connections are allowed."><span>IAM &amp; security groups</span><small>Access control</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="VPC networking" data-tree-category="cloud" data-tree-summary="Cloud network boundaries, subnets, routing concepts, and service connectivity."><span>VPC networking</span><small>Subnets · routes</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="Load balancing and Auto Scaling" data-tree-category="cloud" data-tree-summary="Concepts for distributing application traffic and adjusting compute capacity."><span>Load balancing &amp; Auto Scaling</span><small>Traffic · capacity</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="RDS and EFS" data-tree-category="cloud" data-tree-summary="Managed relational database and shared file storage service fundamentals."><span>RDS &amp; EFS</span><small>Database · file storage</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="CloudWatch and Lambda" data-tree-category="cloud" data-tree-summary="Monitoring and serverless compute concepts within the AWS service toolkit."><span>CloudWatch &amp; Lambda</span><small>Monitoring · serverless</small></button>
+</div>
+</div>
+<div class="skill-tree-branch" data-category="networking" data-search="networking tcp ip subnetting dns routes vpn firewalls security groups connectivity">
+<button class="skill-tree-branch-toggle" type="button" aria-expanded="false"><span class="skill-tree-branch-icon tree-cyan" aria-hidden="true">⌘</span><span class="skill-tree-branch-title"><strong>Networking</strong><small>Connectivity &amp; security</small></span><span class="skill-tree-branch-count">4 items</span><span class="skill-tree-chevron" aria-hidden="true">＋</span></button>
+<div class="skill-tree-children" hidden>
+<button class="skill-tree-leaf" type="button" data-tree-skill="TCP/IP and subnetting" data-tree-category="networking" data-tree-summary="Addressing and subnetting concepts for understanding how hosts are grouped and communicate."><span>TCP/IP &amp; subnetting</span><small>Addressing</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="DNS and routing" data-tree-category="networking" data-tree-summary="Name resolution and routing concepts used when investigating network paths."><span>DNS &amp; routing</span><small>Resolution · routes</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="VPN and firewalls" data-tree-category="networking" data-tree-summary="Private connectivity and rule-based traffic control fundamentals."><span>VPN &amp; firewalls</span><small>Secure connectivity</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="Connectivity troubleshooting" data-tree-category="networking" data-tree-summary="Checking name resolution, routes, ports, and access rules methodically."><span>Connectivity troubleshooting</span><small>Diagnosis</small></button>
+</div>
+</div>
+<div class="skill-tree-branch" data-category="frontend" data-search="frontend development html css javascript typescript angular tailwind responsive api integration">
+<button class="skill-tree-branch-toggle" type="button" aria-expanded="false"><span class="skill-tree-branch-icon tree-purple" aria-hidden="true">⌘</span><span class="skill-tree-branch-title"><strong>Web Development</strong><small>Front-end development</small></span><span class="skill-tree-branch-count">5 items</span><span class="skill-tree-chevron" aria-hidden="true">＋</span></button>
+<div class="skill-tree-children" hidden>
+<button class="skill-tree-leaf" type="button" data-tree-skill="HTML and CSS" data-tree-category="frontend" data-tree-summary="Semantic page structure, styling, layout, and responsive presentation."><span>HTML &amp; CSS</span><small>Structure · styling</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="JavaScript and TypeScript" data-tree-category="frontend" data-tree-summary="Browser interactions and typed application code for interactive interfaces."><span>JavaScript &amp; TypeScript</span><small>Interactive UI</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="Angular" data-tree-category="frontend" data-tree-summary="Framework concepts for reusable components and structured front-end applications."><span>Angular</span><small>Components</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="Tailwind CSS" data-tree-category="frontend" data-tree-summary="Utility-based styling for consistent responsive layouts."><span>Tailwind CSS</span><small>Responsive styling</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="API integration" data-tree-category="frontend" data-tree-summary="Connecting a user interface to data endpoints and handling response states."><span>API integration</span><small>Data · UI states</small></button>
+</div>
+</div>
+<div class="skill-tree-branch" data-category="analytics" data-search="reporting analytics excel sql power bi pivot tables formulas report preparation distribution data quality">
+<button class="skill-tree-branch-toggle" type="button" aria-expanded="false"><span class="skill-tree-branch-icon tree-orange" aria-hidden="true">▤</span><span class="skill-tree-branch-title"><strong>Reporting &amp; Analytics</strong><small>Data &amp; reporting</small></span><span class="skill-tree-branch-count">5 items</span><span class="skill-tree-chevron" aria-hidden="true">＋</span></button>
+<div class="skill-tree-children" hidden>
+<button class="skill-tree-leaf" type="button" data-tree-skill="Excel" data-tree-category="analytics" data-tree-summary="Organizing and checking data using spreadsheet workflows and formulas."><span>Excel</span><small>Spreadsheet reporting</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="SQL" data-tree-category="analytics" data-tree-summary="Query basics for filtering, sorting, combining, and summarizing data."><span>SQL</span><small>Query practice</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="Power BI" data-tree-category="analytics" data-tree-summary="Dashboard and visual-reporting fundamentals for presenting information clearly."><span>Power BI</span><small>Dashboards · visuals</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="Report preparation" data-tree-category="analytics" data-tree-summary="Preparing consistent reports and making key information easy to review."><span>Report preparation</span><small>Quality · clarity</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="Report distribution" data-tree-category="analytics" data-tree-summary="Sharing report outputs with the intended audience in an organized workflow."><span>Report distribution</span><small>Operational workflow</small></button>
+</div>
+</div>
+<div class="skill-tree-branch" data-category="tools" data-search="tools git github vs code ssh bash shell scripting automation documentation source control">
+<button class="skill-tree-branch-toggle" type="button" aria-expanded="false"><span class="skill-tree-branch-icon tree-cyan" aria-hidden="true">⌁</span><span class="skill-tree-branch-title"><strong>Tools &amp; Automation</strong><small>Daily tools &amp; workflow</small></span><span class="skill-tree-branch-count">4 items</span><span class="skill-tree-chevron" aria-hidden="true">＋</span></button>
+<div class="skill-tree-children" hidden>
+<button class="skill-tree-leaf" type="button" data-tree-skill="Git and GitHub" data-tree-category="tools" data-tree-summary="Versioning changes and maintaining code in a remote repository."><span>Git &amp; GitHub</span><small>Version control</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="VS Code and SSH" data-tree-category="tools" data-tree-summary="Code editing and secure remote access workflows."><span>VS Code &amp; SSH</span><small>Editor · remote access</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="Bash and shell commands" data-tree-category="tools" data-tree-summary="Command-line workflows and shell scripting practice for repeatable administration tasks."><span>Bash &amp; shell</span><small>Command line</small></button>
+<button class="skill-tree-leaf" type="button" data-tree-skill="Technical documentation" data-tree-category="tools" data-tree-summary="Recording useful steps, commands, and findings so work can be reviewed or repeated."><span>Technical documentation</span><small>Reusable notes</small></button>
+</div>
+</div>
+</div>
+<div class="skill-tree-detail" id="skill-tree-detail" hidden aria-live="polite">
+<div><p class="eyebrow" id="skill-tree-detail-category">SKILL DETAILS</p><h3 id="skill-tree-detail-title">Select a technology</h3><p id="skill-tree-detail-copy"></p></div>
+<button class="btn btn-primary skill-tree-open-card" type="button" id="skill-tree-open-card">Open skill card <span>↗</span></button>
+</div>
+</div>
+
 <p class="empty-state" hidden id="skills-empty" aria-live="polite">No skills found. Try a different search or category.</p>
 </section>
 
@@ -1071,9 +1143,10 @@ button.addEventListener('click', () => {
   }
   initReveals();
 
-  function setupFilter({searchId, filtersId, cardsSelector, emptyId}) {
+  function setupFilter({searchId, filtersId, cardsSelector, emptyId, treeSelector}) {
     const search = document.getElementById(searchId), filters = document.getElementById(filtersId);
     const cards = [...document.querySelectorAll(cardsSelector)], empty = document.getElementById(emptyId);
+    const treeBranches = treeSelector ? [...document.querySelectorAll(treeSelector)] : [];
     if (!search || !filters || !cards.length) return;
     let category = "all";
     function apply() {
@@ -1082,6 +1155,18 @@ button.addEventListener('click', () => {
         const matchesCategory = category === "all" || card.dataset.category === category;
         const matchesQuery = !query || ((card.dataset.search || "") + " " + card.innerText).toLowerCase().includes(query);
         card.hidden = !(matchesCategory && matchesQuery); if (!card.hidden) count++;
+      });
+      treeBranches.forEach(branch => {
+        const linkedCard = cards.find(card => card.dataset.category === branch.dataset.category);
+        branch.hidden = !linkedCard || linkedCard.hidden;
+        if (branch.hidden) {
+          const children = branch.querySelector(".skill-tree-children");
+          const toggle = branch.querySelector(".skill-tree-branch-toggle");
+          if (children) children.hidden = true;
+          if (toggle) toggle.setAttribute("aria-expanded", "false");
+          const mark = toggle && toggle.querySelector(".skill-tree-chevron");
+          if (mark) mark.textContent = "＋";
+        }
       });
       if (empty) empty.hidden = count > 0;
     }
@@ -1096,7 +1181,7 @@ button.addEventListener('click', () => {
     }));
     apply();
   }
-  setupFilter({searchId:"skill-search",filtersId:"skill-filters",cardsSelector:"#skill-grid .skill-card",emptyId:"skills-empty"});
+  setupFilter({searchId:"skill-search",filtersId:"skill-filters",cardsSelector:"#skill-grid .skill-card",emptyId:"skills-empty",treeSelector:"#skill-tree-branches .skill-tree-branch"});
   setupFilter({searchId:"project-search",filtersId:"project-filters",cardsSelector:"#projects-grid .project-card",emptyId:"projects-empty"});
   // Premium project carousel: one featured card at a time, with arrows, dots, and swipe support.
   (()=>{
@@ -2025,36 +2110,113 @@ document.querySelectorAll('[data-skill-group]').forEach(b=>b.addEventListener('c
  #page-skills #skill-grid.is-list-view .skill-card-simple>.details-toggle{width:100%;min-width:0}
 }
 @media(prefers-reduced-motion:reduce){#page-skills .skill-card-simple,#page-skills .skills-view-button{transition:none!important}}
+
+/* Simple third view: compact expandable skill tree */
+#page-skills .skills-view-button{min-width:62px}
+#page-skills .skill-tree-view[hidden]{display:none!important}
+#page-skills .skill-tree-view{margin:0 0 25px}
+#page-skills .skill-tree-heading{display:flex;align-items:baseline;gap:12px;margin:2px 0 14px}
+#page-skills .skill-tree-heading .eyebrow{margin:0}
+#page-skills .skill-tree-heading p{margin:0;color:var(--muted);font-size:12px}
+#page-skills .skill-tree-branches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+#page-skills .skill-tree-branch[hidden]{display:none!important}
+#page-skills .skill-tree-branch{min-width:0;align-self:start;border:1px solid var(--line);border-radius:13px;overflow:hidden;background:var(--surface);transition:border-color .18s ease}
+#page-skills .skill-tree-branch:has(.skill-tree-branch-toggle[aria-expanded="true"]){border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
+#page-skills .skill-tree-branch-toggle{display:flex;align-items:center;gap:10px;width:100%;padding:14px;text-align:left;border:0;background:transparent;color:var(--text)}
+#page-skills .skill-tree-branch-toggle:hover{background:color-mix(in srgb,var(--accent) 4%,var(--surface))}
+#page-skills .skill-tree-branch-icon{display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border:1px solid var(--line);border-radius:9px;background:var(--surface-2);font-size:18px}
+#page-skills .tree-green{color:#43c99b}#page-skills .tree-blue,#page-skills .tree-cyan{color:var(--accent)}#page-skills .tree-purple{color:var(--accent2)}#page-skills .tree-orange{color:#dba24b}
+#page-skills .skill-tree-branch-title{display:flex;flex:1;min-width:0;flex-direction:column;gap:3px}
+#page-skills .skill-tree-branch-title strong{font:700 12px Manrope,sans-serif}
+#page-skills .skill-tree-branch-title small{font-size:10px;color:var(--muted)}
+#page-skills .skill-tree-branch-count{font-size:9px;color:var(--muted);white-space:nowrap}
+#page-skills .skill-tree-chevron{display:grid;place-items:center;width:23px;height:23px;border:1px solid var(--line);border-radius:7px;color:var(--accent);font-size:15px;flex:0 0 23px}
+#page-skills .skill-tree-children{position:relative;display:flex;flex-direction:column;gap:4px;margin:0 13px 13px 30px;padding:3px 0 2px 18px;border-left:1px solid color-mix(in srgb,var(--accent) 32%,var(--line))}
+#page-skills .skill-tree-children[hidden]{display:none}
+#page-skills .skill-tree-leaf{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:0;padding:9px 11px;border:1px solid transparent;border-radius:8px;background:transparent;color:var(--text);text-align:left}
+#page-skills .skill-tree-leaf:before{content:"";position:absolute;left:-19px;top:18px;width:12px;border-top:1px solid color-mix(in srgb,var(--accent) 32%,var(--line))}
+#page-skills .skill-tree-leaf span{font-size:11px;font-weight:650;line-height:1.4}
+#page-skills .skill-tree-leaf small{font-size:10px;color:var(--muted);line-height:1.4}
+#page-skills .skill-tree-leaf:hover,#page-skills .skill-tree-leaf.active{background:color-mix(in srgb,var(--accent) 8%,var(--surface));border-color:color-mix(in srgb,var(--accent) 30%,var(--line))}
+#page-skills .skill-tree-leaf.active span{color:var(--accent)}
+#page-skills .skill-tree-detail[hidden]{display:none}
+#page-skills .skill-tree-detail{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:16px;padding:17px 18px;border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));border-radius:13px;background:color-mix(in srgb,var(--accent) 5%,var(--surface))}
+#page-skills .skill-tree-detail>div{min-width:0}
+#page-skills .skill-tree-detail .eyebrow{margin:0 0 4px}
+#page-skills .skill-tree-detail h3{margin:0 0 5px;font-size:16px}
+#page-skills .skill-tree-detail p:last-child{margin:0;color:var(--muted);font-size:12px;line-height:1.7}
+#page-skills .skill-tree-open-card{flex:0 0 auto;white-space:nowrap;padding:10px 13px;font-size:11px}
+#page-skills .skill-tree-branch-toggle:focus-visible,#page-skills .skill-tree-leaf:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+@media(max-width:700px){#page-skills .skill-tree-branches{grid-template-columns:minmax(0,1fr)}#page-skills .skill-tree-heading{flex-direction:column;gap:5px}}
+@media(max-width:520px){#page-skills .skill-tree-detail{align-items:stretch;flex-direction:column;gap:12px}#page-skills .skill-tree-open-card{width:100%}#page-skills .skill-tree-branch-toggle{padding:12px}#page-skills .skill-tree-branch-count{display:none}}
+@media(prefers-reduced-motion:reduce){#page-skills .skill-tree-branch{transition:none!important}}
+
 </style>
 
 
 <script id="skills-grid-list-controller">
 (function(){
  const grid=document.getElementById("skill-grid");
- const gridButton=document.getElementById("skills-grid-view");
- const listButton=document.getElementById("skills-list-view");
- if(!grid||!gridButton||!listButton)return;
+ const tree=document.getElementById("skill-tree-panel");
+ const buttons={grid:document.getElementById("skills-grid-view"),list:document.getElementById("skills-list-view"),tree:document.getElementById("skills-tree-view")};
+ if(!grid||!tree||!buttons.grid||!buttons.list||!buttons.tree)return;
  const storageKey="mukul-portfolio-skills-view";
  function setView(view,save){
-  const mode=view==="list"?"list":"grid";
-  const isList=mode==="list";
+  const mode=["grid","list","tree"].includes(view)?view:"grid";
+  const isTree=mode==="tree",isList=mode==="list";
+  grid.hidden=isTree;
+  tree.hidden=!isTree;
   grid.classList.toggle("is-list-view",isList);
   grid.dataset.view=mode;
-  gridButton.classList.toggle("active",!isList);
-  listButton.classList.toggle("active",isList);
-  gridButton.setAttribute("aria-pressed",String(!isList));
-  listButton.setAttribute("aria-pressed",String(isList));
+  Object.entries(buttons).forEach(([key,button])=>{
+   const active=key===mode;
+   button.classList.toggle("active",active);
+   button.setAttribute("aria-pressed",String(active));
+  });
   if(save){try{localStorage.setItem(storageKey,mode)}catch(_){/* Storage may be unavailable; the view still works. */}}
  }
  let initial="grid";
- try{if(localStorage.getItem(storageKey)==="list")initial="list"}catch(_){}
+ try{const saved=localStorage.getItem(storageKey);if(["grid","list","tree"].includes(saved))initial=saved;}catch(_){}
  setView(initial,false);
- gridButton.addEventListener("click",()=>setView("grid",true));
- listButton.addEventListener("click",()=>setView("list",true));
+ buttons.grid.addEventListener("click",()=>setView("grid",true));
+ buttons.list.addEventListener("click",()=>setView("list",true));
+ buttons.tree.addEventListener("click",()=>setView("tree",true));
 })();
 </script>
 
 
+
+<script id="skills-tree-interactions">
+(function(){
+ const tree=document.getElementById("skill-tree-panel"),grid=document.getElementById("skill-grid");
+ const detail=document.getElementById("skill-tree-detail"),detailCategory=document.getElementById("skill-tree-detail-category");
+ const detailTitle=document.getElementById("skill-tree-detail-title"),detailCopy=document.getElementById("skill-tree-detail-copy");
+ const openCard=document.getElementById("skill-tree-open-card"),search=document.getElementById("skill-search");
+ const filters=document.getElementById("skill-filters"),gridButton=document.getElementById("skills-grid-view");
+ if(!tree||!grid||!detail||!detailCategory||!detailTitle||!detailCopy||!openCard||!filters||!gridButton)return;
+ let selected={category:"",skill:"",summary:""};
+ tree.querySelectorAll(".skill-tree-branch-toggle").forEach(button=>button.addEventListener("click",()=>{
+  const branch=button.closest(".skill-tree-branch"),children=branch&&branch.querySelector(".skill-tree-children");
+  if(!children)return;const open=children.hidden;children.hidden=!open;button.setAttribute("aria-expanded",String(open));
+  const mark=button.querySelector(".skill-tree-chevron");if(mark)mark.textContent=open?"−":"＋";
+ }));
+ tree.querySelectorAll(".skill-tree-leaf").forEach(button=>button.addEventListener("click",()=>{
+  selected={category:button.dataset.treeCategory||"",skill:button.dataset.treeSkill||"",summary:button.dataset.treeSummary||""};
+  tree.querySelectorAll(".skill-tree-leaf").forEach(leaf=>{const active=leaf===button;leaf.classList.toggle("active",active);leaf.setAttribute("aria-pressed",String(active));});
+  detailCategory.textContent=selected.category.toUpperCase()+" · SKILL";detailTitle.textContent=selected.skill;detailCopy.textContent=selected.summary;detail.hidden=false;
+  openCard.textContent="Open "+(grid.querySelector('.skill-card[data-category="'+selected.category+'"] h3')?.textContent.trim()||"skill")+" card ↗";
+ }));
+ openCard.addEventListener("click",()=>{
+  if(!selected.category)return;gridButton.click();
+  if(search&&search.value){search.value="";search.dispatchEvent(new Event("input",{bubbles:true}));}
+  const filter=filters.querySelector('[data-filter="'+selected.category+'"]');if(filter)filter.click();
+  const card=grid.querySelector('.skill-card[data-category="'+selected.category+'"]');if(!card)return;
+  const expand=card.querySelector(".skill-detail-toggle"),panel=expand&&expand.nextElementSibling;
+  if(expand&&panel&&panel.hidden){expand.setAttribute("aria-expanded","true");panel.hidden=false;const symbol=expand.querySelector("span");if(symbol)symbol.textContent="−";}
+  card.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"});
+ });
+})();
+</script>
 
 </body>
 </html>
