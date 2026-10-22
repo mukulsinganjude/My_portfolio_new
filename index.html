@@ -5,6 +5,7 @@
 <meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="Mukul Singanjude — front-end development, cloud and process operations portfolio." name="description"/>
 <title>Mukul Singanjude | Personal Portfolio</title>
+<link id="portfolio-favicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g'%3E%3Cstop stop-color='%239a7cf7'/%3E%3Cstop offset='1' stop-color='%235dd8f1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='13' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-size='40' font-family='Arial,sans-serif' font-weight='700' text-anchor='middle' fill='%2310131d'%3EM%3C/text%3E%3C/svg%3E"/>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 :root{font-family:'DM Sans',sans-serif;color-scheme:dark;--bg:#0b0d13;--surface:#121621;--surface-2:#171d2b;--text:#f1f4fb;--muted:#a0a9bc;--subtle:#707b91;--line:rgba(174,190,220,.14);--accent:#a78bfa;--accent2:#67d7f5;--accent3:#8be0c1;--shadow:0 24px 70px rgba(0,0,0,.28);--header:rgba(11,13,19,.78)}
@@ -2513,6 +2514,48 @@ document.querySelectorAll('[data-skill-group]').forEach(b=>b.addEventListener('c
       if(img.getAttribute("src")!==portrait)img.setAttribute("src",portrait);
     });
   });
+})();
+</script>
+<script id="portrait-favicon-init">
+(function(){
+  const photo=document.querySelector("#page-about .about-feature-photo");
+  if(!photo)return;
+  async function applyPhotoFavicon(){
+    try{
+      if(typeof photo.decode==="function")await photo.decode();
+      else if(!photo.complete)await new Promise((resolve,reject)=>{
+        photo.addEventListener("load",resolve,{once:true});
+        photo.addEventListener("error",reject,{once:true});
+      });
+      if(!photo.naturalWidth||!photo.naturalHeight)return;
+      const size=64,canvas=document.createElement("canvas");
+      canvas.width=size;canvas.height=size;
+      const context=canvas.getContext("2d");
+      if(!context)return;
+      context.clearRect(0,0,size,size);
+      context.beginPath();
+      if(typeof context.roundRect==="function")context.roundRect(0,0,size,size,13);
+      else{
+        const radius=13;
+        context.moveTo(radius,0);context.lineTo(size-radius,0);context.quadraticCurveTo(size,0,size,radius);
+        context.lineTo(size,size-radius);context.quadraticCurveTo(size,size,size-radius,size);
+        context.lineTo(radius,size);context.quadraticCurveTo(0,size,0,size-radius);
+        context.lineTo(0,radius);context.quadraticCurveTo(0,0,radius,0);
+      }
+      context.closePath();context.clip();
+      const scale=Math.max(size/photo.naturalWidth,size/photo.naturalHeight);
+      const width=photo.naturalWidth*scale,height=photo.naturalHeight*scale;
+      context.drawImage(photo,(size-width)/2,(size-height)*0.22,width,height);
+      let link=document.getElementById("portfolio-favicon");
+      if(!link){link=document.createElement("link");link.id="portfolio-favicon";link.rel="icon";document.head.appendChild(link);}
+      link.type="image/png";
+      link.sizes="64x64";
+      link.href=canvas.toDataURL("image/png");
+    }catch(_){
+      // Keep the branded SVG fallback if the browser cannot generate the photo icon.
+    }
+  }
+  applyPhotoFavicon();
 })();
 </script>
 </body>
