@@ -760,6 +760,20 @@ img,svg,video,canvas{max-width:100%}
 }
 @media(prefers-reduced-motion:reduce){#page-projects .case-preview-open{transition:none!important}}
 </style>
+<style id="professional-profile-photo">
+/* Reuse the supplied professional portrait across the header and homepage profile card. */
+.brand-mark.brand-mark-photo{padding:0;overflow:hidden;background:linear-gradient(135deg,#9a7cf7,#5dd8f1)}
+.brand-mark .brand-photo{display:block;width:100%;height:100%;object-fit:cover;object-position:center 22%}
+.hero-profile-photo-wrap{position:relative;width:100%;height:318px;overflow:hidden;background:var(--surface-2);isolation:isolate}
+.hero-profile-photo{display:block;width:100%;height:100%;object-fit:cover;object-position:center 22%;transition:transform .45s ease}
+.profile-card:hover .hero-profile-photo{transform:scale(1.025)}
+.hero-profile-photo-wrap:after{content:"";position:absolute;inset:48% 0 0;z-index:0;pointer-events:none;background:linear-gradient(transparent,rgba(7,12,20,.58))}
+.hero-profile-photo-caption{position:absolute;z-index:1;left:16px;bottom:13px;color:#e8fbff;font:500 9px 'DM Mono',monospace;letter-spacing:1.2px;text-shadow:0 1px 8px #0008}
+.profile-bottom .hero-avatar-wrap{display:block;flex:0 0 38px;width:38px;height:38px;border:1px solid color-mix(in srgb,var(--accent2) 40%,var(--line));border-radius:50%;background:var(--surface-2)}
+.profile-bottom .hero-avatar-photo{object-position:center 22%}
+@media(max-width:700px){.hero-profile-photo-wrap{height:clamp(250px,72vw,310px)}}
+@media(prefers-reduced-motion:reduce){.hero-profile-photo{transition:none!important}}
+</style>
 </head>
 <body>
 <canvas id="ambient-network-canvas" aria-hidden="true"></canvas><div id="cursor-glow" aria-hidden="true"></div>
@@ -773,7 +787,7 @@ img,svg,video,canvas{max-width:100%}
 </div>
 </div>
 <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
-<header class="site-header"><a class="brand" data-route="index" href="#home"><span class="brand-mark">M</span><span>Mukul<span class="brand-dot">.</span></span></a>
+<header class="site-header"><a class="brand" data-route="index" href="#home"><span class="brand-mark brand-mark-photo"><img class="brand-photo" alt="" aria-hidden="true" decoding="async"/></span><span>Mukul<span class="brand-dot">.</span></span></a>
 <button aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle" type="button"><span></span><span></span><span></span></button>
 <nav aria-label="Main navigation" class="nav-links" id="primary-navigation"><a class="active" data-route="index" href="#home">Home</a><a data-route="about" href="#about">About</a><a data-route="skills" href="#skills">Skills</a><a data-route="projects" href="#projects">Projects</a><a data-route="contact" href="#contact">Contact</a></nav>
 <div class="header-tools"><button aria-label="Search the portfolio" id="quick-search-button" title="Quick search" type="button"><span>⌕</span><span class="search-label">Search</span><kbd>Ctrl K</kbd></button><button aria-label="Switch color theme" class="theme-toggle" title="Switch theme" type="button"><span class="theme-icon">☼</span><span class="theme-label">Light mode</span></button><button aria-label="Open personalization panel" class="personalize-trigger" id="personalize-open" title="Personalize your experience" type="button">⚙ <span>Customize</span></button></div></header>
@@ -842,8 +856,11 @@ img,svg,video,canvas{max-width:100%}
 <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
 <div class="profile-card">
 <div class="profile-top"><span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span><span class="profile-code">profile.ts</span></div>
-<div class="code-lines"><p><span class="code-purple">const</span> <span class="code-blue">developer</span> = {</p><p class="indent"><span class="code-green">name</span>: <span class="code-yellow">'Mukul'</span>,</p><p class="indent"><span class="code-green">focus</span>: [</p><p class="indent2"><span class="code-yellow">'Frontend'</span>,</p><p class="indent2"><span class="code-yellow">'Cloud'</span>,</p><p class="indent2"><span class="code-yellow">'Operations'</span></p><p class="indent">],</p><p class="indent"><span class="code-green">mindset</span>: <span class="code-yellow">'Always learning'</span></p><p>};</p><p class="code-comment">// building one idea at a time ✦</p></div>
-<div class="profile-bottom"><span class="mini-avatar">MS</span><span><strong>Mukul Singanjude</strong><small>Developer · Problem solver</small></span><span class="live-pulse"></span></div>
+<div class="hero-profile-photo-wrap">
+<img class="hero-profile-photo" alt="Mukul Singanjude — professional profile photo" decoding="async" fetchpriority="high"/>
+<span class="hero-profile-photo-caption">SYSTEM ENGINEER · IT OPERATIONS</span>
+</div>
+<div class="profile-bottom"><span class="hero-avatar-wrap"><img class="hero-avatar-photo" alt="" aria-hidden="true" decoding="async"/></span><span><strong>Mukul Singanjude</strong><small>Developer · Problem solver</small></span><span class="live-pulse"></span></div>
 </div>
 <div class="float-chip chip-angular"><span class="chip-icon">A</span><span><strong>Frontend</strong><small>Angular · TypeScript</small></span></div>
 <div class="float-chip chip-cloud"><span class="chip-icon">☁</span><span><strong>Cloud &amp; Linux</strong><small>AWS · Linux</small></span></div>
@@ -1263,7 +1280,7 @@ button.addEventListener('click', () => {
 
 
 </main>
-<footer class="site-footer"><a class="brand" data-route="index" href="#home"><span class="brand-mark">M</span><span>Mukul<span class="brand-dot">.</span></span></a><p>Designed with curiosity and care.</p><span>© <span class="year"></span> Mukul Singanjude</span></footer>
+<footer class="site-footer"><a class="brand" data-route="index" href="#home"><span class="brand-mark brand-mark-photo"><img class="brand-photo" alt="" aria-hidden="true" decoding="async"/></span><span>Mukul<span class="brand-dot">.</span></span></a><p>Designed with curiosity and care.</p><span>© <span class="year"></span> Mukul Singanjude</span></footer>
 <script>
 (() => {
   const root = document.documentElement;
@@ -2489,6 +2506,19 @@ document.querySelectorAll('[data-skill-group]').forEach(b=>b.addEventListener('c
   dialog.addEventListener("close",()=>{
     scene.replaceChildren();
     if(lastTrigger&&document.contains(lastTrigger))lastTrigger.focus({preventScroll:true});
+  });
+})();
+</script>
+<script id="apply-supplied-profile-photo">
+(function(){
+  const reference=document.querySelector("#page-about .about-feature-photo");
+  if(!reference)return;
+  const portrait=reference.getAttribute("src")||reference.currentSrc||reference.src;
+  if(!portrait)return;
+  [".hero-profile-photo",".hero-avatar-photo",".brand-photo"].forEach(selector=>{
+    document.querySelectorAll(selector).forEach(img=>{
+      if(img.getAttribute("src")!==portrait)img.setAttribute("src",portrait);
+    });
   });
 })();
 </script>
